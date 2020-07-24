@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Trang Chủ</string>
     <string name="openDrawer">Mo Draw</string>
     <string name="CloseDrawer">Dong Draw</string>
 
@@ -70,12 +69,5 @@
     <string name="btnAddThanhVien">AddMember</string>
     <string name="btnListTeam">ListMember</string>
     <string name="txtNgaySinh">Ngày Sinh</string>
-
-
-
-
-
-
-
-
+    
 </resources>
