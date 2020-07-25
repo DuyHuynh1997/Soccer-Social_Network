@@ -69,5 +69,7 @@
     <string name="btnAddThanhVien">AddMember</string>
     <string name="btnListTeam">ListMember</string>
     <string name="txtNgaySinh">Ngày Sinh</string>
-    
+<!--    test-->
+    <string name="txtSucessful">Dang nhap thanh cong</string>
+    <string name="txtFail">Dang nhap that bai</string>
 </resources>
