@@ -1,5 +1,5 @@
 <resources>
-<!--    Khiem-->
+    <!--    Khiem-->
     <string name="app_name">Soccer-Social_Network</string>
     <string name="nameyard">DREAM SOCCER</string>
     <string name="namesan">NAME FOOTBALL</string>
@@ -26,4 +26,5 @@
     <string name="detail">DETAIL</string>
     <string name="bookYard">BOOKYARD</string>
     <string name="list">SOCCER FIELD LIST </string>
+    <string name="chooseImage">Choose</string>
 </resources>
