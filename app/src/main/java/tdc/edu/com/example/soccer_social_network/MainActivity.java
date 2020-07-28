@@ -2,7 +2,6 @@ package tdc.edu.com.example.soccer_social_network;
 
 import android.content.Intent;
 import android.os.Bundle;
-
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -23,16 +22,14 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.view.Menu;
 
-import tdc.edu.com.example.soccer_social_network.Database.SQLiteHelper;
-
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    public static SQLiteHelper sqLiteHelper;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        sqLiteHelper = new SQLiteHelper(this);
+
 
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_main );
@@ -108,7 +105,9 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_slideshow) {
 
-        } else if (id == R.id.nav_tools) {
+        } else if (id == R.id.nav_update) {
+
+            startActivity( new Intent( MainActivity.this,TeamList.class ) );
 
         } else if (id == R.id.nav_login) {
 

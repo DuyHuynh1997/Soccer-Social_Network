@@ -21,6 +21,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -42,7 +43,7 @@ public class AddTeam extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled( true );
 
         init();
-        sqLiteHelper = MainActivity.sqLiteHelper;
+        sqLiteHelper = new SQLiteHelper( this );
         sqLiteHelper.queryData( "CREATE TABLE IF NOT EXISTS TEAM (Id INTEGER PRIMARY KEY AUTOINCREMENT, tendoi VARCHAR, diachi VARCHAR, image BLOB)" );
 
         imageView.setOnClickListener( new View.OnClickListener() {
@@ -74,6 +75,13 @@ public class AddTeam extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
+            }
+        } );
+        btnTeamList.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(AddTeam.this, TeamList.class);
+                startActivity(intent);
             }
         } );
     }
@@ -122,15 +130,6 @@ public class AddTeam extends AppCompatActivity {
         super.onActivityResult( requestCode, resultCode, data );
     }
 
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId() == android.R.id.home)
-        {
-            finish();
-        }
-        return super.onOptionsItemSelected( item );
-    }
 
 
     private void init()

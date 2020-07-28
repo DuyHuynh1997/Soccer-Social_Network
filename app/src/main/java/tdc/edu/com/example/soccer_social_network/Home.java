@@ -52,42 +52,7 @@ public class Home extends Fragment {
         }
         adapter.notifyDataSetChanged();
 
-//        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-//            @Override
-//            public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
-//
-//                CharSequence[] items = {"Update", "Delete"};
-//                AlertDialog.Builder dialog = new AlertDialog.Builder( getContext());
-//
-//                dialog.setTitle("Choose an action");
-//                dialog.setItems(items, new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int item) {
-//                        if (item == 0) {
-//                            // update
-//                            Cursor c = AddTeam.sqLiteHelper.getData("SELECT id FROM TEAM");
-//                            ArrayList<Integer> arrID = new ArrayList<Integer>();
-//                            while (c.moveToNext()){
-//                                arrID.add(c.getInt(0));
-//                            }
-//                            // show dialog update at here
-//                            //  showDialogUpdate(FoodList.this, arrID.get(position));
-//
-//                        } else {
-//                            // delete
-//                            Cursor c = AddTeam.sqLiteHelper.getData("SELECT id FROM TEAM");
-//                            ArrayList<Integer> arrID = new ArrayList<Integer>();
-//                            while (c.moveToNext()){
-//                                arrID.add(c.getInt(0));
-//                            }
-//                            // showDialogDelete(arrID.get(position));
-//                        }
-//                    }
-//                });
-//                dialog.show();
-//                return true;
-//            }
-//        });
+
 
         // Inflate the layout for this fragment
         return flagment;

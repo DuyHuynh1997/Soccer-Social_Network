@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteStatement;
 
 public class SQLiteHelper extends SQLiteOpenHelper {
-    private static String DB_NAME = "databasesql1";
+    private static String DB_NAME = "databasesql2";
     private static int DB_VERSION = 1;
 
 
@@ -33,6 +33,33 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         statement.bindBlob( 3, image);
 
         statement.executeInsert();
+    }
+
+    public void updateData(String tendoi, String diachi, byte[] image, int id) {
+        SQLiteDatabase database = getWritableDatabase();
+
+        String sql = "UPDATE TEAM SET tendoi = ?, diachi = ?, image = ? WHERE id = ?";
+        SQLiteStatement statement = database.compileStatement(sql);
+
+        statement.bindString(1, tendoi);
+        statement.bindString(2, diachi);
+        statement.bindBlob(3, image);
+        statement.bindDouble(4, (double)id);
+
+        statement.execute();
+        database.close();
+    }
+
+    public  void deleteData(int id) {
+        SQLiteDatabase database = getWritableDatabase();
+
+        String sql = "DELETE FROM TEAM WHERE id = ?";
+        SQLiteStatement statement = database.compileStatement(sql);
+        statement.clearBindings();
+        statement.bindDouble(1, (double)id);
+
+        statement.execute();
+        database.close();
     }
 
     public Cursor getData(String sql)
