@@ -28,3 +28,32 @@
     <string name="list">SOCCER FIELD LIST </string>
     <string name="chooseImage">Choose</string>
 </resources>
+    <string name="app_name">ThemThanhVienAndTeam</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_tools">Tools</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    //activity_add_team
+    <color name="colorWhile">#ffff</color>
+    <string-array name="ArrayTeam">
+        <item>ĐỘI A</item>
+        <item>ĐỘI B</item>
+        <item>ĐỘI C</item>
+        <item>ĐỘI D</item>
+        <item>ĐỘI E</item>
+    </string-array>
+</resources>

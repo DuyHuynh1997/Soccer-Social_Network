@@ -2,10 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/my_khungvuong_background"
-    android:padding="10dp"
+    android:background="@drawable/khungvuong_background"
+
     >
     <LinearLayout
+        android:layout_marginRight="10dp"
         android:gravity="right|center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -13,10 +14,10 @@
             android:textSize="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/txtTrangThai"/>
+            android:text="Trạng Thái "/>
         <Button
-            android:id="@+id/btnTrangThai"
-            android:background="@drawable/my_botron"
+            android:id="@+id/btnTrangThai_addTeam"
+            android:background="@drawable/botron"
             android:layout_width="30px"
             android:layout_height="30px" />
 
@@ -24,12 +25,13 @@
 
     <LinearLayout
         android:background="@drawable/backgound_tree"
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
         <LinearLayout
-            android:background="@drawable/my_khungvuong_color_alpha"
+            android:background="@drawable/khungvuong_color_alpha"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             >
@@ -41,15 +43,15 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="@string/txtTenDoi"/>
+                android:text="Tên Đội:"/>
 
             <EditText
                 android:textColor="@color/colorWhile"
-                android:id="@+id/edtTenDoi_team_listview_layout"
+                android:id="@+id/edtTenDoi_addTeam"
                 android:textSize="20sp"
-                android:background="@drawable/my_khungvuong_no_color"
+                android:background="@drawable/khungvuong_no_color"
                 android:textColorHint="@color/colorWhile"
-                android:hint="@string/hintEdtNhapTenDoiInput"
+                android:hint="Nhập Tên Đội"
                 android:gravity="center"
                 android:layout_width="0dp"
                 android:layout_weight="2"
@@ -66,10 +68,10 @@
             >
 
             <ImageView
-                android:id="@+id/imageView"
-                android:src="@drawable/backgroud_list"
+                android:id="@+id/imageView_addTeam"
+                android:src="@mipmap/ic_launcher"
                 android:layout_width="match_parent"
-                android:layout_height="150dp" />
+                android:layout_height="100dp" />
 
         </LinearLayout>
 
@@ -89,7 +91,7 @@
                 android:layout_weight="2">
 
                 <LinearLayout
-                    android:background="@drawable/my_khungvuong_color_alpha"
+                    android:background="@drawable/khungvuong_color_alpha"
                     android:layout_marginBottom="5dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -101,17 +103,17 @@
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
-                        android:text="@string/txtDoiTruong"/>
+                        android:text="Đội Trưởng:"/>
 
                     <EditText
                         android:textColor="@color/colorWhile"
-                        android:id="@+id/edtDoiTruong_team_listview_layout"
+                        android:id="@+id/edtDoiTruong_addTeam"
                         android:textSize="20sp"
                         android:textColorHint="@color/colorWhile"
                         android:gravity="center"
                         android:layout_marginLeft="15sp"
-                        android:background="@drawable/my_khungvuong_color_alpha"
-                        android:hint="@string/hintEdtNhapDoiTruongInput"
+                        android:background="@drawable/khungvuong_no_color"
+                        android:hint="Tên Đội Trưởng"
                         android:layout_width="0dp"
                         android:layout_weight="2"
                         android:layout_height="wrap_content" />
@@ -119,23 +121,21 @@
                 </LinearLayout>
                 <LinearLayout
                     android:layout_marginBottom="5dp"
-                    android:background="@drawable/my_khungvuong_color_alpha"
+                    android:background="@drawable/khungvuong_color_alpha"
                     android:orientation="vertical"
                     android:gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <Button
-                        android:id="@+id/btnThanhVien_team_listview_layout"
-                        android:background="@drawable/my_radiuskhungvuong_button_three"
+                        android:id="@+id/btnThanhVien_addTeam"
                         android:layout_marginTop="5dp"
                         android:textColor="@color/colorWhile"
-                        android:text="@string/btnThanhVien"
+                        android:text="Thành Viên"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                     <ListView
-                        android:background="@drawable/my_khungvuong_background"
-                        android:id="@+id/listviewThanhVien_team_listview_layout"
+                        android:id="@+id/listviewThanhVien_addTeam"
                         android:entries="@array/ArrayTeam"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
@@ -151,7 +151,7 @@
 
         </LinearLayout>
         <LinearLayout
-            android:background="@drawable/my_khungvuong_color_alpha"
+            android:background="@drawable/khungvuong_color_alpha"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -170,17 +170,17 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="@string/txtNgayThanhLap"/>
+                    android:text="Ngày Thành lập:"/>
 
                 <TextView
-                    android:textSize="15dp"
-                    android:id="@+id/txtNgayThanhLap_team_listview_layout"
+
+                    android:id="@+id/txtNgayThanhLap_addTeam"
                     android:layout_marginRight="10dp"
                     android:gravity="center"
                     android:textColor="@color/colorWhile"
-                    android:background="@drawable/my_khungvuong_color_alpha"
+                    android:background="@drawable/khungvuong_color_alpha"
                     android:layout_marginLeft="10dp"
-                    android:text="@string/txtNgayThanhLapInput"
+                    android:text="Ngày Thành lập"
                     android:layout_width="0dp"
                     android:layout_weight="2"
                     android:layout_height="wrap_content" />
@@ -198,17 +198,17 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="@string/txtDiaChi"/>
+                    android:text="Địa Chỉ:"/>
 
                 <EditText
                     android:textColor="@color/colorWhile"
-                    android:id="@+id/edtDiaChi_team_listview_layout"
+                    android:id="@+id/edtDiaChi_addTeam"
                     android:textColorHint="@color/colorWhile"
                     android:layout_marginRight="10dp"
                     android:gravity="center"
-                    android:background="@drawable/my_khungvuong_color_alpha"
+                    android:background="@drawable/khungvuong_color_alpha"
                     android:layout_marginLeft="10dp"
-                    android:hint="@string/hintEdtNhapDiaChi"
+                    android:hint="Nhập Địa Chỉ"
                     android:layout_width="0dp"
                     android:layout_weight="2"
                     android:layout_height="wrap_content" />
@@ -227,17 +227,17 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="@string/txtSoDienThoai"/>
+                    android:text="Số Điện Thoại:"/>
 
                 <EditText
                     android:textColor="@color/colorWhile"
-                    android:id="@+id/edtSoDienThoai_team_listview_layout"
+                    android:id="@+id/edtSoDienThoai_addTeam"
                     android:textColorHint="@color/colorWhile"
                     android:layout_marginRight="10dp"
                     android:gravity="center"
-                    android:background="@drawable/my_khungvuong_color_alpha"
+                    android:background="@drawable/khungvuong_color_alpha"
                     android:layout_marginLeft="10dp"
-                    android:hint="@string/hintEdtNhapSoDienThoaiInput"
+                    android:hint="Nhập Số Điện Thoại"
                     android:layout_width="0dp"
                     android:layout_weight="2"
                     android:layout_height="wrap_content" />
@@ -250,20 +250,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <Button
-                android:background="@drawable/my_radiuskhungvuong_button_three"
-                android:id="@+id/btnTeamList_team_listview_layout"
+                android:id="@+id/btnTeamList_addTeam"
                 android:textAllCaps="false"
                 android:textColor="@color/colorWhile"
-                android:text="@string/btnTeamList"
+                android:text="TeamList"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <Button
-                android:background="@drawable/my_radiuskhungvuong_button_three"
-                android:id="@+id/btnAddTeam_team_listview_layout"
+                android:id="@+id/btnAddTeam_addTeam"
                 android:textAllCaps="false"
                 android:layout_marginLeft="20dp"
                 android:textColor="@color/colorWhile"
-                android:text="@string/btnAddTeam"
+                android:text="AddTeam"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
