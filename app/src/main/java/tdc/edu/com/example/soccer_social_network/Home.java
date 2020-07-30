@@ -40,7 +40,7 @@ public class Home extends Fragment {
         adapter = new TeamListAdapter( getContext(),R.layout.item_team,list );
         listView.setAdapter( adapter );
 
-        Cursor cursor = AddTeam.sqLiteHelper.getData( "SELECT * FROM TEAM");
+        Cursor cursor = MainActivity.sqLiteHelper.getData( "SELECT * FROM TEAM");
 
         while (cursor.moveToNext()){
             int id = cursor.getInt( 0 );

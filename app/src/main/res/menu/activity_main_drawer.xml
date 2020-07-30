@@ -11,7 +11,7 @@
         <item
             android:id="@+id/nav_addTeam"
             android:icon="@drawable/ic_add_team"
-            android:title="@string/menu_gallery" />
+            android:title="@string/menu_add_team" />
         <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_menu_slideshow"
@@ -19,7 +19,7 @@
         <item
             android:id="@+id/nav_update"
             android:icon="@drawable/ic_update"
-            android:title="@string/menu_tools" />
+            android:title="@string/menu_setting_team" />
     </group>
 
     <item android:title="Communicate">

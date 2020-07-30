@@ -1,10 +1,5 @@
 package tdc.edu.com.example.soccer_social_network;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-
 import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
@@ -14,20 +9,24 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
-public class AddTeam extends AppCompatActivity {
-    EditText edtTenDoi, edtDiaChi;
-    Button btnTeamList, btnAddTeam,btnThanhVien,btnAddThanhVien;
+public class AddMember extends AppCompatActivity {
+    EditText edtHoTen, edtViTri;
+    Button btnMemberList, btnAddMember;
     ImageView imageView;
 
     //public static SQLiteHelper sqLiteHelper;
@@ -36,7 +35,7 @@ public class AddTeam extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
-        setContentView( R.layout.activity_add_team );
+        setContentView( R.layout.member_add_layout );
         getSupportActionBar().setDisplayHomeAsUpEnabled( true );
 
         init();
@@ -46,24 +45,24 @@ public class AddTeam extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 ActivityCompat.requestPermissions(
-                        AddTeam.this,
+                        AddMember.this,
                         new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
                         REQUEST_CODE_GALLERY
                 );
             }
         } );
-        btnAddTeam.setOnClickListener( new View.OnClickListener() {
+        btnAddMember.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 try{
-                    MainActivity.sqLiteHelper.insertData(
-                            edtTenDoi.getText().toString().trim(),
-                            edtDiaChi.getText().toString().trim(),
+                    MainActivity.sqLiteHelper.insertDataMember(
+                            edtHoTen.getText().toString().trim(),
+                            edtViTri.getText().toString().trim(),
                             imageViewToByte(imageView)
                     );
                     Toast.makeText(getApplicationContext(),"Added successfully",Toast.LENGTH_SHORT ).show();
-                    edtTenDoi.setText( "" );
-                    edtDiaChi.setText( "" );
+                    edtHoTen.setText( "" );
+                    edtViTri.setText( "" );
                     imageView.setImageResource( R.mipmap.ic_launcher );
                 }
                 catch (Exception e)
@@ -73,24 +72,10 @@ public class AddTeam extends AppCompatActivity {
 
             }
         } );
-        btnTeamList.setOnClickListener( new View.OnClickListener() {
+        btnMemberList.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(AddTeam.this, TeamList.class);
-                startActivity(intent);
-            }
-        } );
-        btnThanhVien.setOnClickListener( new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(AddTeam.this, MemberList.class);
-                startActivity(intent);
-            }
-        } );
-        btnAddThanhVien.setOnClickListener( new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(AddTeam.this, AddMember.class);
+                Intent intent = new Intent( AddMember.this, MemberList.class);
                 startActivity(intent);
             }
         } );
@@ -144,12 +129,10 @@ public class AddTeam extends AppCompatActivity {
 
     private void init()
     {
-        btnAddThanhVien = findViewById( R.id.btnAddThanhVien_addTeam );
-        btnThanhVien = findViewById( R.id.btnThanhVien_addTeam );
-        edtTenDoi = findViewById( R.id.edtTenDoi_addTeam );
-        edtDiaChi = findViewById( R.id.edtDiaChi_addTeam );
-        btnAddTeam = findViewById( R.id.btnAddTeam_addTeam );
-        imageView = findViewById( R.id.imageView_addTeam );
-        btnTeamList = findViewById( R.id.btnTeamList_addTeam );
+        edtHoTen = findViewById( R.id.edtTenMember_addmember );
+        edtViTri = findViewById( R.id.edtViTriChinh_addmember );
+        btnAddMember = findViewById( R.id.btnAddMember_addmember );
+        imageView = findViewById( R.id.imageView_addMember );
+        btnMemberList = findViewById( R.id.btnMemberList_addmember );
     }
 }
