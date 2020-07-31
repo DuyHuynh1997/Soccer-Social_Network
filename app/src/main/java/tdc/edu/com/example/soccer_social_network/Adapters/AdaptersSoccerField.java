@@ -1,11 +1,14 @@
 package tdc.edu.com.example.soccer_social_network.Adapters;
 
 import android.app.Activity;
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -31,34 +34,39 @@ public class AdaptersSoccerField extends ArrayAdapter {
     }
 
     static class viewHolder {
-        TextView lblName;
-        TextView lblArea;
+        TextView txtName;
+        TextView txtArea;
         ImageView img;
+        Button btnDetail;
+
     }
 
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        final viewHolder viewHolder;
-        if (convertView == null){
-            //create new item for listview
-            viewHolder = new viewHolder();
-            convertView = context.getLayoutInflater().inflate(layoutID, parent, false);
-            viewHolder.lblName = (TextView) convertView.findViewById(R.id.nameSan);
-            viewHolder.lblArea = (TextView) convertView.findViewById(R.id.diaChi);
-            viewHolder.img =(ImageView) convertView.findViewById(R.id.img);
-            //link the viewHolder with the coresonding convertView
+        viewHolder viewHolder = new viewHolder();
+
+        if(convertView == null)
+        {
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService( Context.LAYOUT_INFLATER_SERVICE );
+            convertView = inflater.inflate(layoutID,null );
+            viewHolder.txtName = convertView.findViewById( R.id.row_name);
+            viewHolder.txtArea = convertView.findViewById( R.id.row_area);
+            viewHolder.img = (ImageView) convertView.findViewById( R.id.imageSan);
             convertView.setTag(viewHolder);
         }
         else {
             viewHolder = (viewHolder) convertView.getTag();
         }
+
         SoccerField soccerField = list.get(position);
-        byte[] hinhAnh = soccerField.getImage();
-        Bitmap bitmap = BitmapFactory.decodeByteArray(hinhAnh,0,hinhAnh.length);
-        viewHolder.img.setImageBitmap(bitmap);
-        viewHolder.lblName.setText(soccerField.getNameSan());
-        viewHolder.lblArea.setText(soccerField.getArea());
+
+        viewHolder.txtName.setText(soccerField.getNameSan());
+        viewHolder.txtArea.setText(soccerField.getArea());
+
+        byte[] imagea = soccerField.getImage();
+        Bitmap bitmap = BitmapFactory.decodeByteArray(imagea, 0,imagea.length );
+        viewHolder.img.setImageBitmap( bitmap );
 
         return convertView;
     }

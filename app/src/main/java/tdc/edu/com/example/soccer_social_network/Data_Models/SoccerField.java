@@ -1,11 +1,13 @@
 package tdc.edu.com.example.soccer_social_network.Data_Models;
 
 public class SoccerField {
+    int id;
     String nameSan;
     String area;
     byte[] image;
 
-    public SoccerField(String nameSan, String area, byte[] image) {
+    public SoccerField(int id,String nameSan, String area, byte[] image) {
+        this.id = id;
         this.nameSan = nameSan;
         this.area = area;
         this.image = image;
@@ -33,5 +35,13 @@ public class SoccerField {
 
     public void setImage(byte[] image) {
         this.image = image;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
