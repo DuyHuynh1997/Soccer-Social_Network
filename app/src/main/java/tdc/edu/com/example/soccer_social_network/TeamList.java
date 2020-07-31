@@ -22,11 +22,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
-
 
 
 import java.io.FileNotFoundException;
@@ -45,7 +43,7 @@ public class TeamList extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
-        setContentView( R.layout.activity_team_list );
+        setContentView( R.layout.team_listview );
         getSupportActionBar().setDisplayHomeAsUpEnabled( true );
 
         listView = findViewById( R.id.listviewUpdate );
@@ -70,7 +68,7 @@ public class TeamList extends AppCompatActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
 
-                CharSequence[] items = {"Update", "Delete"};
+                CharSequence[] items = {"Update", "Delete","Thanh Vien Team"};
                 AlertDialog.Builder dialog = new AlertDialog.Builder(TeamList.this);
 
                 dialog.setTitle("Choose an action");
@@ -87,7 +85,7 @@ public class TeamList extends AppCompatActivity {
                             // show dialog update at here
                             showDialogUpdate(TeamList.this, arrID.get(position));
 
-                        } else {
+                        } else if (item == 1) {
                             // delete
                             Cursor c = MainActivity.sqLiteHelper.getData("SELECT id FROM TEAM");
                             ArrayList<Integer> arrID = new ArrayList<Integer>();
@@ -95,6 +93,10 @@ public class TeamList extends AppCompatActivity {
                                 arrID.add(c.getInt(0));
                             }
                             showDialogDelete(arrID.get(position));
+                        }
+                        else {
+                            Intent intent = new Intent( TeamList.this, MemberList.class);
+                                     startActivity(intent);
                         }
                     }
                 });

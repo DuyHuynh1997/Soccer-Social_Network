@@ -35,7 +35,7 @@ public class AddMember extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
-        setContentView( R.layout.member_add_layout );
+        setContentView( R.layout.menu_member_add );
         getSupportActionBar().setDisplayHomeAsUpEnabled( true );
 
         init();

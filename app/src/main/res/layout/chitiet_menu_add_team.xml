@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/khungvuong_background"
+
+    >
+    <LinearLayout
+        android:layout_marginRight="10dp"
+        android:gravity="right|center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:textSize="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Trạng Thái "/>
+        <Button
+            android:background="@drawable/botron"
+            android:layout_width="30px"
+            android:layout_height="30px" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:background="@drawable/backgound_tree"
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:background="@drawable/khungvuong_color_alpha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+
+
+            <TextView
+                android:textColor="@color/colorWhile"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Tên Đội:"/>
+
+            <TextView
+                android:textColor="@color/colorWhile"
+                android:id="@+id/edtTenDoi_addTeamChiTiet"
+                android:textSize="20sp"
+                android:background="@drawable/khungvuong_no_color"
+                android:textColorHint="@color/colorWhile"
+                android:hint="Nhập Tên Đội"
+                android:gravity="center"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            >
+
+            <ImageView
+                android:id="@+id/imageView_addTeamChiTiet"
+                android:src="@mipmap/ic_launcher"
+                android:layout_width="match_parent"
+                android:layout_height="100dp" />
+
+        </LinearLayout>
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3">
+
+            <LinearLayout
+                android:gravity="left"
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2">
+
+                <LinearLayout
+                    android:background="@drawable/khungvuong_color_alpha"
+                    android:layout_marginBottom="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+
+                        android:textColor="@color/colorWhile"
+                        android:textStyle="bold"
+                        android:textSize="20sp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="Đội Trưởng:"/>
+
+                    <TextView
+                        android:textColor="@color/colorWhile"
+                        android:id="@+id/edtDoiTruong_addTeamChiTiet"
+                        android:textSize="20sp"
+                        android:textColorHint="@color/colorWhile"
+                        android:gravity="center"
+                        android:layout_marginLeft="15sp"
+                        android:background="@drawable/khungvuong_no_color"
+                        android:hint="Tên Đội Trưởng"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/khungvuong_color_alpha"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <Button
+                            android:id="@+id/btnThanhVien_addTeamChiTiet"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="Thành Viên"
+                            android:textColor="@color/colorWhile" />
+
+                    </LinearLayout>
+
+
+                    <ListView
+                        android:id="@+id/listviewThanhVien_addTeam"
+                        android:entries="@array/ArrayTeam"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                    </ListView>
+
+                </LinearLayout>
+
+
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:background="@drawable/khungvuong_color_alpha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+
+            <LinearLayout
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/colorWhile"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Ngày Thành lập:"/>
+
+                <TextView
+
+                    android:id="@+id/txtNgayThanhLap_addTeamChiTiet"
+                    android:layout_marginRight="10dp"
+                    android:gravity="center"
+                    android:textColor="@color/colorWhile"
+                    android:background="@drawable/khungvuong_color_alpha"
+                    android:layout_marginLeft="10dp"
+                    android:text="Ngày Thành lập"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/colorWhile"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Địa Chỉ:"/>
+
+                <TextView
+                    android:textColor="@color/colorWhile"
+                    android:id="@+id/edtDiaChi_addTeamChiTiet"
+                    android:textColorHint="@color/colorWhile"
+                    android:layout_marginRight="10dp"
+                    android:gravity="center"
+                    android:background="@drawable/khungvuong_color_alpha"
+                    android:layout_marginLeft="10dp"
+                    android:hint="Nhập Địa Chỉ"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/colorWhile"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Số Điện Thoại:"/>
+
+                <TextView
+                    android:textColor="@color/colorWhile"
+                    android:id="@+id/edtSoDienThoai_addTeamChiTiet"
+                    android:textColorHint="@color/colorWhile"
+                    android:layout_marginRight="10dp"
+                    android:gravity="center"
+                    android:background="@drawable/khungvuong_color_alpha"
+                    android:layout_marginLeft="10dp"
+                    android:hint="Nhập Số Điện Thoại"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>
