@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "711463121476",
+    "firebase_url": "https://projectltdd.firebaseio.com",
+    "project_id": "projectltdd",
+    "storage_bucket": "projectltdd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:711463121476:android:83640060265095298b8211",
+        "android_client_info": {
+          "package_name": "tdc.edu.com.example.soccer_social_network"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "711463121476-7ue46bmutcgo0pug5c7qvoj7vj6s6o90.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC1fBkjeDjzW42kvFga7IpncYm9eOPZO68"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "711463121476-7ue46bmutcgo0pug5c7qvoj7vj6s6o90.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

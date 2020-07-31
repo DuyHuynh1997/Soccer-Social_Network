@@ -27,11 +27,9 @@
     <string name="bookYard">BOOKYARD</string>
     <string name="list">SOCCER FIELD LIST </string>
     <string name="chooseImage">Choose</string>
-</resources>
     <string name="app_name_addteam">Thêm Team</string>
     <string name="app_name_addmember">Thêm Thành Viên</string>
     <string name="app_name_teamlist">Danh Sách Team</string>
-    <string name="app_name">ThemThanhVienAndTeam</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
