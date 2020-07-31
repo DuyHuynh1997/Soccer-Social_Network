@@ -2,6 +2,7 @@ package tdc.edu.com.example.soccer_social_network;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -13,7 +14,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
+
 
 
 import java.util.ArrayList;
@@ -40,7 +43,7 @@ public class Home extends Fragment {
         adapter = new TeamListAdapter( getContext(),R.layout.item_team,list );
         listView.setAdapter( adapter );
 
-        Cursor cursor = AddTeam.sqLiteHelper.getData( "SELECT * FROM TEAM");
+        Cursor cursor = MainActivity.sqLiteHelper.getData( "SELECT * FROM TEAM");
 
         while (cursor.moveToNext()){
             int id = cursor.getInt( 0 );
@@ -52,10 +55,19 @@ public class Home extends Fragment {
         }
         adapter.notifyDataSetChanged();
 
+        listView.setOnItemClickListener( new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent( getActivity(), TeamChiTiet.class);
+                startActivity(intent);
+            }
+        } );
+
 
 
         // Inflate the layout for this fragment
         return flagment;
+
     }
 
 }

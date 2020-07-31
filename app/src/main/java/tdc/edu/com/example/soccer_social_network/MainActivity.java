@@ -2,6 +2,7 @@ package tdc.edu.com.example.soccer_social_network;
 
 import android.content.Intent;
 import android.os.Bundle;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -22,17 +23,23 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.view.Menu;
 
+import tdc.edu.com.example.soccer_social_network.Database.SQLiteHelper;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-
-
+    public static SQLiteHelper sqLiteHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_main );
+        sqLiteHelper = new SQLiteHelper( this );
+        sqLiteHelper.queryData( "CREATE TABLE IF NOT EXISTS TEAM (Id INTEGER PRIMARY KEY AUTOINCREMENT, tendoi VARCHAR, diachi VARCHAR, image BLOB)" );
+        sqLiteHelper.queryData( "CREATE TABLE IF NOT EXISTS MEMBER (Id INTEGER PRIMARY KEY AUTOINCREMENT, tenmember VARCHAR, vitri VARCHAR, image BLOB)" );
+
+
+
         Toolbar toolbar = findViewById( R.id.toolbar );
         setSupportActionBar( toolbar );
         FloatingActionButton fab = findViewById( R.id.fab );
@@ -50,6 +57,13 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener( toggle );
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener( this );
+
+
+        setTitle("Menu");
+        MenuChinh fragment = new MenuChinh();
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.frame_layout, fragment, "Home");
+        fragmentTransaction.commit();
 
     }
 

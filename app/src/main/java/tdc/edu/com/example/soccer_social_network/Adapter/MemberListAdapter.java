@@ -14,27 +14,27 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import tdc.edu.com.example.soccer_social_network.R;
-import tdc.edu.com.example.soccer_social_network.models_data.Team;
+import tdc.edu.com.example.soccer_social_network.models_data.Member;
 
-public class TeamListAdapter extends BaseAdapter {
+public class MemberListAdapter extends BaseAdapter {
     private Context context;
     private int layout;
-    private ArrayList<Team> teamsList;
+    private ArrayList<Member> membersList;
 
-    public TeamListAdapter(Context context, int layout, ArrayList<Team> teamsList) {
+    public MemberListAdapter(Context context, int layout, ArrayList<Member> membersList) {
         this.context = context;
         this.layout = layout;
-        this.teamsList = teamsList;
+        this.membersList = membersList;
     }
 
     @Override
     public int getCount() {
-        return teamsList.size();
+        return membersList.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return teamsList.get( position );
+        return membersList.get( position );
     }
 
     @Override
@@ -44,7 +44,7 @@ public class TeamListAdapter extends BaseAdapter {
 
     private class ViewHolder{
         ImageView imageView;
-        TextView txtTenDoi, txtDiaChi;
+        TextView txtTenMember, txtViTri;
     }
 
     @Override
@@ -56,22 +56,22 @@ public class TeamListAdapter extends BaseAdapter {
         {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService( Context.LAYOUT_INFLATER_SERVICE );
             row = inflater.inflate( layout,null );
-            holder.txtTenDoi = row.findViewById( R.id.txtTenDoi_itemTeam );
-            holder.txtDiaChi = row.findViewById( R.id.txtDiaChi_itemTeam );
-            holder.imageView = (ImageView) row.findViewById( R.id.imgView_itemTeam );
+            holder.txtTenMember = row.findViewById( R.id.txtHoTen_itemmember );
+            holder.txtViTri = row.findViewById( R.id.txtViTri_itemmember );
+            holder.imageView = (ImageView) row.findViewById( R.id.imgView_itemmember );
             row.setTag(holder);
         }
         else {
             holder = (ViewHolder) row.getTag();
         }
 
-        Team team = teamsList.get(possition);
+        Member member = membersList.get(possition);
 
-        holder.txtTenDoi.setText( team.getTenDoi() );
-        holder.txtDiaChi.setText( team.getDiaChi() );
+        holder.txtTenMember.setText( member.getTenmember() );
+        holder.txtViTri.setText( member.getVitri() );
 
-        byte[] teamImage = team.getImage();
-        Bitmap bitmap = BitmapFactory.decodeByteArray( teamImage, 0,teamImage.length );
+        byte[] memberImage = member.getImage();
+        Bitmap bitmap = BitmapFactory.decodeByteArray( memberImage, 0,memberImage.length );
         holder.imageView.setImageBitmap( bitmap );
 
 

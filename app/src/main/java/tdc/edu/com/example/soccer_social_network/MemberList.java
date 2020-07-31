@@ -1,10 +1,6 @@
 package tdc.edu.com.example.soccer_social_network;
 
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-
 import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -26,40 +22,46 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+
+
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
-import tdc.edu.com.example.soccer_social_network.Adapter.TeamListAdapter;
-import tdc.edu.com.example.soccer_social_network.models_data.Team;
+import tdc.edu.com.example.soccer_social_network.Adapter.MemberListAdapter;
+import tdc.edu.com.example.soccer_social_network.models_data.Member;
 
-public class TeamList extends AppCompatActivity {
+public class MemberList extends AppCompatActivity {
 
+    Button btnThemThanhVien;
     ListView listView;
-    ArrayList<Team> list;
-    TeamListAdapter adapter = null;
+    ArrayList<Member> list;
+    MemberListAdapter adapter = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
-        setContentView( R.layout.team_listview );
+        setContentView( R.layout.member_listview );
         getSupportActionBar().setDisplayHomeAsUpEnabled( true );
 
-        listView = findViewById( R.id.listviewUpdate );
+        listView = findViewById( R.id.listviewMember_memberlistview );
         list = new ArrayList<>(  );
-        adapter = new TeamListAdapter(this,R.layout.item_team,list );
+        adapter = new MemberListAdapter(this,R.layout.item_member,list );
         listView.setAdapter( adapter );
 
-        Cursor cursor = MainActivity.sqLiteHelper.getData( "SELECT * FROM TEAM");
+        Cursor cursor = MainActivity.sqLiteHelper.getData( "SELECT * FROM MEMBER");
 
         while (cursor.moveToNext()){
             int id = cursor.getInt( 0 );
-            String tendoi = cursor.getString( 1 );
-            String diachi = cursor.getString( 2 );
+            String tenmember = cursor.getString( 1 );
+            String viyti = cursor.getString( 2 );
             byte[] image = cursor.getBlob( 3 );
 
-            list.add( new Team( id, tendoi, diachi, image) );
+            list.add( new Member( id, tenmember, viyti, image) );
         }
         adapter.notifyDataSetChanged();
 
@@ -68,8 +70,8 @@ public class TeamList extends AppCompatActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
 
-                CharSequence[] items = {"Update", "Delete","Thanh Vien Team"};
-                AlertDialog.Builder dialog = new AlertDialog.Builder(TeamList.this);
+                CharSequence[] items = {"Update", "Delete"};
+                AlertDialog.Builder dialog = new AlertDialog.Builder( MemberList.this);
 
                 dialog.setTitle("Choose an action");
                 dialog.setItems(items, new DialogInterface.OnClickListener() {
@@ -77,26 +79,22 @@ public class TeamList extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int item) {
                         if (item == 0) {
                             // update
-                            Cursor c = MainActivity.sqLiteHelper.getData("SELECT id FROM TEAM");
+                            Cursor c = MainActivity.sqLiteHelper.getData("SELECT id FROM MEMBER");
                             ArrayList<Integer> arrID = new ArrayList<Integer>();
                             while (c.moveToNext()){
                                 arrID.add(c.getInt(0));
                             }
                             // show dialog update at here
-                            showDialogUpdate(TeamList.this, arrID.get(position));
+                            showDialogUpdate( MemberList.this, arrID.get(position));
 
-                        } else if (item == 1) {
+                        } else {
                             // delete
-                            Cursor c = MainActivity.sqLiteHelper.getData("SELECT id FROM TEAM");
+                            Cursor c = MainActivity.sqLiteHelper.getData("SELECT id FROM MEMBER");
                             ArrayList<Integer> arrID = new ArrayList<Integer>();
                             while (c.moveToNext()){
                                 arrID.add(c.getInt(0));
                             }
                             showDialogDelete(arrID.get(position));
-                        }
-                        else {
-                            Intent intent = new Intent( TeamList.this, MemberList.class);
-                                     startActivity(intent);
                         }
                     }
                 });
@@ -104,18 +102,25 @@ public class TeamList extends AppCompatActivity {
                 return true;
             }
         });
+//        btnThemThanhVien.setOnClickListener( new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent( MemberList.this, AddMember.class);
+//                startActivity(intent);
+//            }
+//        } );
     }
-    ImageView imageViewTeam;
+    ImageView imageViewMember;
     private void showDialogUpdate(Activity activity, final int position){
 
         final Dialog dialog = new Dialog(activity);
-        dialog.setContentView(R.layout.update_item_team_listview);
+        dialog.setContentView(R.layout.update_item_member_listview);
         dialog.setTitle("Update");
 
-        imageViewTeam = (ImageView) dialog.findViewById(R.id.imageViewTeam_update);
-        final EditText edtTenDoi = (EditText) dialog.findViewById(R.id.edtTenDoi_update);
-        final EditText edtDiaChi = (EditText) dialog.findViewById(R.id.edtDiaChi_update);
-        Button btnUpdate = (Button) dialog.findViewById(R.id.btnUpdate_update);
+        imageViewMember = (ImageView) dialog.findViewById(R.id.imageViewMember_update);
+        final EditText edtHoTen = (EditText) dialog.findViewById(R.id.edtHoTenMember_update);
+        final EditText edtViTri = (EditText) dialog.findViewById(R.id.edtViTriChinhMember_update);
+        Button btnUpdate = (Button) dialog.findViewById(R.id.btnUpdateMember_update);
 
         // set width for dialog
         int width = (int) (activity.getResources().getDisplayMetrics().widthPixels * 0.95);
@@ -124,12 +129,12 @@ public class TeamList extends AppCompatActivity {
         dialog.getWindow().setLayout(width, height);
         dialog.show();
 
-        imageViewTeam.setOnClickListener(new View.OnClickListener() {
+        imageViewMember.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // request photo library
                 ActivityCompat.requestPermissions(
-                        TeamList.this,
+                        MemberList.this,
                         new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
                         888
                 );
@@ -140,10 +145,10 @@ public class TeamList extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-                    MainActivity.sqLiteHelper.updateData(
-                            edtTenDoi.getText().toString().trim(),
-                            edtDiaChi.getText().toString().trim(),
-                            AddTeam.imageViewToByte(imageViewTeam),
+                    MainActivity.sqLiteHelper.updateDataMember(
+                            edtHoTen.getText().toString().trim(),
+                            edtViTri.getText().toString().trim(),
+                            AddMember.imageViewToByte(imageViewMember),
                             position
                     );
                     dialog.dismiss();
@@ -152,12 +157,12 @@ public class TeamList extends AppCompatActivity {
                 catch (Exception error) {
                     Log.e("Update error", error.getMessage());
                 }
-                updateTeamList();
+                updateMemberList();
             }
         });
     }
-    private void showDialogDelete(final int idTeam){
-        final AlertDialog.Builder dialogDelete = new AlertDialog.Builder(TeamList.this);
+    private void showDialogDelete(final int idMember){
+        final AlertDialog.Builder dialogDelete = new AlertDialog.Builder( MemberList.this);
 
         dialogDelete.setTitle("Cảnh Báo!!");
         dialogDelete.setMessage("Bạn có Muốn Xóa!");
@@ -165,12 +170,12 @@ public class TeamList extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 try {
-                    MainActivity.sqLiteHelper.deleteData(idTeam);
+                    MainActivity.sqLiteHelper.deleteDataMember(idMember);
                     Toast.makeText(getApplicationContext(), "Delete successfully!",Toast.LENGTH_SHORT).show();
                 } catch (Exception e){
                     Log.e("error", e.getMessage());
                 }
-                updateTeamList();
+                updateMemberList();
             }
         });
 
@@ -182,17 +187,17 @@ public class TeamList extends AppCompatActivity {
         });
         dialogDelete.show();
     }
-    private void updateTeamList(){
+    private void updateMemberList(){
         // get all data from sqlite
-        Cursor cursor = MainActivity.sqLiteHelper.getData("SELECT * FROM TEAM");
+        Cursor cursor = MainActivity.sqLiteHelper.getData("SELECT * FROM MEMBER");
         list.clear();
         while (cursor.moveToNext()) {
             int id = cursor.getInt(0);
-            String tenDoi = cursor.getString(1);
-            String diaChi = cursor.getString(2);
+            String tenmember = cursor.getString(1);
+            String vitri = cursor.getString(2);
             byte[] image = cursor.getBlob(3);
 
-            list.add(new Team( id,tenDoi, diaChi, image));
+            list.add(new Member( id,tenmember, vitri, image));
         }
         adapter.notifyDataSetChanged();
     }
@@ -221,7 +226,7 @@ public class TeamList extends AppCompatActivity {
             try {
                 InputStream inputStream = getContentResolver().openInputStream(uri);
                 Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
-                imageViewTeam.setImageBitmap(bitmap);
+                imageViewMember.setImageBitmap(bitmap);
 
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
