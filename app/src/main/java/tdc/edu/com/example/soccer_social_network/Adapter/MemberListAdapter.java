@@ -25,7 +25,7 @@ public class MemberListAdapter extends BaseAdapter {
         this.context = context;
         this.layout = layout;
         this.membersList = membersList;
-    } 
+    }
 
     @Override
     public int getCount() {
