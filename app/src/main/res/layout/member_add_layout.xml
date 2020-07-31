@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/khungvuong_background"
+
+    >
+
+
+    <LinearLayout
+        android:background="@drawable/backgound_tree"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:background="@drawable/khungvuong_color_alpha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <TextView
+                android:textColor="@color/colorWhile"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Họ Tên"/>
+
+            <EditText
+                android:textColor="@color/colorWhile"
+                android:id="@+id/edtTenMember_addmember"
+                android:textSize="20sp"
+                android:background="@drawable/khungvuong_no_color"
+                android:textColorHint="@color/colorWhile"
+                android:hint="Nhập Họ Và Tên"
+                android:gravity="center"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            >
+
+            <ImageView
+                android:id="@+id/imageView_addMember"
+                android:src="@mipmap/ic_launcher"
+                android:layout_width="match_parent"
+                android:layout_height="100dp" />
+
+        </LinearLayout>
+
+
+
+
+        <LinearLayout
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:textSize="10dp"
+                android:id="@+id/btnViTriTeam_addmember"
+                android:background="@drawable/khungvuong_color_button"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="Vị Trí Team"/>
+
+            <LinearLayout
+
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:background="@drawable/khungvuong_color_alpha"
+                    android:layout_marginBottom="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:textColor="@color/colorWhile"
+                        android:textStyle="bold"
+                        android:textSize="20sp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="Vị Trí Chính:"/>
+
+                    <EditText
+                        android:textColor="@color/colorWhile"
+                        android:id="@+id/edtViTriChinh_addmember"
+                        android:textSize="20sp"
+                        android:textColorHint="@color/colorWhile"
+                        android:gravity="center"
+                        android:layout_marginLeft="15sp"
+                        android:background="@drawable/khungvuong_no_color"
+                        android:hint="Nhập Vị Trí Trong Đội"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:background="@drawable/khungvuong_color_alpha"
+                    android:layout_marginBottom="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+
+                        android:textColor="@color/colorWhile"
+                        android:textStyle="bold"
+                        android:textSize="20sp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="Vị Trí Dự Bị:"/>
+
+                    <EditText
+                        android:textColor="@color/colorWhile"
+                        android:id="@+id/edtViTriDuBi_addmember"
+                        android:textSize="20sp"
+                        android:textColorHint="@color/colorWhile"
+                        android:gravity="center"
+                        android:layout_marginLeft="15sp"
+                        android:background="@drawable/khungvuong_no_color"
+                        android:hint="Nhập Vị Trí Trong Đội"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:background="@drawable/khungvuong_color_alpha"
+                    android:layout_marginBottom="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+
+                        android:textColor="@color/colorWhile"
+                        android:textStyle="bold"
+                        android:textSize="20sp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="Vị Trí Khác:"/>
+
+                    <EditText
+                        android:textColor="@color/colorWhile"
+                        android:id="@+id/edtViTriKhac_addmember"
+                        android:textSize="20sp"
+                        android:textColorHint="@color/colorWhile"
+                        android:gravity="center"
+                        android:layout_marginLeft="15sp"
+                        android:background="@drawable/khungvuong_no_color"
+                        android:hint="Nhập Vị Trí Trong Đội"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+
+
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="20sp"
+            android:gravity="center"
+            android:background="@drawable/khungvuong_color_alpha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <Button
+                android:textSize="10dp"
+                android:id="@+id/btnThongTinCauThu_addmember"
+                android:background="@drawable/khungvuong_color_button"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="Thông Tin Cầu Thủ"/>
+
+            <LinearLayout
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/colorWhile"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Ngày Vào Đội:"/>
+
+                <TextView
+                    android:textSize="15dp"
+                    android:id="@+id/txtNgayVaoDoi_addmember"
+                    android:layout_marginRight="10dp"
+                    android:gravity="center"
+                    android:textColor="@color/colorWhile"
+                    android:background="@drawable/khungvuong_color_alpha"
+                    android:layout_marginLeft="10dp"
+                    android:text="Ngày Vào đội"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/colorWhile"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Ngày Sinh "/>
+
+
+                <TextView
+                    android:textColor="@color/colorWhile"
+                    android:id="@+id/edtNgaySinh_addmember"
+                    android:textColorHint="@color/colorWhile"
+                    android:layout_marginRight="10dp"
+                    android:gravity="center"
+                    android:background="@drawable/khungvuong_color_alpha"
+                    android:layout_marginLeft="10dp"
+                    android:hint="Nhập Ngày Sinh"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/colorWhile"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Địa Chỉ:"/>
+
+                <EditText
+                    android:textColor="@color/colorWhile"
+                    android:id="@+id/edtDiaChi_addmember"
+                    android:textColorHint="@color/colorWhile"
+                    android:layout_marginRight="10dp"
+                    android:gravity="center"
+                    android:background="@drawable/khungvuong_color_alpha"
+                    android:layout_marginLeft="10dp"
+                    android:hint="Nhập Địa Chỉ"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/colorWhile"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Số Điện Thoại:"/>
+
+                <EditText
+                    android:textColor="@color/colorWhile"
+                    android:id="@+id/edtSoDienThoai_addmember"
+                    android:textColorHint="@color/colorWhile"
+                    android:layout_marginRight="10dp"
+                    android:gravity="center"
+                    android:background="@drawable/khungvuong_color_alpha"
+                    android:layout_marginLeft="10dp"
+                    android:hint="Nhập Số Điện Thoại"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/colorWhile"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="CMND:"/>
+
+                <EditText
+                    android:textColor="@color/colorWhile"
+                    android:id="@+id/edtChungMinhNhanDan_addmember"
+                    android:textColorHint="@color/colorWhile"
+                    android:layout_marginRight="10dp"
+                    android:gravity="center"
+                    android:background="@drawable/khungvuong_color_alpha"
+                    android:layout_marginLeft="10dp"
+                    android:hint="Nhập Số CMND"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/btnMemberList_addmember"
+                android:textAllCaps="false"
+                android:textColor="@color/colorWhile"
+                android:text="MemberList"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/btnAddMember_addmember"
+                android:textAllCaps="false"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/colorWhile"
+                android:text="AddMember"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>
