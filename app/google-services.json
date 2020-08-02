@@ -1,0 +1,127 @@
+{
+  "project_info": {
+    "project_number": "318598387554",
+    "firebase_url": "https://fir-dbd01.firebaseio.com",
+    "project_id": "fir-dbd01",
+    "storage_bucket": "fir-dbd01.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:318598387554:android:9c5e0cf33f2819b6973e3b",
+        "android_client_info": {
+          "package_name": "com.example.firebase1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "318598387554-00erdhhocpa4mlfg5ukq3vr5jsat8rbs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-4ejx2GhETx0mzAuJZUbvrPHgXzO6Low"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "318598387554-00erdhhocpa4mlfg5ukq3vr5jsat8rbs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:318598387554:android:3b0679f2f036fffe973e3b",
+        "android_client_info": {
+          "package_name": "com.example.firebasenew1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "318598387554-00erdhhocpa4mlfg5ukq3vr5jsat8rbs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-4ejx2GhETx0mzAuJZUbvrPHgXzO6Low"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "318598387554-00erdhhocpa4mlfg5ukq3vr5jsat8rbs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:318598387554:android:25aefe28bf38e5f8973e3b",
+        "android_client_info": {
+          "package_name": "com.example.navigation"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "318598387554-00erdhhocpa4mlfg5ukq3vr5jsat8rbs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-4ejx2GhETx0mzAuJZUbvrPHgXzO6Low"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "318598387554-00erdhhocpa4mlfg5ukq3vr5jsat8rbs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:318598387554:android:c29c6055ccfe7647973e3b",
+        "android_client_info": {
+          "package_name": "tdc.edu.com.example.soccer_social_network"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "318598387554-00erdhhocpa4mlfg5ukq3vr5jsat8rbs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-4ejx2GhETx0mzAuJZUbvrPHgXzO6Low"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "318598387554-00erdhhocpa4mlfg5ukq3vr5jsat8rbs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
