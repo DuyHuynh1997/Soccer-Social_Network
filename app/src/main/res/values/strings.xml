@@ -1,29 +1,16 @@
 <resources>
-<!--    Khiem-->
-    <string name="app_name">Soccer-Social_Network</string>
-    <string name="nameyard">DREAM SOCCER</string>
-    <string name="namesan">NAME FOOTBALL</string>
-    <string name="inputNameYard">Enter a yard name: </string>
-    <string name="hindName">Enter name here</string>
-    <string name="address">address</string>
-    <string name="hindAddress">Enter address here</string>
-    <string name="add">ADD</string>
-    <string name="seeList">See yard list</string>
-    <string name="nameDetail">DREAM SOCCER</string>
-    <string name="price">PRICE</string>
-    <string name="news">NEWS</string>
-    <string name="introduce">INTRODUCE</string>
-    <string name="textIntro">Sân bóng đá là một loại hình sân thi đấu của bộ môn Bóng đá. Sân thi đấu hình chữ nhật có chiều dài sân lớn hơn chiều ngang, bề mặt của sân có thể là mặt sân cỏ tự nhiên hoặc mặt sân cỏ nhân tạo. Kích thước và vị trí các đường giới hạn của sân bóng đá được quy định bởi Luật I: Sân Thi Đấu trong Luật bóng đá.[1]</string>
-    <string name="textIntro1">Bắt đầu từ năm 2008, để tiêu chuẩn hóa kích thước của sân bóng dành cho các trận đấu quốc tế, IFAB đã quyết định đặt kích thước cố định là: chiều dài 105m và chiều rộng 68m (thay vì chiều dài tối thiểu và tối đa từ 100m đến 110m và chiều rộng tối thiểu và tối đa từ 64m đến 75m như trước).[2]</string>
-    <string name="emptyyard">EMPTYYARD</string>
-    <string name="friendlymatch">FRIENDLYMATCH</string>
-    <string name="contact">CONTACT</string>
-    <string name="sdt">SDT</string>
-    <string name="nameBoss">Ten Chu San</string>
-    <string name="day">DAY</string>
-    <string name="promotion">PROMOTION</string>
-    <string name="time">time</string>
-    <string name="detail">DETAIL</string>
-    <string name="bookYard">BOOKYARD</string>
-    <string name="list">SOCCER FIELD LIST </string>
+    <string name="app_name">Setting</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_tools">Edit Team</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
 </resources>

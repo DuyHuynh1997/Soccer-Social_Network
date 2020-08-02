@@ -2,11 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/my_khungvuong_background"
-    android:padding="10dp"
-    android:gravity="center"
+    android:background="@drawable/khungvuong_background"
+
     >
     <LinearLayout
+        android:layout_marginRight="10dp"
         android:gravity="right|center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -14,25 +14,22 @@
             android:textSize="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/txtTrangThai"/>
+            android:text="Trạng Thái "/>
         <Button
-            android:id="@+id/btnTrangThai"
-            android:background="@drawable/my_botron"
+            android:id="@+id/btnTrangThai_addTeam"
+            android:background="@drawable/botron"
             android:layout_width="30px"
             android:layout_height="30px" />
 
     </LinearLayout>
 
     <LinearLayout
-
-        android:gravity="center"
-        android:background="@drawable/backgound_tree"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
         <LinearLayout
-            android:background="@drawable/my_khungvuong_color_alpha"
+            android:background="@drawable/khungvuong_color_alpha"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             >
@@ -41,17 +38,18 @@
                 android:textColor="@color/colorWhile"
                 android:textStyle="bold"
                 android:textSize="20sp"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="@string/txtTenThanhVien"/>
+                android:text="Tên Đội:"/>
 
             <EditText
                 android:textColor="@color/colorWhile"
-                android:id="@+id/edtTenThanhVien_thanhvien_layout"
+                android:id="@+id/edtTenDoi_addTeam"
                 android:textSize="20sp"
-                android:background="@drawable/my_khungvuong_no_color"
+                android:background="@drawable/khungvuong_no_color"
                 android:textColorHint="@color/colorWhile"
-                android:hint="@string/hintEdtNhapTenThanhVienInput"
+                android:hint="Nhập Tên Đội"
                 android:gravity="center"
                 android:layout_width="0dp"
                 android:layout_weight="2"
@@ -68,10 +66,10 @@
             >
 
             <ImageView
-                android:id="@+id/imageView"
-                android:src="@drawable/backgroud_list"
+                android:id="@+id/imageView_addTeam"
+                android:src="@mipmap/ic_launcher"
                 android:layout_width="match_parent"
-                android:layout_height="150dp" />
+                android:layout_height="100dp" />
 
         </LinearLayout>
 
@@ -80,38 +78,40 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-        >
+            android:layout_height="0dp"
+            android:layout_weight="3">
 
             <LinearLayout
                 android:gravity="left"
                 android:orientation="vertical"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="2">
 
                 <LinearLayout
-                    android:background="@drawable/my_khungvuong_color_alpha"
+                    android:background="@drawable/khungvuong_color_alpha"
                     android:layout_marginBottom="5dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <TextView
+
                         android:textColor="@color/colorWhile"
                         android:textStyle="bold"
                         android:textSize="20sp"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
                         android:layout_height="wrap_content"
-                        android:text="@string/txtNgayVaoDoi"/>
+                        android:text="Đội Trưởng:"/>
 
                     <EditText
                         android:textColor="@color/colorWhile"
-                        android:id="@+id/edtNgayVaoDoi_thanhvien_layout"
+                        android:id="@+id/edtDoiTruong_addTeam"
                         android:textSize="20sp"
                         android:textColorHint="@color/colorWhile"
                         android:gravity="center"
                         android:layout_marginLeft="15sp"
-                        android:background="@drawable/my_khungvuong_color_alpha"
-                        android:hint="@string/hintEdtNhapNgayVaoDoi"
+                        android:background="@drawable/khungvuong_no_color"
+                        android:hint="Tên Đội Trưởng"
                         android:layout_width="0dp"
                         android:layout_weight="2"
                         android:layout_height="wrap_content" />
@@ -119,99 +119,50 @@
                 </LinearLayout>
                 <LinearLayout
                     android:layout_marginBottom="5dp"
-                    android:background="@drawable/my_khungvuong_color_alpha"
+                    android:background="@drawable/khungvuong_color_alpha"
                     android:orientation="vertical"
                     android:gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:gravity="center"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
-
-                        <TextView
-                            android:textStyle="bold"
-                            android:textSize="20dp"
+                        <Button
+                            android:id="@+id/btnThanhVien_addTeam"
+                            android:layout_marginTop="5dp"
                             android:textColor="@color/colorWhile"
+                            android:text="Thành Viên"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/txtViTri1"/>
-
-                        <EditText
-                            android:id="@+id/edtViTri1_thanhvien_layout"
-                            android:textColorHint="@color/colorWhile"
-                            android:hint="@string/hintEdtNhapViTri"
-                            android:textStyle="bold"
-                            android:textSize="20dp"
+                            android:layout_height="wrap_content" />
+                        <Button
+                            android:id="@+id/btnAddThanhVien_addTeam"
+                            android:layout_marginTop="5dp"
                             android:textColor="@color/colorWhile"
+                            android:text="Thêm Thành Viên"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            />
+                            android:layout_height="wrap_content" />
                     </LinearLayout>
-                    <LinearLayout
+
+
+                    <ListView
+                        android:id="@+id/listviewThanhVien_addTeam"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="match_parent">
+                    </ListView>
 
-                        <TextView
-                            android:textStyle="bold"
-                            android:textSize="20dp"
-                            android:textColor="@color/colorWhile"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/txtViTri2"/>
-
-                        <EditText
-                            android:id="@+id/edtViTri2_thanhvien_layout"
-                            android:textColorHint="@color/colorWhile"
-                            android:hint="@string/hintEdtNhapViTri2"
-                            android:textStyle="bold"
-                            android:textSize="20dp"
-                            android:textColor="@color/colorWhile"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <TextView
-                            android:textStyle="bold"
-                            android:textSize="20dp"
-                            android:textColor="@color/colorWhile"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/txtViTri3"/>
-
-                        <EditText
-                            android:id="@+id/edtViTri3_thanhvien_layout"
-                            android:textColorHint="@color/colorWhile"
-                            android:hint="@string/hintEdtNhapViTri3"
-                            android:textStyle="bold"
-                            android:textSize="20dp"
-                            android:textColor="@color/colorWhile"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            />
-                    </LinearLayout>
                 </LinearLayout>
+
+
 
 
             </LinearLayout>
 
 
         </LinearLayout>
-        <TextView
-            android:gravity="center"
-            android:textSize="20dp"
-            android:textColor="@color/colorWhile"
-            android:background="@drawable/my_radiuskhungvuong_button_three"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/txtThongTinChiTiet"/>
-
         <LinearLayout
-            android:background="@drawable/my_khungvuong_color_alpha"
+            android:background="@drawable/khungvuong_color_alpha"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -230,17 +181,17 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="@string/txtNgaySinh"/>
+                    android:text="Ngày Thành lập:"/>
 
-                <TextView
+                <EditText
 
-                    android:id="@+id/txtNgaySinh_thanhvien_layout"
+                    android:id="@+id/edtNgayThanhLap_addTeam"
                     android:layout_marginRight="10dp"
                     android:gravity="center"
                     android:textColor="@color/colorWhile"
-                    android:background="@drawable/my_khungvuong_color_alpha"
+                    android:background="@drawable/khungvuong_color_alpha"
                     android:layout_marginLeft="10dp"
-                    android:text="@string/txtNhapNgaySinhInput"
+                    android:text="Ngày Thành lập"
                     android:layout_width="0dp"
                     android:layout_weight="2"
                     android:layout_height="wrap_content" />
@@ -262,13 +213,13 @@
 
                 <EditText
                     android:textColor="@color/colorWhile"
-                    android:id="@+id/edtDiaChi_thanhvien_layout"
+                    android:id="@+id/edtDiaChi_addTeam"
                     android:textColorHint="@color/colorWhile"
                     android:layout_marginRight="10dp"
                     android:gravity="center"
-                    android:background="@drawable/my_khungvuong_color_alpha"
+                    android:background="@drawable/khungvuong_color_alpha"
                     android:layout_marginLeft="10dp"
-                    android:hint="@string/hintEdtNhapDiaChi"
+                    android:hint="Nhập Địa Chỉ"
                     android:layout_width="0dp"
                     android:layout_weight="2"
                     android:layout_height="wrap_content" />
@@ -287,46 +238,17 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="@string/txtSoDienThoai"/>
+                    android:text="Số Điện Thoại:"/>
 
                 <EditText
                     android:textColor="@color/colorWhile"
-                    android:id="@+id/edtSoDienThoai_thanhvien_layout"
+                    android:id="@+id/edtSoDienThoai_addTeam"
                     android:textColorHint="@color/colorWhile"
                     android:layout_marginRight="10dp"
                     android:gravity="center"
-                    android:background="@drawable/my_khungvuong_color_alpha"
+                    android:background="@drawable/khungvuong_color_alpha"
                     android:layout_marginLeft="10dp"
-                    android:hint="@string/hintEdtNhapSoDienThoaiInput"
-                    android:layout_width="0dp"
-                    android:layout_weight="2"
-                    android:layout_height="wrap_content" />
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_marginBottom="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_marginLeft="5dp"
-                    android:textColor="@color/colorWhile"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:text="@string/txtCMND"/>
-
-                <EditText
-                    android:id="@+id/edtChungMinhNhanDan_thanhvien_layout"
-                    android:textColor="@color/colorWhile"
-                    android:textColorHint="@color/colorWhile"
-                    android:layout_marginRight="10dp"
-                    android:gravity="center"
-                    android:background="@drawable/my_khungvuong_color_alpha"
-                    android:layout_marginLeft="10dp"
-                    android:hint="@string/hintEdtNhapChungMinhNhanDan"
+                    android:hint="Nhập Số Điện Thoại"
                     android:layout_width="0dp"
                     android:layout_weight="2"
                     android:layout_height="wrap_content" />
@@ -339,20 +261,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <Button
-                android:background="@drawable/my_radiuskhungvuong_button_three"
-                android:id="@+id/btnListMember_thanhvien_layout"
+                android:id="@+id/btnTeamList_addTeam"
                 android:textAllCaps="false"
                 android:textColor="@color/colorWhile"
-                android:text="@string/btnListTeam"
+                android:text="TeamList"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <Button
-                android:background="@drawable/my_radiuskhungvuong_button_three"
-                android:id="@+id/btnAddMember_thanhvien_layout"
+                android:id="@+id/btnAddTeam_addTeam"
                 android:textAllCaps="false"
                 android:layout_marginLeft="20dp"
                 android:textColor="@color/colorWhile"
-                android:text="@string/btnAddThanhVien"
+                android:text="AddTeam"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
