@@ -17,15 +17,44 @@ public class ViewHolder extends RecyclerView.ViewHolder {
     public ViewHolder(@NonNull View itemView) {
         super(itemView);
         mView = itemView;
+
+        //item click
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mClickListener.onItemClick(view, getAdapterPosition());
+            }
+        });
+
+        itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                mClickListener.onItemLongClick(view, getAdapterPosition());
+                return true;
+            }
+        });
     }
 
     public void setDetails(Context ctx, String title, String description, String image){
-        TextView mTilteTv = mView.findViewById(R.id.txtTitle_maincardview);
-        TextView mDetailTv = mView.findViewById(R.id.txtDescription_maincardview);
+        TextView txtTenDoi = mView.findViewById(R.id.txtTitle_maincardview);
+        TextView txtDiaChi = mView.findViewById(R.id.txtDescription_maincardview);
         ImageView mImageIv = mView.findViewById(R.id.ImageView_maincarview);
 
-        mTilteTv.setText(title);
-        mDetailTv.setText(description);
+        txtTenDoi.setText(title);
+        txtDiaChi.setText(description);
         Picasso.get().load(image).into(mImageIv);
+    }
+
+    private ViewHolder.ClickListener mClickListener;
+
+    public interface ClickListener{
+        void onItemClick(View view, int postion);
+        void onItemLongClick(View view, int postion);
+
+    }
+
+    public void setOnClickListener(ViewHolder.ClickListener clickListener)
+    {
+            mClickListener = clickListener;
     }
 }
