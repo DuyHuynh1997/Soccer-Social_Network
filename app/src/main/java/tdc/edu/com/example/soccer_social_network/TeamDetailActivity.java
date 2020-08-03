@@ -10,9 +10,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.squareup.picasso.Picasso;
 
 public class TeamDetailActivity extends AppCompatActivity {
-    TextView edtTenDoi, edtDiaChi;
+    TextView edtTenDoi, edtDiaChi,txtSoDienThoai;
     ImageView mImageIv;
-    String tendoi,diachi,cImage;
+    String tendoi,diachi,cImage,sodienthoai;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,15 +28,19 @@ public class TeamDetailActivity extends AppCompatActivity {
         edtTenDoi = findViewById(R.id.txtTitle_teamDetail);
         edtDiaChi = findViewById(R.id.txtDescription_teamDetail);
         mImageIv = findViewById(R.id.imageView_teamDetail);
+        txtSoDienThoai = findViewById(R.id.txtSoDienThoai_teamDetail);
 
         Bundle intent = getIntent().getExtras();
         if(intent != null){
             tendoi = intent.getString("tendoi");
             diachi = intent.getString("diachi");
+            sodienthoai = intent.getString("sodienthoai");
             cImage = intent.getString("cImage");
+
 
             edtTenDoi.setText(tendoi);
             edtDiaChi.setText(diachi);
+            txtSoDienThoai.setText(sodienthoai);
             Picasso.get().load(cImage).into(mImageIv);
         }
 

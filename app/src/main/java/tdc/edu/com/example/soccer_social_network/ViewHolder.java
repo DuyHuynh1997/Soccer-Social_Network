@@ -35,13 +35,13 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         });
     }
 
-    public void setDetails(Context ctx, String title, String description, String image){
+    public void setDetails(Context ctx, String sTenDoi, String sDiaChi, String image,String sSoDienThoai){
         TextView txtTenDoi = mView.findViewById(R.id.txtTitle_maincardview);
         TextView txtDiaChi = mView.findViewById(R.id.txtDescription_maincardview);
         ImageView mImageIv = mView.findViewById(R.id.ImageView_maincarview);
 
-        txtTenDoi.setText(title);
-        txtDiaChi.setText(description);
+        txtTenDoi.setText(sTenDoi);
+        txtDiaChi.setText(sDiaChi);
         Picasso.get().load(image).into(mImageIv);
     }
 

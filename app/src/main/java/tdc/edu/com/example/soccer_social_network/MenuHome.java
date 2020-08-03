@@ -104,7 +104,7 @@ public class MenuHome extends Fragment {
                 ) {
                     @Override
                     protected void populateViewHolder(ViewHolder viewHolder, Models models, int i) {
-                        viewHolder.setDetails(getActivity().getApplicationContext(), models.getTendoi(), models.getDiachi(), models.getImage());
+                        viewHolder.setDetails(getActivity().getApplicationContext(), models.getTendoi(), models.getDiachi(), models.getImage(),models.getSodienthoai());
 
 
                     }
@@ -308,7 +308,7 @@ public class MenuHome extends Fragment {
                 ) {
                     @Override
                     protected void populateViewHolder(ViewHolder viewHolder, Models models, int i) {
-                        viewHolder.setDetails(getActivity().getApplicationContext(), models.getTendoi(), models.getDiachi(), models.getImage());
+                        viewHolder.setDetails(getActivity().getApplicationContext(), models.getTendoi(), models.getDiachi(), models.getImage(),models.getSodienthoai());
 
 
 
@@ -324,12 +324,13 @@ public class MenuHome extends Fragment {
                             public void onItemClick(View view, int postion) {
                                 final String sTenDoi = getItem(postion).getTendoi();
                                 final String sDiaChi = getItem(postion).getDiachi();
-
+                                final String sSoDienThoai = getItem(postion).getSodienthoai();
                                 final String cImage = getItem(postion).getImage();
 
                                 Intent intent = new Intent(getActivity(),TeamDetailActivity.class);
                                 intent.putExtra("tendoi",sTenDoi);
                                 intent.putExtra("diachi",sDiaChi);
+                                intent.putExtra("sodienthoai",sSoDienThoai);
                                 intent.putExtra("cImage",cImage);
                                 startActivity(intent);
 

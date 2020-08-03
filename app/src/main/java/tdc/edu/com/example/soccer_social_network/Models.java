@@ -2,14 +2,12 @@ package tdc.edu.com.example.soccer_social_network;
 
 public class Models {
     String tendoi, image, diachi, sodienthoai;
-
     public Models() {
     }
 
     public String getSodienthoai() {
         return sodienthoai;
     }
-
     public void setSodienthoai(String sodienthoai) {
         this.sodienthoai = sodienthoai;
     }
