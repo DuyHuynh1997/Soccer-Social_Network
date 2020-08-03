@@ -159,7 +159,7 @@ public class MenuHome extends Fragment {
                                         if(which == 1)
                                         {
                                             //delete clicked
-                                            showDeleteDataDialog(sTenDoi, sDiaChi);
+                                            showDeleteDataDialog(sTenDoi, cImage);
                                         }
                                     }
                                 });
