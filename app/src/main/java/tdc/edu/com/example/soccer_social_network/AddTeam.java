@@ -6,27 +6,22 @@ import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -234,7 +229,7 @@ public class AddTeam extends AppCompatActivity{
                 mProgressDialog.dismiss();
                 Toast.makeText(AddTeam.this,"Database updated...",Toast.LENGTH_SHORT).show();
                 //
-                startActivity(new Intent(AddTeam.this,MainActivity.class));
+                startActivity(new Intent(AddTeam.this, MenuAcitvity.class));
                 finish();
             }
 

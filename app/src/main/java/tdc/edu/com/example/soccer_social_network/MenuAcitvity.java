@@ -16,7 +16,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
-public class MainActivity extends AppCompatActivity
+public class MenuAcitvity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity
 
 
         } else if (id == R.id.nav_addTeam) {
-            startActivity(new Intent(MainActivity.this,AddTeam.class));
+            startActivity(new Intent(MenuAcitvity.this,AddTeam.class));
 
         } else if (id == R.id.nav_tools) {
 
