@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_sanbong"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="30dp"
+            android:layout_weight="1"
+            android:gravity="bottom"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btntimDoi"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Tim tran"
+                android:textSize="25dp">
+
+            </Button>
+
+            <Button
+                android:id="@+id/btntimSan"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Tim san"
+                android:textSize="25dp">
+
+            </Button>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="30dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="center">
+            ">
+
+            <Button
+                android:id="@+id/btnquanLiDoi"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Quan li doi"
+                android:textSize="25dp">
+
+            </Button>
+
+            <Button
+                android:id="@+id/btnquanLiSan"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Quan li san"
+                android:textSize="25dp">
+
+            </Button>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="30dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+            ">
+
+            <Button
+                android:id="@+id/btndanhSachDoi"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="danh sach doi"
+                android:textSize="25dp">
+
+            </Button>
+
+            <Button
+                android:id="@+id/btndanhSachSan"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="danh sach san"
+                android:textSize="25dp">
+
+            </Button>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3">
+
+    </LinearLayout>
+
+</LinearLayout>

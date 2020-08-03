@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/edtTaoTenDoi"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:hint="Nhap ten doi">
+
+    </EditText>
+
+    <EditText
+        android:id="@+id/edtTaoGhiChu"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:hint="Ghi chu"></EditText>
+
+    <TextView
+        android:id="@+id/txtTaoTrangThai"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="0"></TextView>
+
+    <Button
+        android:id="@+id/btnChonAnh"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="0.3"
+        android:text="chon anh">
+
+    </Button>
+
+    <ImageView
+        android:id="@+id/imgChonAnhDoi"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+    </ImageView>
+
+    <Button
+        android:id="@+id/btnTaoDoi"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="0.3"
+        android:text="Tao doi">
+
+    </Button>
+
+</LinearLayout>

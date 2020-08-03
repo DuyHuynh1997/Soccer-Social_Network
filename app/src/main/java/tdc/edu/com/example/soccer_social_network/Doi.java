@@ -1,13 +1,33 @@
 package tdc.edu.com.example.soccer_social_network;
 
+import android.widget.ImageView;
+
 public class Doi {
     protected String tenDoi;
-    protected String ngayTaoDoi;
-    protected String thanhVien;
     protected String ghiChu;
+    protected String trangThai;
+    protected String ulrAnhDoi;
 
     public Doi(){
 
+    }
+    public Doi(String tenDoi, String ghiChu,String trangThai,String urlAnhDoi){
+        if (tenDoi.trim().equals("")){
+            tenDoi = "No name";
+        }
+        this.trangThai = trangThai;
+        this.tenDoi = tenDoi;
+        this.ghiChu = ghiChu;
+        this.ulrAnhDoi = urlAnhDoi;
+    }
+
+
+    public String getTrangThai() {
+        return trangThai;
+    }
+
+    public void setTrangThai(String trangThai) {
+        this.trangThai = trangThai;
     }
 
     public String getTenDoi() {
@@ -18,27 +38,19 @@ public class Doi {
         this.tenDoi = tenDoi;
     }
 
-    public String getNgayTaoDoi() {
-        return ngayTaoDoi;
-    }
-
-    public void setNgayTaoDoi(String ngayTaoDoi) {
-        this.ngayTaoDoi = ngayTaoDoi;
-    }
-
-    public String getThanhVien() {
-        return thanhVien;
-    }
-
-    public void setThanhVien(String thanhVien) {
-        this.thanhVien = thanhVien;
-    }
-
     public String getGhiChu() {
         return ghiChu;
     }
 
     public void setGhiChu(String ghiChu) {
         this.ghiChu = ghiChu;
+    }
+
+    public String getUlrAnhDoi() {
+        return ulrAnhDoi;
+    }
+
+    public void setUlrAnhDoi(String ulrAnhDoi) {
+        this.ulrAnhDoi = ulrAnhDoi;
     }
 }
