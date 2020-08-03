@@ -30,7 +30,5 @@ public class themDoi extends AppCompatActivity {
         edtThanhVien = (EditText)(findViewById(R.id.edtThanhVien));
         edtGhiChu = (EditText)(findViewById(R.id.edtGhiChu));
 
-        doi.setTenDoi(edtTenDoi.getText().toString());
-
     }
 }

@@ -43,7 +43,7 @@ public class create_team extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ativity_create_team);
         mStorageRef = FirebaseStorage.getInstance().getReference("ImageTeams");
-        mDatabaseRef = FirebaseDatabase.getInstance().getReference("ĐỘi");
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference("Doi");
 
 
         edtTaoTenDoi = (EditText) (findViewById(R.id.edtTaoTenDoi));

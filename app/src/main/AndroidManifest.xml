@@ -10,17 +10,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".create_team">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".list_All_Teams">
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+        </activity>
+        <activity android:name=".create_team">
         </activity>
         <activity android:name=".find_teams">
 
         </activity>
         <activity android:name=".main_menu">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".themDoi">
         </activity>

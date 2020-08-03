@@ -1,23 +1,21 @@
 package tdc.edu.com.example.soccer_social_network;
 
-import android.widget.ImageView;
-
 public class Doi {
     protected String tenDoi;
-    protected String ghiChu;
+    protected String gioiThieu;
     protected String trangThai;
     protected String ulrAnhDoi;
 
     public Doi(){
 
     }
-    public Doi(String tenDoi, String ghiChu,String trangThai,String urlAnhDoi){
+    public Doi(String tenDoi, String gioiThieu, String trangThai, String urlAnhDoi){
         if (tenDoi.trim().equals("")){
             tenDoi = "No name";
         }
         this.trangThai = trangThai;
         this.tenDoi = tenDoi;
-        this.ghiChu = ghiChu;
+        this.gioiThieu = gioiThieu;
         this.ulrAnhDoi = urlAnhDoi;
     }
 
@@ -38,12 +36,12 @@ public class Doi {
         this.tenDoi = tenDoi;
     }
 
-    public String getGhiChu() {
-        return ghiChu;
+    public String getGioiThieu() {
+        return gioiThieu;
     }
 
-    public void setGhiChu(String ghiChu) {
-        this.ghiChu = ghiChu;
+    public void setGioiThieu(String gioiThieu) {
+        this.gioiThieu = gioiThieu;
     }
 
     public String getUlrAnhDoi() {

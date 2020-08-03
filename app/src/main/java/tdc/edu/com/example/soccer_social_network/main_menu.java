@@ -9,7 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class main_menu extends AppCompatActivity {
-    Button btnTimDoi, btnTimSan, btnQuanLiDoi, btnQuanLiSan,btndanhSachDoi,btnDanhSachSan;
+    Button btnTimDoi, btnTimSan, btnQuanLiDoi, btnQuanLiSan,btndanhSachDoi,btnDanhSachSan,btnTaoDoi;
     Intent intent;
 
     @Override
@@ -23,6 +23,7 @@ public class main_menu extends AppCompatActivity {
         btnQuanLiSan = (Button) (findViewById(R.id.btnquanLiSan));
         btnDanhSachSan = (Button) (findViewById(R.id.btndanhSachSan));
         btndanhSachDoi = (Button) (findViewById(R.id.btndanhSachDoi));
+        btnTaoDoi = (Button) (findViewById(R.id.btnTaoDoi));
 
         btnTimDoi.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,5 +33,20 @@ public class main_menu extends AppCompatActivity {
             }
         });
 
+        btndanhSachDoi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                intent = new Intent(main_menu.this, list_All_Teams.class);
+                startActivity(intent);
+            }
+        });
+
+        btnTaoDoi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                intent = new Intent(main_menu.this, create_team.class);
+                startActivity(intent);
+            }
+        });
     }
 }
