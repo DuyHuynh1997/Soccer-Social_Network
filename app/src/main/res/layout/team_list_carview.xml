@@ -55,7 +55,9 @@
                 android:id="@+id/txtDescription_maincardview"
                 android:textSize="22sp"
                 android:textColor="#000"
-                android:text="Loaning..."
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="Loaning...Ngày tháng năm troi qua ta ngồi ta làm cái méo gì hả hiểu nữa là la la"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
         </LinearLayout>

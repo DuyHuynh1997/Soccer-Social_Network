@@ -27,18 +27,18 @@ public class TeamDetailActivity extends AppCompatActivity {
 
         mTitleTv = findViewById(R.id.txtTitle);
         mDetailTv = findViewById(R.id.txtDescription);
-        mImageIv = findViewById(R.id.imageView_teamDetail);
+        mImageIv = findViewById(R.id.imageView);
 
 
-       byte[] bytes = getIntent().getByteArrayExtra("image");
+        byte[] bytes = getIntent().getByteArrayExtra("image");
         String title = getIntent().getStringExtra("tendoi");
         String desc = getIntent().getStringExtra("diachi");
-       Bitmap bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+       // Bitmap bmp = BitmapFactory.decodeByteArray(bytes, 100, bytes.length);
 
 
         mTitleTv.setText(title);
         mDetailTv.setText(desc);
-       mImageIv.setImageBitmap(bmp);
+       // mImageIv.setImageBitmap(bmp);
 
     }
 

@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.view.MenuItemCompat;
@@ -26,9 +27,16 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.io.ByteArrayOutputStream;
 
@@ -114,15 +122,15 @@ public class MenuHome extends Fragment {
                                 //get dât from views
                                 String mTitle = mTitleTv.getText().toString();
                                 String mDesc = mDescTv.getText().toString();
-                            //    Drawable mDrawable = mImageView.getDrawable();
-                            //    Bitmap mBitmap = ((BitmapDrawable)mDrawable).getBitmap();
+                                //    Drawable mDrawable = mImageView.getDrawable();
+                                //    Bitmap mBitmap = ((BitmapDrawable)mDrawable).getBitmap();
 
                                 //pass this data to new Activity
                                 Intent intent = new Intent(view.getContext(), TeamDetailActivity.class);
                                 ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                              //  mBitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-                               // byte[] bytes = stream.toByteArray();
-                               // intent.putExtra("image",bytes);
+                                //  mBitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                                // byte[] bytes = stream.toByteArray();
+                                // intent.putExtra("image",bytes);
                                 intent.putExtra("tendoi",mTitle);
                                 intent.putExtra("diachi",mDesc);
                                 startActivity(intent);
@@ -133,6 +141,36 @@ public class MenuHome extends Fragment {
                             @Override
                             public void onItemLongClick(View view, int postion) {
 
+                                final String cTitle = getItem(postion).getTendoi();
+                                final String cDescr = getItem(postion).getDiachi();
+
+                                final String cImage = getItem(postion).getImage();
+
+                                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                                String[] options = {"Update","Delete"};
+
+                                builder.setItems(options, new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int which) {
+                                        if(which == 0)
+                                        {
+                                            //update
+                                            //star activity with putting current data
+                                            Intent intent = new Intent(getActivity(),AddTeam.class);
+                                            intent.putExtra("cTitle",cTitle);
+                                            intent.putExtra("cDescr",cDescr);
+                                            intent.putExtra("cImage",cImage);
+                                            startActivity(intent);
+
+                                        }
+                                        if(which == 1)
+                                        {
+                                            //delete clicked
+                                            showDeleteDataDialog(cTitle, cDescr);
+                                        }
+                                    }
+                                });
+                                builder.create().show();
                             }
                         });
                         return viewHolder;
@@ -142,6 +180,53 @@ public class MenuHome extends Fragment {
                 };
         //set adapter to recyclerview
         mRecyclerView.setAdapter(firebaseRecyclerAdapter);
+    }
+
+    private void showDeleteDataDialog(final String currentTitle, final String currentImage) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this.getActivity());
+        builder.setMessage("Are you sure to delete this post?");
+
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Query mQuery = mRef.orderByChild("tendoi").equalTo(currentTitle);
+                mQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        for(DataSnapshot ds: dataSnapshot.getChildren()){
+                            ds.getRef().removeValue();
+                        }
+                        Toast.makeText(getActivity(),"This Team delete successfuly..",Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        Toast.makeText(getActivity(),databaseError.getMessage(),Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                StorageReference mPictureRefe = FirebaseStorage.getInstance().getReferenceFromUrl(currentImage);
+                mPictureRefe.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        //delete successlly
+                        Toast.makeText(getActivity(),"Image deleted succsslully",Toast.LENGTH_SHORT).show();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(getActivity(),e.getMessage(),Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+        builder.create().show();
     }
 
 
@@ -251,7 +336,7 @@ public class MenuHome extends Fragment {
                                 //get dât from views
                                 String mTitle = mTitleTv.getText().toString();
                                 String mDesc = mDescTv.getText().toString();
-                               // Drawable mDrawable = mImageView.getDrawable();
+                                // Drawable mDrawable = mImageView.getDrawable();
                                 //Bitmap mBitmap = (BitmapDrawable)mDrawable.getBitmap();
 
                                 //pass this data to new Activity
@@ -269,6 +354,39 @@ public class MenuHome extends Fragment {
 
                             @Override
                             public void onItemLongClick(View view, int postion) {
+
+
+                                final String cTitle = getItem(postion).getTendoi();
+                                final String cDescr = getItem(postion).getDiachi();
+
+                                final String cImage = getItem(postion).getImage();
+
+                                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                                String[] options = {"Update","Delete"};
+
+                                builder.setItems(options, new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int which) {
+                                        if(which == 0)
+                                        {
+                                            //update
+                                            //star activity with putting current data
+                                            Intent intent = new Intent(getActivity(),AddTeam.class);
+                                            intent.putExtra("cTitle",cTitle);
+                                            intent.putExtra("cDescr",cDescr);
+                                            intent.putExtra("cImage",cImage);
+                                            startActivity(intent);
+
+                                        }
+                                        if(which == 1)
+                                        {
+                                            //delete clicked
+                                            showDeleteDataDialog(cTitle, cDescr);
+                                        }
+                                    }
+                                });
+                                builder.create().show();
+
 
                             }
                         });

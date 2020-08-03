@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -23,12 +24,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
+
+import java.io.ByteArrayOutputStream;
 
 
 public class AddTeam extends AppCompatActivity {
@@ -51,6 +59,8 @@ public class AddTeam extends AppCompatActivity {
 
     int IMAGE_REQUEST_CODE = 5;
 
+    String cTitle, cDescr, cImage;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,6 +76,19 @@ public class AddTeam extends AppCompatActivity {
         btnAddTeam = findViewById(R.id.btnAddTeam_addTeam);
         imageView = findViewById(R.id.imageView_addTeam);
         edtNgayThanhLap = findViewById(R.id.edtNgayThanhLap_addTeam);
+
+        Bundle intent = getIntent().getExtras();
+        if(intent != null){
+            cTitle = intent.getString("cTitle");
+            cDescr = intent.getString("cDescr");
+            cImage = intent.getString("cImage");
+
+            edtTenDoi.setText(cTitle);
+            edtDiaChi.setText(cDescr);
+            Picasso.get().load(cImage).into(imageView);
+            actionBar.setTitle("Update");
+            btnAddTeam.setText("Update");
+        }
 
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,7 +106,16 @@ public class AddTeam extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //call method to upload data to firebase
-                uploadDataToFirebase();
+                if(btnAddTeam.getText().equals("AddTeam"))
+                {
+                    uploadDataToFirebase();
+                }
+                else {
+                    //begin update
+                    beginUpdate();
+                }
+
+
             }
         });
 
@@ -93,6 +125,88 @@ public class AddTeam extends AppCompatActivity {
 
         //progress dialog
         mProgressDialog = new ProgressDialog(AddTeam.this);
+    }
+
+    private void beginUpdate() {
+        mProgressDialog.setMessage("Updating...");
+        mProgressDialog.show();
+
+
+        deletePreviousImage();
+    }
+
+    private void deletePreviousImage() {
+        StorageReference mPictureRef = FirebaseStorage.getInstance().getReferenceFromUrl(cImage);
+        mPictureRef.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Toast.makeText(AddTeam.this,"Previous image deleted...",Toast.LENGTH_SHORT).show();
+                uploadNewImage();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(AddTeam.this,e.getMessage(),Toast.LENGTH_SHORT).show();
+                mProgressDialog.dismiss();
+            }
+        });
+    }
+
+    private void uploadNewImage() {
+        String imageName = System.currentTimeMillis()+ ".png";
+        //storage reference
+        StorageReference storageReference2 = mStorageReference.child(mStoragePath + imageName);
+        //get bitmap form mageview
+        Bitmap bitmap = ((BitmapDrawable)imageView.getDrawable()).getBitmap();
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
+        byte[] data = baos.toByteArray();
+        UploadTask uploadTask = storageReference2.putBytes(data);
+        uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                Toast.makeText(AddTeam.this,"New image upload...",Toast.LENGTH_SHORT).show();
+                Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
+                while ((!uriTask.isSuccessful()));
+                Uri downloadUri = uriTask.getResult();
+                updateDatabase(downloadUri.toString());
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(AddTeam.this,e.getMessage(),Toast.LENGTH_SHORT).show();
+                mProgressDialog.dismiss();
+            }
+        });
+    }
+
+    private void updateDatabase(final String s) {
+        final String title = edtTenDoi.getText().toString();
+        final String descr = edtDiaChi.getText().toString();
+        FirebaseDatabase mFirebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference mRef = mFirebaseDatabase.getReference("Data");
+        Query query = mRef.orderByChild("tendoi").equalTo(cTitle);
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot ds: dataSnapshot.getChildren())
+                {
+                    ds.getRef().child("tendoi").setValue(title);
+                    ds.getRef().child("diachi").setValue(descr);
+                    ds.getRef().child("image").setValue(s);
+                }
+                mProgressDialog.dismiss();
+                Toast.makeText(AddTeam.this,"Database updated...",Toast.LENGTH_SHORT).show();
+                //
+                startActivity(new Intent(AddTeam.this,MainActivity.class));
+                finish();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     private void uploadDataToFirebase() {
