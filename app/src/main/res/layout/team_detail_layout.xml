@@ -27,7 +27,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
             <TextView
-                android:id="@+id/txtTitle"
+                android:id="@+id/txtTitle_teamDetail"
                 android:textSize="22sp"
                 android:textColor="#000"
                 android:text="Loaning..."
@@ -55,7 +55,26 @@
                 android:layout_height="wrap_content"/>
             <TextView
                 android:autoLink="all"
-                android:id="@+id/txtDescription"
+                android:id="@+id/txtDescription_teamDetail"
+                android:textSize="22sp"
+                android:textColor="#000"
+                android:text="Loaning..."
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textSize="22sp"
+                android:textColor="#000"
+                android:text="Số Điện Thoại:  "
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:autoLink="all"
+                android:id="@+id/txtSoDienThoai_teamDetail"
                 android:textSize="22sp"
                 android:textColor="#000"
                 android:text="Loaning..."

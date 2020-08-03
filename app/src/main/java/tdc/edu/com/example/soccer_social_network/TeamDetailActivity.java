@@ -1,18 +1,18 @@
 package tdc.edu.com.example.soccer_social_network;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.squareup.picasso.Picasso;
+
 public class TeamDetailActivity extends AppCompatActivity {
-    TextView mTitleTv, mDetailTv;
+    TextView edtTenDoi, edtDiaChi;
     ImageView mImageIv;
+    String tendoi,diachi,cImage;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,20 +25,20 @@ public class TeamDetailActivity extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setDisplayShowHomeEnabled(true);
 
-        mTitleTv = findViewById(R.id.txtTitle);
-        mDetailTv = findViewById(R.id.txtDescription);
-        mImageIv = findViewById(R.id.imageView);
+        edtTenDoi = findViewById(R.id.txtTitle_teamDetail);
+        edtDiaChi = findViewById(R.id.txtDescription_teamDetail);
+        mImageIv = findViewById(R.id.imageView_teamDetail);
 
+        Bundle intent = getIntent().getExtras();
+        if(intent != null){
+            tendoi = intent.getString("tendoi");
+            diachi = intent.getString("diachi");
+            cImage = intent.getString("cImage");
 
-        byte[] bytes = getIntent().getByteArrayExtra("image");
-        String title = getIntent().getStringExtra("tendoi");
-        String desc = getIntent().getStringExtra("diachi");
-       // Bitmap bmp = BitmapFactory.decodeByteArray(bytes, 100, bytes.length);
-
-
-        mTitleTv.setText(title);
-        mDetailTv.setText(desc);
-       // mImageIv.setImageBitmap(bmp);
+            edtTenDoi.setText(tendoi);
+            edtDiaChi.setText(diachi);
+            Picasso.get().load(cImage).into(mImageIv);
+        }
 
     }
 

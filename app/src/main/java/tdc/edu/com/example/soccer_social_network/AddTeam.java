@@ -59,7 +59,7 @@ public class AddTeam extends AppCompatActivity {
 
     int IMAGE_REQUEST_CODE = 5;
 
-    String cTitle, cDescr, cImage;
+    String sTenDoi, sDiaChi, cImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,12 +79,12 @@ public class AddTeam extends AppCompatActivity {
 
         Bundle intent = getIntent().getExtras();
         if(intent != null){
-            cTitle = intent.getString("cTitle");
-            cDescr = intent.getString("cDescr");
+            sTenDoi = intent.getString("tendoi");
+            sDiaChi = intent.getString("diachi");
             cImage = intent.getString("cImage");
 
-            edtTenDoi.setText(cTitle);
-            edtDiaChi.setText(cDescr);
+            edtTenDoi.setText(sTenDoi);
+            edtDiaChi.setText(sDiaChi);
             Picasso.get().load(cImage).into(imageView);
             actionBar.setTitle("Update");
             btnAddTeam.setText("Update");
@@ -185,7 +185,7 @@ public class AddTeam extends AppCompatActivity {
         final String descr = edtDiaChi.getText().toString();
         FirebaseDatabase mFirebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference mRef = mFirebaseDatabase.getReference("Data");
-        Query query = mRef.orderByChild("tendoi").equalTo(cTitle);
+        Query query = mRef.orderByChild("tendoi").equalTo(sTenDoi);
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

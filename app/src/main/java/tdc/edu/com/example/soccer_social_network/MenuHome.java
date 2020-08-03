@@ -40,6 +40,8 @@ import com.google.firebase.storage.StorageReference;
 
 import java.io.ByteArrayOutputStream;
 
+import static com.google.firebase.FirebaseApp.getInstance;
+
 
 public class MenuHome extends Fragment {
 
@@ -115,24 +117,15 @@ public class MenuHome extends Fragment {
                         viewHolder.setOnClickListener(new ViewHolder.ClickListener() {
                             @Override
                             public void onItemClick(View view, int postion) {
-                                //Views
-                                TextView mTitleTv = view.findViewById(R.id.txtTitle_maincardview);
-                                TextView mDescTv = view.findViewById(R.id.txtDescription_maincardview);
-                                ImageView mImageView = view.findViewById(R.id.ImageView_maincarview);
-                                //get dât from views
-                                String mTitle = mTitleTv.getText().toString();
-                                String mDesc = mDescTv.getText().toString();
-                                //    Drawable mDrawable = mImageView.getDrawable();
-                                //    Bitmap mBitmap = ((BitmapDrawable)mDrawable).getBitmap();
+                                final String sTenDoi = getItem(postion).getTendoi();
+                                final String sDiaChi = getItem(postion).getDiachi();
 
-                                //pass this data to new Activity
-                                Intent intent = new Intent(view.getContext(), TeamDetailActivity.class);
-                                ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                                //  mBitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-                                // byte[] bytes = stream.toByteArray();
-                                // intent.putExtra("image",bytes);
-                                intent.putExtra("tendoi",mTitle);
-                                intent.putExtra("diachi",mDesc);
+                                final String cImage = getItem(postion).getImage();
+
+                                Intent intent = new Intent(getActivity(),TeamDetailActivity.class);
+                                intent.putExtra("tendoi",sTenDoi);
+                                intent.putExtra("diachi",sDiaChi);
+                                intent.putExtra("cImage",cImage);
                                 startActivity(intent);
 
 
@@ -141,8 +134,8 @@ public class MenuHome extends Fragment {
                             @Override
                             public void onItemLongClick(View view, int postion) {
 
-                                final String cTitle = getItem(postion).getTendoi();
-                                final String cDescr = getItem(postion).getDiachi();
+                                final String sTenDoi = getItem(postion).getTendoi();
+                                final String sDiaChi = getItem(postion).getDiachi();
 
                                 final String cImage = getItem(postion).getImage();
 
@@ -157,8 +150,8 @@ public class MenuHome extends Fragment {
                                             //update
                                             //star activity with putting current data
                                             Intent intent = new Intent(getActivity(),AddTeam.class);
-                                            intent.putExtra("cTitle",cTitle);
-                                            intent.putExtra("cDescr",cDescr);
+                                            intent.putExtra("tendoi",sTenDoi);
+                                            intent.putExtra("diachi",sDiaChi);
                                             intent.putExtra("cImage",cImage);
                                             startActivity(intent);
 
@@ -166,7 +159,7 @@ public class MenuHome extends Fragment {
                                         if(which == 1)
                                         {
                                             //delete clicked
-                                            showDeleteDataDialog(cTitle, cDescr);
+                                            showDeleteDataDialog(sTenDoi, sDiaChi);
                                         }
                                     }
                                 });
@@ -204,6 +197,7 @@ public class MenuHome extends Fragment {
                         Toast.makeText(getActivity(),databaseError.getMessage(),Toast.LENGTH_SHORT).show();
                     }
                 });
+                //Lỗi Delete hình ảnh trong Firebase
 
                 StorageReference mPictureRefe = FirebaseStorage.getInstance().getReferenceFromUrl(currentImage);
                 mPictureRefe.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -222,8 +216,8 @@ public class MenuHome extends Fragment {
         });
         builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-
+            public void onClick(DialogInterface dialog, int i) {
+                dialog.dismiss();
             }
         });
         builder.create().show();
@@ -329,24 +323,15 @@ public class MenuHome extends Fragment {
                         viewHolder.setOnClickListener(new ViewHolder.ClickListener() {
                             @Override
                             public void onItemClick(View view, int postion) {
-                                //Views
-                                TextView mTitleTv = view.findViewById(R.id.txtTitle_maincardview);
-                                TextView mDescTv = view.findViewById(R.id.txtDescription_maincardview);
-                                ImageView mImageView = view.findViewById(R.id.ImageView_maincarview);
-                                //get dât from views
-                                String mTitle = mTitleTv.getText().toString();
-                                String mDesc = mDescTv.getText().toString();
-                                // Drawable mDrawable = mImageView.getDrawable();
-                                //Bitmap mBitmap = (BitmapDrawable)mDrawable.getBitmap();
+                                final String sTenDoi = getItem(postion).getTendoi();
+                                final String sDiaChi = getItem(postion).getDiachi();
 
-                                //pass this data to new Activity
-                                Intent intent = new Intent(view.getContext(), TeamDetailActivity.class);
-                                ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                                //mBitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-                                byte[] bytes = stream.toByteArray();
-                                intent.putExtra("image",bytes);
-                                intent.putExtra("tendoi",mTitle);
-                                intent.putExtra("diachi",mDesc);
+                                final String cImage = getItem(postion).getImage();
+
+                                Intent intent = new Intent(getActivity(),TeamDetailActivity.class);
+                                intent.putExtra("tendoi",sTenDoi);
+                                intent.putExtra("diachi",sDiaChi);
+                                intent.putExtra("cImage",cImage);
                                 startActivity(intent);
 
 
@@ -354,10 +339,11 @@ public class MenuHome extends Fragment {
 
                             @Override
                             public void onItemLongClick(View view, int postion) {
+                                String curentTitle = getItem(postion).getTendoi();
+                                String curentImage = getItem(postion).getImage();
 
-
-                                final String cTitle = getItem(postion).getTendoi();
-                                final String cDescr = getItem(postion).getDiachi();
+                                final String sTenDoi = getItem(postion).getTendoi();
+                                final String sDiaChi = getItem(postion).getDiachi();
 
                                 final String cImage = getItem(postion).getImage();
 
@@ -372,8 +358,8 @@ public class MenuHome extends Fragment {
                                             //update
                                             //star activity with putting current data
                                             Intent intent = new Intent(getActivity(),AddTeam.class);
-                                            intent.putExtra("cTitle",cTitle);
-                                            intent.putExtra("cDescr",cDescr);
+                                            intent.putExtra("tendoi",sTenDoi);
+                                            intent.putExtra("diachi",sDiaChi);
                                             intent.putExtra("cImage",cImage);
                                             startActivity(intent);
 
@@ -381,7 +367,7 @@ public class MenuHome extends Fragment {
                                         if(which == 1)
                                         {
                                             //delete clicked
-                                            showDeleteDataDialog(cTitle, cDescr);
+                                            showDeleteDataDialog(sTenDoi, cImage);
                                         }
                                     }
                                 });
