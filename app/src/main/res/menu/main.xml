@@ -9,7 +9,7 @@
         app:actionViewClass="android.widget.SearchView" />
     <item
         android:icon="@drawable/ic_add"
-        android:title="Search"
+        android:title="Add"
         android:id="@+id/action_add"
         app:showAsAction="always"
        />

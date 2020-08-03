@@ -1,25 +1,32 @@
 package tdc.edu.com.example.soccer_social_network;
 
 
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -37,13 +44,14 @@ import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
 import java.io.ByteArrayOutputStream;
+import java.util.Calendar;
 
 
-public class AddTeam extends AppCompatActivity {
+public class AddTeam extends AppCompatActivity{
     EditText edtTenDoi,edtDoiTruong,edtDiaChi,edtSoDienThoai,edtNgayThanhLap;
     Button btnAddTeam;
     ImageView imageView;
-
+   DatePickerDialog.OnDateSetListener setListener;
 
     //Folder path for Firebase Storage
     String mStoragePath = "All_Image_Uploads/";
@@ -88,7 +96,10 @@ public class AddTeam extends AppCompatActivity {
             Picasso.get().load(cImage).into(imageView);
             actionBar.setTitle("Update");
             btnAddTeam.setText("Update");
+
         }
+
+
 
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,6 +136,31 @@ public class AddTeam extends AppCompatActivity {
 
         //progress dialog
         mProgressDialog = new ProgressDialog(AddTeam.this);
+
+        Calendar calendar = Calendar.getInstance();
+        final int year = calendar.get(Calendar.YEAR);
+        final int month = calendar.get(Calendar.MONTH);
+        final int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+       edtNgayThanhLap.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               DatePickerDialog datePickerDialog = new DatePickerDialog(
+                       AddTeam.this, new DatePickerDialog.OnDateSetListener() {
+                   @Override
+                   public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                       month = month+1;
+                       String date = day+"/"+month+"/"+year;
+                       edtNgayThanhLap.setText(date);
+                   }
+               },year,month,day);
+               datePickerDialog.show();
+               
+           }
+       });
+
+
+
     }
 
     private void beginUpdate() {
@@ -293,4 +329,6 @@ public class AddTeam extends AppCompatActivity {
             }
         }
     }
+
+
 }

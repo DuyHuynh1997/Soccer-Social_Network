@@ -128,7 +128,6 @@ public class MenuHome extends Fragment {
                                 intent.putExtra("cImage",cImage);
                                 startActivity(intent);
 
-
                             }
 
                             @Override
@@ -253,7 +252,7 @@ public class MenuHome extends Fragment {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_add) {
-            startActivity(new Intent(getActivity(),AddTeam.class));
+            startActivity(new Intent(this.getActivity(),AddTeam.class));
         }
         else if(id == R.id.action_seatch)
         {

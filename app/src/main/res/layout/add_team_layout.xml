@@ -1,27 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/khungvuong_background"
-
+    app:cardCornerRadius="3dp"
+    app:cardUseCompatPadding="true"
+    app:cardElevation="3dp"
+    app:contentPadding="5dp"
+    app:cardBackgroundColor="#fff"
+    android:id="@+id/carview_addTean_layout"
     >
-    <LinearLayout
-        android:layout_marginRight="10dp"
-        android:gravity="right|center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:textSize="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Trạng Thái "/>
-        <Button
-            android:id="@+id/btnTrangThai_addTeam"
-            android:background="@drawable/botron"
-            android:layout_width="30px"
-            android:layout_height="30px" />
 
-    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -47,7 +37,7 @@
                 android:textColor="@color/colorWhile"
                 android:id="@+id/edtTenDoi_addTeam"
                 android:textSize="20sp"
-                android:background="@drawable/khungvuong_no_color"
+                android:background="@drawable/khungvuong_color_alpha"
                 android:textColorHint="@color/colorWhile"
                 android:hint="Nhập Tên Đội"
                 android:gravity="center"
@@ -61,15 +51,17 @@
             android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             >
 
             <ImageView
+                android:scaleType="centerCrop"
                 android:id="@+id/imageView_addTeam"
                 android:src="@mipmap/ic_launcher"
                 android:layout_width="match_parent"
-                android:layout_height="100dp" />
+                android:layout_height="150dp"
+                android:adjustViewBounds="true"/>
 
         </LinearLayout>
 
@@ -78,15 +70,15 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="3">
+            android:layout_height="wrap_content"
+            >
 
             <LinearLayout
                 android:gravity="left"
                 android:orientation="vertical"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+         >
 
                 <LinearLayout
                     android:background="@drawable/khungvuong_color_alpha"
@@ -109,50 +101,14 @@
                         android:textSize="20sp"
                         android:textColorHint="@color/colorWhile"
                         android:gravity="center"
-                        android:layout_marginLeft="15sp"
-                        android:background="@drawable/khungvuong_no_color"
+                        android:background="@drawable/khungvuong_color_alpha"
                         android:hint="Tên Đội Trưởng"
                         android:layout_width="0dp"
                         android:layout_weight="2"
                         android:layout_height="wrap_content" />
 
                 </LinearLayout>
-                <LinearLayout
-                    android:layout_marginBottom="5dp"
-                    android:background="@drawable/khungvuong_color_alpha"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
 
-                    <LinearLayout
-                        android:gravity="center"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                        <Button
-                            android:id="@+id/btnThanhVien_addTeam"
-                            android:layout_marginTop="5dp"
-                            android:textColor="@color/colorWhile"
-                            android:text="Thành Viên"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                        <Button
-                            android:id="@+id/btnAddThanhVien_addTeam"
-                            android:layout_marginTop="5dp"
-                            android:textColor="@color/colorWhile"
-                            android:text="Thêm Thành Viên"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                    </LinearLayout>
-
-
-                    <ListView
-                        android:id="@+id/listviewThanhVien_addTeam"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-                    </ListView>
-
-                </LinearLayout>
 
 
 
@@ -184,7 +140,6 @@
                     android:text="Ngày Thành lập:"/>
 
                 <EditText
-
                     android:id="@+id/edtNgayThanhLap_addTeam"
                     android:layout_marginRight="10dp"
                     android:gravity="center"
@@ -254,6 +209,37 @@
                     android:layout_height="wrap_content" />
 
             </LinearLayout>
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/khungvuong_color_alpha"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <Button
+                        android:id="@+id/btnThanhVien_addTeam"
+                        android:layout_marginTop="5dp"
+                        android:textColor="#FAA8076E"
+                        android:text="Thành Viên"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <Button
+                        android:id="@+id/btnAddThanhVien_addTeam"
+                        android:layout_marginTop="5dp"
+                        android:textColor="#FAA8076E"
+                        android:text="Thêm Thành Viên"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+
+            </LinearLayout>
 
         </LinearLayout>
         <LinearLayout
@@ -263,7 +249,7 @@
             <Button
                 android:id="@+id/btnTeamList_addTeam"
                 android:textAllCaps="false"
-                android:textColor="@color/colorWhile"
+                android:textColor="#FAA8076E"
                 android:text="TeamList"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -271,7 +257,7 @@
                 android:id="@+id/btnAddTeam_addTeam"
                 android:textAllCaps="false"
                 android:layout_marginLeft="20dp"
-                android:textColor="@color/colorWhile"
+                android:textColor="#FAA8076E"
                 android:text="AddTeam"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -283,4 +269,4 @@
 
 
 
-</LinearLayout>
+</androidx.cardview.widget.CardView>
