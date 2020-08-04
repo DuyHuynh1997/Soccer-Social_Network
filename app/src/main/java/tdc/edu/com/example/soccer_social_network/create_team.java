@@ -2,9 +2,12 @@ package tdc.edu.com.example.soccer_social_network;
 
 import android.content.ContentResolver;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.MediaStore;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
@@ -18,6 +21,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
@@ -27,6 +31,12 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.PicassoProvider;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.UUID;
 
 public class create_team extends AppCompatActivity {
     EditText edtTaoTenDoi, edtTaoGhiChu;
@@ -38,6 +48,7 @@ public class create_team extends AppCompatActivity {
     public Uri imguri;
     private ProgressBar uploadProgress;
     private DatabaseReference mDatabaseRef;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,26 +75,25 @@ public class create_team extends AppCompatActivity {
         btnTaoDoi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (uploadTask != null && uploadTask.isInProgress()){
-                    Toast.makeText(create_team.this,"Upload in progress",Toast.LENGTH_LONG).show();
-                }
-                else
-                {
+                if (uploadTask != null && uploadTask.isInProgress()) {
+                    Toast.makeText(create_team.this, "Upload in progress", Toast.LENGTH_LONG).show();
+                } else {
                     Fileuploader();
                 }
             }
         });
     }
-    private String getExtension(Uri uri){
-            ContentResolver cr = getContentResolver();
+
+    public String getExtension(Uri uri) {
+        ContentResolver cr = getContentResolver();
         MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
         return mimeTypeMap.getExtensionFromMimeType(cr.getType(uri));
     }
 
-    private void Fileuploader(){
-        if(imguri != null) {
-            StorageReference Ref = mStorageRef.child(System.currentTimeMillis() + "." + getExtension(imguri));
-            uploadTask = Ref.putFile(imguri)
+    public void Fileuploader() {
+        if (imguri != null) {
+            final StorageReference Ref = mStorageRef.child(System.currentTimeMillis()+"."+getExtension(imguri));
+            Ref.putFile(imguri)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -96,10 +106,16 @@ public class create_team extends AppCompatActivity {
 //                            }, 500);
                             // Get a URL to the uploaded content
                             //Uri downloadUrl = taskSnapshot.getDownloadUrl();
-                            Toast.makeText(create_team.this, "Image uploaded successfully", Toast.LENGTH_LONG).show();
-                            Doi doi = new Doi(edtTaoTenDoi.getText().toString().trim(), edtTaoGhiChu.getText().toString().trim(), txtTrangThai.getText().toString().trim(), taskSnapshot.getUploadSessionUri().toString());
-                            String uploadID = mDatabaseRef.push().getKey();
-                            mDatabaseRef.child(uploadID).setValue(doi);
+                            Ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    Toast.makeText(create_team.this, "Image uploaded successfully", Toast.LENGTH_LONG).show();
+                                    Doi doi = new Doi(edtTaoTenDoi.getText().toString().trim(), edtTaoGhiChu.getText().toString().trim(), txtTrangThai.getText().toString().trim(), uri.toString());
+                                    String uploadID = mDatabaseRef.push().getKey();
+                                    mDatabaseRef.child(uploadID).setValue(doi);
+                                }
+                            });
+
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
@@ -115,25 +131,24 @@ public class create_team extends AppCompatActivity {
 //                            uploadProgress.setProgress((int) progress);
 //                        }
 //                    });
-        }
-        else {
-            Toast.makeText(create_team.this,"Chua chon anh !",Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(create_team.this, "Chua chon anh !", Toast.LENGTH_SHORT).show();
         }
     }
 
-    private void Filechooser(){
+    private void Filechooser() {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(intent,1);
+        startActivityForResult(intent, 1);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1  && resultCode == RESULT_OK && data != null && data.getData() != null){
+        if (requestCode == 1 && resultCode == RESULT_OK && data != null && data.getData() != null) {
             imguri = data.getData();
-            imgAnhDoi.setImageURI(imguri);
+            Glide.with(this).load(imguri).into(imgAnhDoi);
         }
     }
 }

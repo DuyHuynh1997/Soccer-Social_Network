@@ -10,28 +10,34 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class doiAdapter extends RecyclerView.Adapter<doiAdapter.  ViewHolder> {
-    ArrayList<Doi> dois;
-    Context context;
+   public class doiAdapter extends RecyclerView.Adapter<doiAdapter.ViewHolder> {
+    private ArrayList<Doi> dois;
+    private Context mcontext;
 
-    public doiAdapter(Context context,ArrayList<Doi> doi) {
+    public doiAdapter(ArrayList<Doi> dois){
+        this.dois = dois;
+    }
+    public doiAdapter(Context context, ArrayList<Doi> doi) {
         this.dois = doi;
-        this.context = context;
+        this.mcontext= context;
     }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-       return new ViewHolder(LayoutInflater.from(context).inflate(R.layout.item_row_reycleview_all_team,parent,false));
+    public doiAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_row_reycleview_all_team, parent,false);
+        return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Picasso.get().load(dois.get(position).getUlrAnhDoi()).into(holder.imghinhDoi);
+        Glide.with(mcontext).load(dois.get(position).getUlrAnhDoi()).into(holder.imghinhDoi);
+//      Picasso.get().load(dois.get(position).getUlrAnhDoi()).into(holder.imghinhDoi);
         holder.txttenDoi.setText(dois.get(position).getTenDoi());
         holder.txtGioithieu.setText((dois.get(position).getGioiThieu()));
     }
