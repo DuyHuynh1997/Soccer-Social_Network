@@ -5,9 +5,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -15,9 +12,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.SearchView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -38,12 +33,8 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
-import java.io.ByteArrayOutputStream;
 
-import static com.google.firebase.FirebaseApp.getInstance;
-
-
-public class MenuHome extends Fragment {
+public class AdminTeam extends Fragment {
 
     LinearLayoutManager mLayoutManager;
     SharedPreferences mSharedPref;
@@ -140,6 +131,42 @@ public class MenuHome extends Fragment {
                             @Override
                             public void onItemLongClick(View view, int postion) {
 
+                                final String sTenDoi = getItem(postion).getTendoi();
+                                final String sDiaChi = getItem(postion).getDiachi();
+                                final String sDoiTruong = getItem(postion).getDoitruong();
+                                final String sNgayThanhLap = getItem(postion).getNgaythanhlap();
+                                final String sSoDienThoai = getItem(postion).getSodienthoai();
+
+                                final String cImage = getItem(postion).getImage();
+
+                                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                                String[] options = {"Update","Delete"};
+
+                                builder.setItems(options, new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int which) {
+                                        if(which == 0)
+                                        {
+                                            //update
+                                            //star activity with putting current data
+                                            Intent intent = new Intent(getActivity(),AddTeam.class);
+                                            intent.putExtra("tendoi",sTenDoi);
+                                            intent.putExtra("diachi",sDiaChi);
+                                            intent.putExtra("doitruong",sDoiTruong);
+                                            intent.putExtra("ngaythanhlap",sNgayThanhLap);
+                                            intent.putExtra("sodienthoai",sSoDienThoai);
+                                            intent.putExtra("cImage",cImage);
+                                            startActivity(intent);
+
+                                        }
+                                        if(which == 1)
+                                        {
+                                            //delete clicked
+                                            showDeleteDataDialog(sTenDoi, cImage);
+                                        }
+                                    }
+                                });
+                                builder.create().show();
                             }
                         });
                         return viewHolder;
@@ -321,6 +348,44 @@ public class MenuHome extends Fragment {
 
                             @Override
                             public void onItemLongClick(View view, int postion) {
+
+                                final String sTenDoi = getItem(postion).getTendoi();
+                                final String sDiaChi = getItem(postion).getDiachi();
+                                final String sDoiTruong = getItem(postion).getDoitruong();
+                                final String sNgayThanhLap = getItem(postion).getNgaythanhlap();
+                                final String sSoDienThoai = getItem(postion).getSodienthoai();
+
+                                final String cImage = getItem(postion).getImage();
+
+                                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                                String[] options = {"Update","Delete"};
+
+                                builder.setItems(options, new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int which) {
+                                        if(which == 0)
+                                        {
+                                            //update
+                                            //star activity with putting current data
+                                            Intent intent = new Intent(getActivity(),AddTeam.class);
+                                            intent.putExtra("tendoi",sTenDoi);
+                                            intent.putExtra("diachi",sDiaChi);
+                                            intent.putExtra("doitruong",sDoiTruong);
+                                            intent.putExtra("ngaythanhlap",sNgayThanhLap);
+                                            intent.putExtra("sodienthoai",sSoDienThoai);
+                                            intent.putExtra("cImage",cImage);
+                                            startActivity(intent);
+
+                                        }
+                                        if(which == 1)
+                                        {
+                                            //delete clicked
+                                            showDeleteDataDialog(sTenDoi, cImage);
+                                        }
+                                    }
+                                });
+                                builder.create().show();
+
 
                             }
                         });

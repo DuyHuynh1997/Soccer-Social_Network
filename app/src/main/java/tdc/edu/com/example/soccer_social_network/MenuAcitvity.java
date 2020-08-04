@@ -42,10 +42,10 @@ public class MenuAcitvity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener( this );
 
 
-        setTitle("Menu");
+        setTitle("Home");
         MenuHome fragment = new MenuHome();
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.frame_layout, fragment, "Menu");
+        fragmentTransaction.replace(R.id.frame_layout, fragment, "Home");
         fragmentTransaction.commit();
 
     }
@@ -83,6 +83,12 @@ public class MenuAcitvity extends AppCompatActivity
             startActivity(new Intent(MenuAcitvity.this,AddTeam.class));
 
         } else if (id == R.id.nav_tools) {
+            setTitle("Admin");
+            AdminTeam fragment = new AdminTeam();
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.frame_layout, fragment, "Home");
+            fragmentTransaction.commit();
+
 
 
         } else if (id == R.id.nav_share) {
