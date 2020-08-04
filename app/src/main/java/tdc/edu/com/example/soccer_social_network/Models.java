@@ -1,8 +1,24 @@
 package tdc.edu.com.example.soccer_social_network;
 
 public class Models {
-    String tendoi, image, diachi, sodienthoai;
+    String tendoi, image, diachi, sodienthoai,doitruong,ngaythanhlap;
     public Models() {
+    }
+
+    public String getDoitruong() {
+        return doitruong;
+    }
+
+    public void setDoitruong(String doitruong) {
+        this.doitruong = doitruong;
+    }
+
+    public String getNgaythanhlap() {
+        return ngaythanhlap;
+    }
+
+    public void setNgaythanhlap(String ngaythanhlap) {
+        this.ngaythanhlap = ngaythanhlap;
     }
 
     public String getSodienthoai() {

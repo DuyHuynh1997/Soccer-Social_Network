@@ -10,9 +10,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.squareup.picasso.Picasso;
 
 public class TeamDetailActivity extends AppCompatActivity {
-    TextView edtTenDoi, edtDiaChi,txtSoDienThoai;
+    TextView txtTenDoi, txtDiaChi,txtSoDienThoai,txtDoiTruong,txtNgayThanhLap;
     ImageView mImageIv;
-    String tendoi,diachi,cImage,sodienthoai;
+    String tendoi,diachi,cImage,sodienthoai,doitruong,ngaythanhlap;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,22 +25,30 @@ public class TeamDetailActivity extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setDisplayShowHomeEnabled(true);
 
-        edtTenDoi = findViewById(R.id.txtTitle_teamDetail);
-        edtDiaChi = findViewById(R.id.txtDescription_teamDetail);
+        txtTenDoi = findViewById(R.id.txtTitle_teamDetail);
+        txtDiaChi = findViewById(R.id.txtDescription_teamDetail);
         mImageIv = findViewById(R.id.imageView_teamDetail);
         txtSoDienThoai = findViewById(R.id.txtSoDienThoai_teamDetail);
+        txtDoiTruong = findViewById(R.id.txtDoiTruong_teamDetail);
+        txtNgayThanhLap = findViewById(R.id.txtNgayThanhLap_teamDetail);
+
 
         Bundle intent = getIntent().getExtras();
         if(intent != null){
             tendoi = intent.getString("tendoi");
             diachi = intent.getString("diachi");
             sodienthoai = intent.getString("sodienthoai");
+            doitruong = intent.getString("doitruong");
+            ngaythanhlap = intent.getString("ngaythanhlap");
+
             cImage = intent.getString("cImage");
 
 
-            edtTenDoi.setText(tendoi);
-            edtDiaChi.setText(diachi);
+            txtTenDoi.setText(tendoi);
+            txtDiaChi.setText(diachi);
             txtSoDienThoai.setText(sodienthoai);
+            txtDoiTruong.setText(doitruong);
+            txtNgayThanhLap.setText(ngaythanhlap);
             Picasso.get().load(cImage).into(mImageIv);
         }
 

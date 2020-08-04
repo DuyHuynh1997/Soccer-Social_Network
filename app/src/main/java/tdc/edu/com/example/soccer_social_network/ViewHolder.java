@@ -35,7 +35,7 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         });
     }
 
-    public void setDetails(Context ctx, String sTenDoi, String sDiaChi, String image,String sSoDienThoai){
+    public void setDetails(Context ctx, String sTenDoi, String sDiaChi, String image,String sSoDienThoai,String sDoiTruong,String sNgayThanhLap){
         TextView txtTenDoi = mView.findViewById(R.id.txtTitle_maincardview);
         TextView txtDiaChi = mView.findViewById(R.id.txtDescription_maincardview);
         ImageView mImageIv = mView.findViewById(R.id.ImageView_maincarview);

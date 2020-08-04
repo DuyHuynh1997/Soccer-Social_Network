@@ -62,7 +62,7 @@ public class AddTeam extends AppCompatActivity{
 
     int IMAGE_REQUEST_CODE = 5;
 
-    String sTenDoi, sDiaChi, cImage;
+    String sTenDoi, sDiaChi, cImage,sDoiTruong,sNgayThanhLap,sSoDienThoai;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,10 +84,17 @@ public class AddTeam extends AppCompatActivity{
         if(intent != null){
             sTenDoi = intent.getString("tendoi");
             sDiaChi = intent.getString("diachi");
+            sDoiTruong = intent.getString("doitruong");
+            sNgayThanhLap = intent.getString("ngaythanhlap");
+            sSoDienThoai = intent.getString("sodienthoai");
             cImage = intent.getString("cImage");
+
 
             edtTenDoi.setText(sTenDoi);
             edtDiaChi.setText(sDiaChi);
+            edtDoiTruong.setText(sDoiTruong);
+            edtNgayThanhLap.setText(sNgayThanhLap);
+            edtSoDienThoai.setText(sSoDienThoai);
             Picasso.get().load(cImage).into(imageView);
             actionBar.setTitle("Update");
             btnAddTeam.setText("Update");
@@ -212,18 +219,24 @@ public class AddTeam extends AppCompatActivity{
     }
 
     private void updateDatabase(final String s) {
-        final String title = edtTenDoi.getText().toString();
-        final String descr = edtDiaChi.getText().toString();
+        final String sTenDoi = edtTenDoi.getText().toString();
+        final String sDiaChi = edtDiaChi.getText().toString();
+        final String sSoDienThoai = edtSoDienThoai.getText().toString();
+        final String sDoiTruong = edtDoiTruong.getText().toString();
+        final String sNgayThanhlap = edtNgayThanhLap.getText().toString();
         FirebaseDatabase mFirebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference mRef = mFirebaseDatabase.getReference("Data");
-        Query query = mRef.orderByChild("tendoi").equalTo(sTenDoi);
+        Query query = mRef.orderByChild("tendoi").equalTo(this.sTenDoi);
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot ds: dataSnapshot.getChildren())
                 {
-                    ds.getRef().child("tendoi").setValue(title);
-                    ds.getRef().child("diachi").setValue(descr);
+                    ds.getRef().child("tendoi").setValue(sTenDoi);
+                    ds.getRef().child("diachi").setValue(sDiaChi);
+                    ds.getRef().child("doitruong").setValue(sDoiTruong);
+                    ds.getRef().child("sodienthoai").setValue(sSoDienThoai);
+                    ds.getRef().child("ngaythanhlap").setValue(sNgayThanhlap);
                     ds.getRef().child("image").setValue(s);
                 }
                 mProgressDialog.dismiss();

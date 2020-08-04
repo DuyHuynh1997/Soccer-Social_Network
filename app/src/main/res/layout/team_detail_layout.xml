@@ -45,6 +45,26 @@
             android:adjustViewBounds="true"
             />
         <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textSize="22sp"
+                android:textColor="#000"
+                android:text="Đội Trưởng: "
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:gravity="center"
+                android:autoLink="all"
+                android:id="@+id/txtDoiTruong_teamDetail"
+                android:textSize="22sp"
+                android:textColor="#000"
+                android:text="Loaning..."
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
@@ -54,6 +74,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
             <TextView
+                android:gravity="center"
                 android:autoLink="all"
                 android:id="@+id/txtDescription_teamDetail"
                 android:textSize="22sp"
@@ -73,8 +94,29 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
             <TextView
+                android:gravity="center"
                 android:autoLink="all"
                 android:id="@+id/txtSoDienThoai_teamDetail"
+                android:textSize="22sp"
+                android:textColor="#000"
+                android:text="Loaning..."
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textSize="22sp"
+                android:textColor="#000"
+                android:text="Ngày Thành Lập:  "
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:gravity="center"
+                android:autoLink="all"
+                android:id="@+id/txtNgayThanhLap_teamDetail"
                 android:textSize="22sp"
                 android:textColor="#000"
                 android:text="Loaning..."

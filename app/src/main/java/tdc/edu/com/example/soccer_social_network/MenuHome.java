@@ -104,7 +104,8 @@ public class MenuHome extends Fragment {
                 ) {
                     @Override
                     protected void populateViewHolder(ViewHolder viewHolder, Models models, int i) {
-                        viewHolder.setDetails(getActivity().getApplicationContext(), models.getTendoi(), models.getDiachi(), models.getImage(),models.getSodienthoai());
+                        viewHolder.setDetails(getActivity().getApplicationContext(), models.getTendoi(), models.getDiachi(), models.getImage(),models.getSodienthoai()
+                                ,models.getDoitruong(),models.getNgaythanhlap());
 
 
                     }
@@ -119,12 +120,18 @@ public class MenuHome extends Fragment {
                             public void onItemClick(View view, int postion) {
                                 final String sTenDoi = getItem(postion).getTendoi();
                                 final String sDiaChi = getItem(postion).getDiachi();
-
+                                final String sSoDienThoai = getItem(postion).getSodienthoai();
                                 final String cImage = getItem(postion).getImage();
+                                final String sDoiTruong = getItem(postion).getDoitruong();
+                                final String sNgayThanhLap = getItem(postion).getNgaythanhlap();
+
 
                                 Intent intent = new Intent(getActivity(),TeamDetailActivity.class);
                                 intent.putExtra("tendoi",sTenDoi);
                                 intent.putExtra("diachi",sDiaChi);
+                                intent.putExtra("sodienthoai",sSoDienThoai);
+                                intent.putExtra("doitruong",sDoiTruong);
+                                intent.putExtra("ngaythanhlap",sNgayThanhLap);
                                 intent.putExtra("cImage",cImage);
                                 startActivity(intent);
 
@@ -135,6 +142,9 @@ public class MenuHome extends Fragment {
 
                                 final String sTenDoi = getItem(postion).getTendoi();
                                 final String sDiaChi = getItem(postion).getDiachi();
+                                final String sDoiTruong = getItem(postion).getDoitruong();
+                                final String sNgayThanhLap = getItem(postion).getNgaythanhlap();
+                                final String sSoDienThoai = getItem(postion).getSodienthoai();
 
                                 final String cImage = getItem(postion).getImage();
 
@@ -151,6 +161,9 @@ public class MenuHome extends Fragment {
                                             Intent intent = new Intent(getActivity(),AddTeam.class);
                                             intent.putExtra("tendoi",sTenDoi);
                                             intent.putExtra("diachi",sDiaChi);
+                                            intent.putExtra("doitruong",sDoiTruong);
+                                            intent.putExtra("ngaythanhlap",sNgayThanhLap);
+                                            intent.putExtra("sodienthoai",sSoDienThoai);
                                             intent.putExtra("cImage",cImage);
                                             startActivity(intent);
 
@@ -308,8 +321,8 @@ public class MenuHome extends Fragment {
                 ) {
                     @Override
                     protected void populateViewHolder(ViewHolder viewHolder, Models models, int i) {
-                        viewHolder.setDetails(getActivity().getApplicationContext(), models.getTendoi(), models.getDiachi(), models.getImage(),models.getSodienthoai());
-
+                        viewHolder.setDetails(getActivity().getApplicationContext(), models.getTendoi(), models.getDiachi(), models.getImage(),models.getSodienthoai()
+                        ,models.getDoitruong(),models.getNgaythanhlap());
 
 
                     }
@@ -326,11 +339,16 @@ public class MenuHome extends Fragment {
                                 final String sDiaChi = getItem(postion).getDiachi();
                                 final String sSoDienThoai = getItem(postion).getSodienthoai();
                                 final String cImage = getItem(postion).getImage();
+                                final String sDoiTruong = getItem(postion).getDoitruong();
+                                final String sNgayThanhLap = getItem(postion).getNgaythanhlap();
+
 
                                 Intent intent = new Intent(getActivity(),TeamDetailActivity.class);
                                 intent.putExtra("tendoi",sTenDoi);
                                 intent.putExtra("diachi",sDiaChi);
                                 intent.putExtra("sodienthoai",sSoDienThoai);
+                                intent.putExtra("doitruong",sDoiTruong);
+                                intent.putExtra("ngaythanhlap",sNgayThanhLap);
                                 intent.putExtra("cImage",cImage);
                                 startActivity(intent);
 
@@ -339,11 +357,12 @@ public class MenuHome extends Fragment {
 
                             @Override
                             public void onItemLongClick(View view, int postion) {
-                                String curentTitle = getItem(postion).getTendoi();
-                                String curentImage = getItem(postion).getImage();
 
                                 final String sTenDoi = getItem(postion).getTendoi();
                                 final String sDiaChi = getItem(postion).getDiachi();
+                                final String sDoiTruong = getItem(postion).getDoitruong();
+                                final String sNgayThanhLap = getItem(postion).getNgaythanhlap();
+                                final String sSoDienThoai = getItem(postion).getSodienthoai();
 
                                 final String cImage = getItem(postion).getImage();
 
@@ -360,6 +379,9 @@ public class MenuHome extends Fragment {
                                             Intent intent = new Intent(getActivity(),AddTeam.class);
                                             intent.putExtra("tendoi",sTenDoi);
                                             intent.putExtra("diachi",sDiaChi);
+                                            intent.putExtra("doitruong",sDoiTruong);
+                                            intent.putExtra("ngaythanhlap",sNgayThanhLap);
+                                            intent.putExtra("sodienthoai",sSoDienThoai);
                                             intent.putExtra("cImage",cImage);
                                             startActivity(intent);
 
