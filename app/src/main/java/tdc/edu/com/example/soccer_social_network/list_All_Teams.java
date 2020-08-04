@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.os.Message;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
+import android.widget.SearchView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -27,6 +29,7 @@ public class list_All_Teams extends AppCompatActivity {
     private ArrayList<Doi> dois;
     private doiAdapter adapter;
     private Context mcontext;
+    private SearchView searchView;
 
 
     @Override
@@ -35,9 +38,11 @@ public class list_All_Teams extends AppCompatActivity {
         setContentView(R.layout.activity_all_teams);
 
         recyclerView = (RecyclerView) findViewById(R.id.recycle_view);
+        searchView = findViewById(R.id.searchTeam);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
+
 
         // array list
         dois = new ArrayList<>();
@@ -49,6 +54,20 @@ public class list_All_Teams extends AppCompatActivity {
         clearALl();
 
         getDataFromFirebase();
+        if(searchView != null){
+            searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextSubmit(String s) {
+                    return false;
+                }
+
+                @Override
+                public boolean onQueryTextChange(String s) {
+                    search(s);
+                    return true;
+                }
+            });
+        }
 
 //        mDatabaseReference.addValueEventListener(new ValueEventListener() {
 //            @Override
@@ -68,36 +87,55 @@ public class list_All_Teams extends AppCompatActivity {
 //        });
 
     }
-
+//
+//    @Override
+//    protected void onStart() {
+//        super.onStart();
+//
+//}
+//
     private void getDataFromFirebase() {
-        Query query = mDatabaseReference.child("Doi");
-        query.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                clearALl();
-                dois = new ArrayList<>();
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+        if (mDatabaseReference !=null){
+            Query query = mDatabaseReference.child("Doi");
+            query.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    clearALl();
+                    dois = new ArrayList<>();
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
 //                    Doi doi = new Doi();
 //                    doi.setUlrAnhDoi(dataSnapshot.child("ulrAnhDoi").getValue().toString());
 //                    doi.setTenDoi(dataSnapshot.child("tenDoi").getValue().toString());
 //                    doi.setGioiThieu(dataSnapshot.child("trangThai").getValue().toString());
 //                    dois.add(doi);
-                    dois.add(dataSnapshot.getValue(Doi.class));
+                        dois.add(dataSnapshot.getValue(Doi.class));
 
-                }
-                adapter = new doiAdapter(getApplicationContext(), dois);
-                recyclerView.setAdapter(adapter);
+                    }
+                    adapter = new doiAdapter(getApplicationContext(), dois);
+                    recyclerView.setAdapter(adapter);
 //                adapter = new doiAdapter(getApplicationContext(), dois);
 //                recyclerView.setAdapter(adapter);
 //                adapter.notifyDataSetChanged();
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Toast.makeText(list_All_Teams.this,error.getMessage(),Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+
+    }
+
+    private void search(String s){
+        ArrayList<Doi> ListDois = new ArrayList<>();
+        for(Doi object : ListDois){
+            if (object.getTenDoi().toLowerCase().contains((s.toLowerCase()))){
+                ListDois.add(object);
             }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
+        }
+        doiAdapter adapter = new doiAdapter(ListDois);
+        recyclerView.setAdapter(adapter);
     }
 
     private void clearALl() {
