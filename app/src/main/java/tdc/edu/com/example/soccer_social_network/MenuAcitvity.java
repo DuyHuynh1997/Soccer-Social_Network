@@ -15,6 +15,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MenuAcitvity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -91,9 +92,12 @@ public class MenuAcitvity extends AppCompatActivity
 
 
 
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_login) {
+            startActivity(new Intent(MenuAcitvity.this,Registered.class));
 
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_logout) {
+            FirebaseAuth.getInstance().signOut();
+            startActivity(new Intent(getApplicationContext(),MenuAcitvity.class));
 
         }
 
@@ -102,5 +106,10 @@ public class MenuAcitvity extends AppCompatActivity
         return true;
     }
 
+//    public void logout(View view)
+//    {
+//        FirebaseAuth.getInstance().signOut();
+//        startActivity(new Intent(getApplicationContext(),Login.class));
+//    }
 
 }

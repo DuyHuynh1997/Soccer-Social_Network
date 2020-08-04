@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="20dp"
+    android:background="#076088">
+
+    <LinearLayout
+        android:gravity="center|top"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        >
+       <de.hdodenhof.circleimageview.CircleImageView
+           android:layout_width="96dp"
+           android:layout_height="96dp"
+           android:src="@drawable/bongfire"/>
+    </LinearLayout>
+    <LinearLayout
+        android:gravity="center|top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:textColor="@color/colorWhile"
+            android:textStyle="bold"
+            android:textAllCaps="true"
+            android:textSize="40dp"
+            android:text="@string/txtRegistered"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:gravity="center|top"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:background="@drawable/my_khungvuong_color_alpha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textColor="@color/colorWhile"
+                    android:textStyle="bold"
+                    android:textAllCaps="true"
+                    android:textSize="30dp"
+                    android:text="@string/txtWelcome"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:singleLine="true"
+                    android:id="@+id/edtEmail_registered_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/my_radiuskhungvuong"
+                    android:drawableLeft="@drawable/my_ic_email"
+                    android:gravity="center"
+                    android:hint="@string/txtEmail"
+                    android:paddingLeft="20dp"
+                    android:autoSizeMaxTextSize="20dp"
+                    android:textSize="30dp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:singleLine="true"
+                    android:id="@+id/edtPassword_registered_layout"
+                    android:paddingLeft="20dp"
+                    android:drawableLeft="@drawable/my_ic_lock"
+                    android:gravity="center"
+                    android:textSize="30dp"
+                    android:background="@drawable/my_radiuskhungvuong"
+                    android:hint="@string/txtPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:padding="20dp"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/btnRegister_registered_layout"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+
+                    android:text="@string/txtRegister"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="25dp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:gravity="center|top"
+
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/txtMemberLogin"
+                    android:textColor="@color/colorWhile"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/txtLoginNow_registered_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="@string/txtLoginNow"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorGreen"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/txtForgotPassword_registered_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/txtForgotPassword"
+                    android:textColor="@color/colorGreen"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/createText"
+        app:layout_constraintVertical_bias="0.26" />
+
+
+
+</LinearLayout>
