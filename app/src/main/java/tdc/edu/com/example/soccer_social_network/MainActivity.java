@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_main );
         Toolbar toolbar = findViewById( R.id.toolbar );
-      
+
         DrawerLayout drawer = findViewById( R.id.drawer_layout );
         NavigationView navigationView = findViewById( R.id.nav_view );
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
+            
 
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
