@@ -42,7 +42,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="center"
+            android:gravity="start"
             android:text="Giới thiệu sân :"
             android:textSize="18sp"
             android:textStyle="bold">
@@ -73,7 +73,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="center"
+            android:gravity="start"
             android:text="Đia chỉ :"
             android:textSize="18sp"
             android:textStyle="bold">
@@ -101,7 +101,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="center"
+            android:gravity="start"
             android:text="Số lượng sân :"
             android:textSize="18sp"
             android:textStyle="bold">
@@ -128,7 +128,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="center"
+            android:gravity="start"
             android:text="Loại sân :"
             android:textSize="18sp"
             android:textStyle="bold">
@@ -156,7 +156,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="center"
+            android:gravity="start"
             android:text="Số điện thoại :"
             android:textSize="18sp"
             android:textStyle="bold">

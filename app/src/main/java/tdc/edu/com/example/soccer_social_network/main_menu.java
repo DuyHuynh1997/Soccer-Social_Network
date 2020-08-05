@@ -9,7 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class main_menu extends AppCompatActivity {
-    Button btnTimDoi, btnTimSan, btnQuanLiDoi, btnQuanLiSan,btndanhSachDoi,btnDanhSachSan,btnTaoDoi;
+    Button btnTimDoi, btnTimSan, btnQuanLiDoi, btnQuanLiSan,btndanhSachDoi,btnDanhSachSan,btnTaoDoi,btnTaoSan;
     Intent intent;
 
     @Override
@@ -24,6 +24,23 @@ public class main_menu extends AppCompatActivity {
         btnDanhSachSan = (Button) (findViewById(R.id.btndanhSachSan));
         btndanhSachDoi = (Button) (findViewById(R.id.btndanhSachDoi));
         btnTaoDoi = (Button) (findViewById(R.id.btnTaoDoi));
+        btnTaoSan = (Button) (findViewById(R.id.btnTaoSan));
+
+        btnDanhSachSan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                intent = new Intent(main_menu.this, list_all_pitches.class);
+                startActivity(intent);
+            }
+        });
+
+        btnTaoSan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                intent = new Intent(main_menu.this, create_football_pitches.class);
+                startActivity(intent);
+            }
+        });
 
         btnTimDoi.setOnClickListener(new View.OnClickListener() {
             @Override

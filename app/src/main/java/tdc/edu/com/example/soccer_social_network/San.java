@@ -21,7 +21,7 @@ public class San implements Serializable {
     }
 
 
-    public void San() {
+    public San() {
 
     }
 

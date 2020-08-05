@@ -20,9 +20,9 @@ public class detail_about_football_pitches extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_football_pitches);
 
-        txtTenSan = (TextView) (findViewById(R.id.txtTenSan));
+        txtTenSan = (TextView) (findViewById(R.id.txtDetail_TenSan));
         txtGioiThieuSan = (TextView) (findViewById(R.id.txtDetail_txtGioiThieuSan));
-        txtDiaChiSan = (TextView) (findViewById(R.id.txtDiaChiSan));
+        txtDiaChiSan = (TextView) (findViewById(R.id.txtDetail_DiaChiSan));
         txtSoLuongSan = (TextView) (findViewById(R.id.txtDetail_SLSan));
         txtLoaiSan = (TextView) (findViewById(R.id.txtDetail_LoaiSan));
         txtSoDienThoaiSan = (TextView) (findViewById(R.id.txtDetail_txtSDTSan));
