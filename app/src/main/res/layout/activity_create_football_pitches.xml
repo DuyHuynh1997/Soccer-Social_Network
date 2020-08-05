@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/backgroun_tao_doi">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:background="#464646"
+        android:gravity="center"
+        android:text="Tạo sân"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#FFD600"
+        android:textFontWeight="20"
+        android:textSize="30dp">
+
+    </TextView>
+
+    <EditText
+        android:id="@+id/edtnhapTenSan"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:hint="Nhập tên sân"
+        android:textAllCaps="false"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColorHint="#FFFFFF"
+        android:textFontWeight="20">
+
+    </EditText>
+
+    <EditText
+        android:id="@+id/edtNhapSLSan"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:hint="Nhập số lượng sân"
+        android:textAllCaps="false"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColorHint="#FFFFFF"
+        android:textFontWeight="20">
+
+    </EditText>
+    <EditText
+        android:id="@+id/edtNhapLoaiSan"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:hint="Sân nhân tạo hay  sân cỏ tự nhiên ?"
+        android:textAllCaps="false"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColorHint="#FFFFFF"
+        android:textFontWeight="20">
+
+    </EditText>
+
+    <EditText
+        android:id="@+id/edtNhapSDTSan"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:hint="Nhập số điện thoai sân"
+        android:textAllCaps="false"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColorHint="#FFFFFF"></EditText>
+
+    <EditText
+        android:id="@+id/edtNhapDiaChiSan"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:hint="Nhập địa chỉ sân"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColorHint="#FFFFFF"></EditText>
+
+    <EditText
+        android:id="@+id/edtNhapGioiThieuSan"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:hint="Giới thiệu sân"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColorHint="#FFFFFF"></EditText>
+
+    <EditText
+        android:id="@+id/edtTaoTrangThaiSan"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:text="0"></EditText>
+
+    <Button
+        android:id="@+id/btnChonAnhSan"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:text="Chon anh">
+
+    </Button>
+
+    <ImageView
+        android:id="@+id/imgChonAnhSan"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+    </ImageView>
+
+    <Button
+        android:id="@+id/btnTaoSan"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:text="Tao San"
+        android:layout_gravity="center">
+
+    </Button>
+
+</LinearLayout>

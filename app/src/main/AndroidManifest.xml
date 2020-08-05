@@ -12,6 +12,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".list_all_pitches">
+
+        </activity>
+        <activity android:name=".detail_about_football_pitches">
+
+        </activity>
+        <activity android:name=".detail_about_team">
+
+        </activity>
         <activity android:name=".list_All_Teams">
 
         </activity>

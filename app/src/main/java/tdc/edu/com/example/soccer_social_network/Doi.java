@@ -1,6 +1,8 @@
 package tdc.edu.com.example.soccer_social_network;
 
-public class Doi {
+import java.io.Serializable;
+
+public class Doi implements Serializable {
     protected String tenDoi;
     protected String gioiThieu;
     protected String trangThai;

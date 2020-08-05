@@ -20,29 +20,28 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class list_All_Teams extends AppCompatActivity {
+public class list_all_pitches extends AppCompatActivity {
     private DatabaseReference mDatabaseReference;
     private RecyclerView recyclerView;
-    public ArrayList<Doi> dois;
-    private doiAdapter adapter;
+    public ArrayList<San> sans;
+    private sanAdapter adapter;
     private Context mcontext;
     private SearchView searchView;
-
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_all_teams);
+        setContentView(R.layout.activity_all_football_pitches);
 
-        recyclerView = (RecyclerView) findViewById(R.id.recycle_view);
-        searchView = findViewById(R.id.searchTeam);
+        recyclerView = (RecyclerView) findViewById(R.id.recycle_viewSan);
+        searchView = findViewById(R.id.searchSan);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
 
 
         // array list
-        dois = new ArrayList<>();
+        sans = new ArrayList<>();
 
         //firebase
         mDatabaseReference = FirebaseDatabase.getInstance().getReference();
@@ -71,23 +70,23 @@ public class list_All_Teams extends AppCompatActivity {
     // get databse from firebase
     private void getDataFromFirebase() {
         if (mDatabaseReference != null) {
-            Query query = mDatabaseReference.child("Doi");
+            Query query = mDatabaseReference.child("San");
             query.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     clearALl();
-                    dois = new ArrayList<>();
+                    sans = new ArrayList<>();
                     for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                        dois.add(dataSnapshot.getValue(Doi.class));
+                        sans.add(dataSnapshot.getValue(San.class));
 
                     }
-                    adapter = new doiAdapter(getApplicationContext(), dois);
+                    adapter = new sanAdapter(getApplicationContext(), sans);
                     recyclerView.setAdapter(adapter);
                 }
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-                    Toast.makeText(list_All_Teams.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(list_all_pitches.this, error.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
         }
@@ -97,13 +96,13 @@ public class list_All_Teams extends AppCompatActivity {
     // search teams by name
     private void search(String s) {
         if (s != null) {
-            ArrayList<Doi> mylist = new ArrayList<Doi>();
-            for (Doi object : dois) {
-                if (object.getTenDoi().toLowerCase().contains(s.toLowerCase())) {
+            ArrayList<San> mylist = new ArrayList<San>();
+            for (San object : sans) {
+                if (object.getsTenSan().toLowerCase().contains(s.toLowerCase())) {
                     mylist.add(object);
                 }
             }
-            adapter = new doiAdapter(getApplicationContext(), mylist);
+            adapter = new sanAdapter(getApplicationContext(), mylist);
             recyclerView.setAdapter(adapter);
         } else {
             getDataFromFirebase();
@@ -112,12 +111,13 @@ public class list_All_Teams extends AppCompatActivity {
 
     // clear arrryList
     private void clearALl() {
-        if (dois != null) {
-            dois.clear();
+        if (sans != null) {
+            sans.clear();
             if (adapter != null) {
                 adapter.notifyDataSetChanged();
             }
         }
-        dois = new ArrayList<>();
+        sans = new ArrayList<>();
     }
 }
+
