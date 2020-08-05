@@ -124,7 +124,7 @@ public class AddSan extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 //call method to upload data to firebase
-                if(btnAddTeamSan.getText().equals("AddTeam"))
+                if(btnAddTeamSan.getText().equals("AddSan"))
                 {
                     //Toast.makeText(AddSan.this,"Được Click",Toast.LENGTH_SHORT).show();
                     uploadDataToFirebase();

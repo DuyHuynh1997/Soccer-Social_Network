@@ -258,7 +258,7 @@
                 android:textAllCaps="false"
                 android:layout_marginLeft="20dp"
                 android:textColor="#FAA8076E"
-                android:text="AddTeam"
+                android:text="AddSan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
