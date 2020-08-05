@@ -23,11 +23,11 @@
             <TextView
                 android:textSize="22sp"
                 android:textColor="#000"
-                android:text="Tên Đội: "
+                android:text="Tên Sân: "
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
             <TextView
-                android:id="@+id/txtTitle_sanDetail"
+                android:id="@+id/txtTenSan_sanDetail"
                 android:textSize="22sp"
                 android:textColor="#000"
                 android:text="Loaning..."
@@ -51,13 +51,13 @@
             <TextView
                 android:textSize="22sp"
                 android:textColor="#000"
-                android:text="Đội Trưởng: "
+                android:text="Chủ Sở Hữu: "
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
             <TextView
                 android:gravity="center"
                 android:autoLink="all"
-                android:id="@+id/txtDoiTruong_sanDetail"
+                android:id="@+id/txtChuSoHuu_sanDetail"
                 android:textSize="22sp"
                 android:textColor="#000"
                 android:text="Loaning..."
@@ -104,25 +104,29 @@
                 android:layout_height="wrap_content"/>
         </LinearLayout>
         <LinearLayout
+            android:gravity="center"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
+                android:background="@drawable/khungvuong_text"
                 android:textSize="22sp"
-                android:textColor="#000"
-                android:text="Ngày Thành Lập:  "
+                android:textColor="#fff"
+                android:textStyle="bold"
+                android:text="Mô Tả "
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
-            <TextView
-                android:gravity="center"
-                android:autoLink="all"
-                android:id="@+id/txtNgayThanhLap_sanDetail"
-                android:textSize="22sp"
-                android:textColor="#000"
-                android:text="Loaning..."
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+
         </LinearLayout>
+        <TextView
+            android:gravity="top|left"
+            android:autoLink="all"
+            android:id="@+id/txtMoTa_sanDetail"
+            android:textSize="22sp"
+            android:textColor="#000"
+            android:text="Loaning..."
+            android:layout_width="match_parent"
+            android:layout_height="200dp"/>
 
     </LinearLayout>
 

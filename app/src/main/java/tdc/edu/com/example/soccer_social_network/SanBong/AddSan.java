@@ -41,14 +41,12 @@ import com.squareup.picasso.Picasso;
 import java.io.ByteArrayOutputStream;
 import java.util.Calendar;
 
-import tdc.edu.com.example.soccer_social_network.AddTeam;
-import tdc.edu.com.example.soccer_social_network.ImageUplpadInfo;
 import tdc.edu.com.example.soccer_social_network.MenuAcitvity;
 import tdc.edu.com.example.soccer_social_network.R;
 
 
 public class AddSan extends AppCompatActivity{
-    EditText edtTenDoiSan,edtDoiTruongSan,edtDiaChiSan,edtSoDienThoaiSan,edtNgayThanhLapSan;
+    EditText edtTenSan, edtChuSoHuu,edtDiaChiSan,edtSoDienThoaiSan, edtMoTaSan;
     Button btnAddTeamSan;
     ImageView imageViewSan;
    DatePickerDialog.OnDateSetListener setListener;
@@ -67,7 +65,7 @@ public class AddSan extends AppCompatActivity{
 
     int IMAGE_REQUEST_CODE = 5;
 
-    String sTenDoiSan, sDiaChiSan, cImageSan,sDoiTruongSan,sNgayThanhLapSan,sSoDienThoaiSan;
+    String sTenSan, sDiaChiSan, cImageSan,sDoiTruongSan, sMoTaSan,sSoDienThoaiSan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,28 +75,28 @@ public class AddSan extends AppCompatActivity{
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Add New San");
 
-        edtTenDoiSan = findViewById(R.id.edtTenDoi_addSan);
-        edtDoiTruongSan = findViewById(R.id.edtDoiTruong_addSan);
+        edtTenSan = findViewById(R.id.edtTenSan_addSan);
+        edtChuSoHuu = findViewById(R.id.edtChuSoHuu_addSan);
         edtDiaChiSan = findViewById(R.id.edtDiaChi_addSan);
         edtSoDienThoaiSan = findViewById(R.id.edtSoDienThoai_addSan);
         btnAddTeamSan = findViewById(R.id.btnAddTeam_addSan);
         imageViewSan = findViewById(R.id.imageView_addSan);
-        edtNgayThanhLapSan = findViewById(R.id.edtNgayThanhLap_addSan);
+        edtMoTaSan = findViewById(R.id.edtMoTa_addSan);
 
         Bundle intent = getIntent().getExtras();
         if(intent != null){
-            sTenDoiSan = intent.getString("tendoisan");
+            sTenSan = intent.getString("tensan");
             sDiaChiSan = intent.getString("diachisan");
-            sDoiTruongSan = intent.getString("doitruongsan");
-            sNgayThanhLapSan = intent.getString("ngaythanhlapsan");
+            sDoiTruongSan = intent.getString("chusohuusan");
+            sMoTaSan = intent.getString("motasan");
             sSoDienThoaiSan = intent.getString("sodienthoaisan");
             cImageSan = intent.getString("cImagesan");
 
 
-            edtTenDoiSan.setText(sTenDoiSan);
+            edtTenSan.setText(sTenSan);
             edtDiaChiSan.setText(sDiaChiSan);
-            edtDoiTruongSan.setText(sDoiTruongSan);
-            edtNgayThanhLapSan.setText(sNgayThanhLapSan);
+            edtChuSoHuu.setText(sDoiTruongSan);
+            edtMoTaSan.setText(sMoTaSan);
             edtSoDienThoaiSan.setText(sSoDienThoaiSan);
             Picasso.get().load(cImageSan).into(imageViewSan);
             actionBar.setTitle("Update");
@@ -150,7 +148,7 @@ public class AddSan extends AppCompatActivity{
         final int month = calendar.get(Calendar.MONTH);
         final int day = calendar.get(Calendar.DAY_OF_MONTH);
 
-       edtNgayThanhLapSan.setOnClickListener(new View.OnClickListener() {
+       edtMoTaSan.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
                DatePickerDialog datePickerDialog = new DatePickerDialog(
@@ -159,7 +157,7 @@ public class AddSan extends AppCompatActivity{
                    public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                        month = month+1;
                        String date = day+"/"+month+"/"+year;
-                       edtNgayThanhLapSan.setText(date);
+                       edtMoTaSan.setText(date);
                    }
                },year,month,day);
                datePickerDialog.show();
@@ -225,24 +223,24 @@ public class AddSan extends AppCompatActivity{
     }
 
     private void updateDatabase(final String s) {
-        final String sTenDoi = edtTenDoiSan.getText().toString();
+        final String sTenSan = edtTenSan.getText().toString();
         final String sDiaChi = edtDiaChiSan.getText().toString();
         final String sSoDienThoai = edtSoDienThoaiSan.getText().toString();
-        final String sDoiTruong = edtDoiTruongSan.getText().toString();
-        final String sNgayThanhlap = edtNgayThanhLapSan.getText().toString();
+        final String sChuSoHuu = edtChuSoHuu.getText().toString();
+        final String sMoTa = edtMoTaSan.getText().toString();
         FirebaseDatabase mFirebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference mRef = mFirebaseDatabase.getReference("DataSan");
-        Query query = mRef.orderByChild("tendoisan").equalTo(this.sTenDoiSan);
+        Query query = mRef.orderByChild("tensan").equalTo(this.sTenSan);
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot ds: dataSnapshot.getChildren())
                 {
-                    ds.getRef().child("tendoisan").setValue(sTenDoi);
+                    ds.getRef().child("tensan").setValue(sTenSan);
                     ds.getRef().child("diachisan").setValue(sDiaChi);
-                    ds.getRef().child("doitruongsan").setValue(sDoiTruong);
+                    ds.getRef().child("chusohuusan").setValue(sChuSoHuu);
                     ds.getRef().child("sodienthoaisan").setValue(sSoDienThoai);
-                    ds.getRef().child("ngaythanhlapsan").setValue(sNgayThanhlap);
+                    ds.getRef().child("motasan").setValue(sMoTa);
                     ds.getRef().child("imagesan").setValue(s);
                 }
                 mProgressDialog.dismiss();
@@ -278,14 +276,14 @@ public class AddSan extends AppCompatActivity{
                             while (!urlTask.isSuccessful());
                             Uri downloadUrl = urlTask.getResult();
                             //get title
-                            String tendoi = edtTenDoiSan.getText().toString().trim();
-                            String doitruong = edtDoiTruongSan.getText().toString().trim();
+                            String sTenSan = edtTenSan.getText().toString().trim();
+                            String sChuSoHuu = edtChuSoHuu.getText().toString().trim();
                             String sodienthoai = edtSoDienThoaiSan.getText().toString().trim();
                             String diachi = edtDiaChiSan.getText().toString().trim();
-                            String ngaythanhlap = edtNgayThanhLapSan.getText().toString().trim();
+                            String sMoTa = edtMoTaSan.getText().toString().trim();
                             mProgressDialog.dismiss();
                             Toast.makeText(AddSan.this,"Uploaded succcesslly",Toast.LENGTH_SHORT).show();
-                            ImageUplpadInfoSan imageUplpadInfo = new ImageUplpadInfoSan(tendoi,doitruong,downloadUrl.toString(),sodienthoai,diachi,ngaythanhlap);
+                            ImageUplpadInfoSan imageUplpadInfo = new ImageUplpadInfoSan(sTenSan,sChuSoHuu,downloadUrl.toString(),sodienthoai,diachi,sMoTa);
 
                             String imageUploadId = mDatabaseReference.push().getKey();
                             //adding image upload id's child element into databaseRefrence

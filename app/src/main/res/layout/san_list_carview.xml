@@ -21,11 +21,11 @@
             <TextView
                 android:textSize="22sp"
                 android:textColor="#000"
-                android:text="Tên Đội: "
+                android:text="Tên Sân: "
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
             <TextView
-                android:id="@+id/txtTitle_mainSancardview"
+                android:id="@+id/txtTenSan_mainSancardview"
                 android:textSize="22sp"
                 android:textColor="#000"
                 android:text="Loaning..."

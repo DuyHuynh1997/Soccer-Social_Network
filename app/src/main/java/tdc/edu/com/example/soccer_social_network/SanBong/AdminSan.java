@@ -34,7 +34,6 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import tdc.edu.com.example.soccer_social_network.R;
-import tdc.edu.com.example.soccer_social_network.ViewHolder;
 
 
 public class AdminSan extends Fragment {
@@ -88,7 +87,7 @@ public class AdminSan extends Fragment {
 
     private void firebaseSeatch(String searchText)
     {
-        Query firebaseSearchQuery = mRef.orderByChild("tendoisan").startAt(searchText).endAt(searchText + "\uf8ff");
+        Query firebaseSearchQuery = mRef.orderByChild("tensan").startAt(searchText).endAt(searchText + "\uf8ff");
         FirebaseRecyclerAdapter<ModelsSan, ViewHolderSan> firebaseRecyclerAdapter =
                 new FirebaseRecyclerAdapter<ModelsSan, ViewHolderSan>(
                         ModelsSan.class,
@@ -98,8 +97,8 @@ public class AdminSan extends Fragment {
                 ) {
                     @Override
                     protected void populateViewHolder(ViewHolderSan viewHolder, ModelsSan models, int i) {
-                        viewHolder.setDetails(getActivity().getApplicationContext(), models.getTendoisan(), models.getDiachisan(), models.getImagesan(),models.getSodienthoaisan()
-                                ,models.getDoitruongsan(),models.getNgaythanhlapsan());
+                        viewHolder.setDetails(getActivity().getApplicationContext(), models.getTensan(), models.getDiachisan(), models.getImagesan(),models.getSodienthoaisan()
+                                ,models.getChusohuusan(),models.getMotasan());
 
 
                     }
@@ -112,20 +111,20 @@ public class AdminSan extends Fragment {
                         viewHolder.setOnClickListener(new ViewHolderSan.ClickListener() {
                             @Override
                             public void onItemClick(View view, int postion) {
-                                final String sTenDoi = getItem(postion).getTendoisan();
+                                final String sTenSan = getItem(postion).getTensan();
                                 final String sDiaChi = getItem(postion).getDiachisan();
                                 final String sSoDienThoai = getItem(postion).getSodienthoaisan();
                                 final String cImage = getItem(postion).getImagesan();
-                                final String sDoiTruong = getItem(postion).getDoitruongsan();
-                                final String sNgayThanhLap = getItem(postion).getNgaythanhlapsan();
+                                final String sChuSuHuu = getItem(postion).getChusohuusan();
+                                final String sMoTa = getItem(postion).getMotasan();
 
 
                                 Intent intent = new Intent(getActivity(), SanDetailActivity.class);
-                                intent.putExtra("tendoisan",sTenDoi);
+                                intent.putExtra("tensan",sTenSan);
                                 intent.putExtra("diachisan",sDiaChi);
                                 intent.putExtra("sodienthoaisan",sSoDienThoai);
-                                intent.putExtra("doitruongsan",sDoiTruong);
-                                intent.putExtra("ngaythanhlapsan",sNgayThanhLap);
+                                intent.putExtra("chusohuusan",sChuSuHuu);
+                                intent.putExtra("motasan",sMoTa);
                                 intent.putExtra("cImagesan",cImage);
                                 startActivity(intent);
 
@@ -134,10 +133,10 @@ public class AdminSan extends Fragment {
                             @Override
                             public void onItemLongClick(View view, int postion) {
 
-                                final String sTenDoi = getItem(postion).getTendoisan();
+                                final String sTenSan = getItem(postion).getTensan();
                                 final String sDiaChi = getItem(postion).getDiachisan();
-                                final String sDoiTruong = getItem(postion).getDoitruongsan();
-                                final String sNgayThanhLap = getItem(postion).getNgaythanhlapsan();
+                                final String sChuSoHuu = getItem(postion).getChusohuusan();
+                                final String sMoTa = getItem(postion).getMotasan();
                                 final String sSoDienThoai = getItem(postion).getSodienthoaisan();
 
                                 final String cImage = getItem(postion).getImagesan();
@@ -153,10 +152,10 @@ public class AdminSan extends Fragment {
                                             //update
                                             //star activity with putting current data
                                             Intent intent = new Intent(getActivity(), AddSan.class);
-                                            intent.putExtra("tendoisan",sTenDoi);
+                                            intent.putExtra("tensan",sTenSan);
                                             intent.putExtra("diachisan",sDiaChi);
-                                            intent.putExtra("doitruongsan",sDoiTruong);
-                                            intent.putExtra("ngaythanhlapsan",sNgayThanhLap);
+                                            intent.putExtra("chusohuusan",sChuSoHuu);
+                                            intent.putExtra("motasan",sMoTa);
                                             intent.putExtra("sodienthoaisan",sSoDienThoai);
                                             intent.putExtra("cImagesan",cImage);
                                             startActivity(intent);
@@ -165,7 +164,7 @@ public class AdminSan extends Fragment {
                                         if(which == 1)
                                         {
                                             //delete clicked
-                                            showDeleteDataDialog(sTenDoi, cImage);
+                                            showDeleteDataDialog(sTenSan, cImage);
                                         }
                                     }
                                 });
@@ -188,7 +187,7 @@ public class AdminSan extends Fragment {
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                Query mQuery = mRef.orderByChild("tendoisan").equalTo(currentTitle);
+                Query mQuery = mRef.orderByChild("tensan").equalTo(currentTitle);
                 mQuery.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -315,8 +314,8 @@ public class AdminSan extends Fragment {
                 ) {
                     @Override
                     protected void populateViewHolder(ViewHolderSan viewHolder, ModelsSan models, int i) {
-                        viewHolder.setDetails(getActivity().getApplicationContext(), models.getTendoisan(), models.getDiachisan(), models.getImagesan(),models.getSodienthoaisan()
-                        ,models.getDoitruongsan(),models.getNgaythanhlapsan());
+                        viewHolder.setDetails(getActivity().getApplicationContext(), models.getTensan(), models.getDiachisan(), models.getImagesan(),models.getSodienthoaisan()
+                        ,models.getChusohuusan(),models.getMotasan());
 
 
                     }
@@ -329,20 +328,20 @@ public class AdminSan extends Fragment {
                         viewHolder.setOnClickListener(new ViewHolderSan.ClickListener() {
                             @Override
                             public void onItemClick(View view, int postion) {
-                                final String sTenDoi = getItem(postion).getTendoisan();
+                                final String sTenSan = getItem(postion).getTensan();
                                 final String sDiaChi = getItem(postion).getDiachisan();
                                 final String sSoDienThoai = getItem(postion).getSodienthoaisan();
                                 final String cImage = getItem(postion).getImagesan();
-                                final String sDoiTruong = getItem(postion).getDoitruongsan();
-                                final String sNgayThanhLap = getItem(postion).getNgaythanhlapsan();
+                                final String sChuSoHuu = getItem(postion).getChusohuusan();
+                                final String sMoTa = getItem(postion).getMotasan();
 
 
                                 Intent intent = new Intent(getActivity(), SanDetailActivity.class);
-                                intent.putExtra("tendoisan",sTenDoi);
+                                intent.putExtra("tensan",sTenSan);
                                 intent.putExtra("diachisan",sDiaChi);
                                 intent.putExtra("sodienthoaisan",sSoDienThoai);
-                                intent.putExtra("doitruongsan",sDoiTruong);
-                                intent.putExtra("ngaythanhlapsan",sNgayThanhLap);
+                                intent.putExtra("chusohuusan",sChuSoHuu);
+                                intent.putExtra("motasan",sMoTa);
                                 intent.putExtra("cImagesan",cImage);
                                 startActivity(intent);
 
@@ -352,10 +351,10 @@ public class AdminSan extends Fragment {
                             @Override
                             public void onItemLongClick(View view, int postion) {
 
-                                final String sTenDoi = getItem(postion).getTendoisan();
+                                final String sTenSan = getItem(postion).getTensan();
                                 final String sDiaChi = getItem(postion).getDiachisan();
-                                final String sDoiTruong = getItem(postion).getDoitruongsan();
-                                final String sNgayThanhLap = getItem(postion).getNgaythanhlapsan();
+                                final String sChuSoHuu = getItem(postion).getChusohuusan();
+                                final String sMoTa = getItem(postion).getMotasan();
                                 final String sSoDienThoai = getItem(postion).getSodienthoaisan();
 
                                 final String cImage = getItem(postion).getImagesan();
@@ -371,10 +370,10 @@ public class AdminSan extends Fragment {
                                             //update
                                             //star activity with putting current data
                                             Intent intent = new Intent(getActivity(), AddSan.class);
-                                            intent.putExtra("tendoisan",sTenDoi);
+                                            intent.putExtra("tensan",sTenSan);
                                             intent.putExtra("diachisan",sDiaChi);
-                                            intent.putExtra("doitruongsan",sDoiTruong);
-                                            intent.putExtra("ngaythanhlapsan",sNgayThanhLap);
+                                            intent.putExtra("chusohuusan",sChuSoHuu);
+                                            intent.putExtra("motasan",sMoTa);
                                             intent.putExtra("sodienthoaisan",sSoDienThoai);
                                             intent.putExtra("cImagesan",cImage);
                                             startActivity(intent);
@@ -383,7 +382,7 @@ public class AdminSan extends Fragment {
                                         if(which == 1)
                                         {
                                             //delete clicked
-                                            showDeleteDataDialog(sTenDoi, cImage);
+                                            showDeleteDataDialog(sTenSan, cImage);
                                         }
                                     }
                                 });

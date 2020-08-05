@@ -26,7 +26,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
 import tdc.edu.com.example.soccer_social_network.R;
-import tdc.edu.com.example.soccer_social_network.ViewHolder;
 
 
 public class MenuHomeSan extends Fragment {
@@ -83,7 +82,7 @@ public class MenuHomeSan extends Fragment {
 
     private void firebaseSeatch(String searchText)
     {
-        Query firebaseSearchQuery = mRef.orderByChild("tendoisan").startAt(searchText).endAt(searchText + "\uf8ff");
+        Query firebaseSearchQuery = mRef.orderByChild("tensan").startAt(searchText).endAt(searchText + "\uf8ff");
         FirebaseRecyclerAdapter<ModelsSan, ViewHolderSan> firebaseRecyclerAdapter =
                 new FirebaseRecyclerAdapter<ModelsSan, ViewHolderSan>(
                         ModelsSan.class,
@@ -93,8 +92,8 @@ public class MenuHomeSan extends Fragment {
                 ) {
                     @Override
                     protected void populateViewHolder(ViewHolderSan viewHolder, ModelsSan models, int i) {
-                        viewHolder.setDetails(getActivity().getApplicationContext(), models.getTendoisan(), models.getDiachisan(), models.getImagesan(),models.getSodienthoaisan()
-                                ,models.getDoitruongsan(),models.getNgaythanhlapsan());
+                        viewHolder.setDetails(getActivity().getApplicationContext(), models.getTensan(), models.getDiachisan(), models.getImagesan(),models.getSodienthoaisan()
+                                ,models.getChusohuusan(),models.getMotasan());
 
 
                     }
@@ -107,20 +106,20 @@ public class MenuHomeSan extends Fragment {
                         viewHolder.setOnClickListener(new ViewHolderSan.ClickListener() {
                             @Override
                             public void onItemClick(View view, int postion) {
-                                final String sTenDoi = getItem(postion).getTendoisan();
+                                final String sTenSan = getItem(postion).getTensan();
                                 final String sDiaChi = getItem(postion).getDiachisan();
                                 final String sSoDienThoai = getItem(postion).getSodienthoaisan();
                                 final String cImage = getItem(postion).getImagesan();
-                                final String sDoiTruong = getItem(postion).getDoitruongsan();
-                                final String sNgayThanhLap = getItem(postion).getNgaythanhlapsan();
+                                final String sChuSoHuu = getItem(postion).getChusohuusan();
+                                final String sMoTa = getItem(postion).getMotasan();
 
 
                                 Intent intent = new Intent(getActivity(), SanDetailActivity.class);
-                                intent.putExtra("tendoisan",sTenDoi);
+                                intent.putExtra("tensan",sTenSan);
                                 intent.putExtra("diachisan",sDiaChi);
                                 intent.putExtra("sodienthoaisan",sSoDienThoai);
-                                intent.putExtra("doitruongsan",sDoiTruong);
-                                intent.putExtra("ngaythanhlapsan",sNgayThanhLap);
+                                intent.putExtra("chusohuusan",sChuSoHuu);
+                                intent.putExtra("motasan",sMoTa);
                                 intent.putExtra("cImagesan",cImage);
                                 startActivity(intent);
 
@@ -230,8 +229,8 @@ public class MenuHomeSan extends Fragment {
                 ) {
                     @Override
                     protected void populateViewHolder(ViewHolderSan viewHolder, ModelsSan models, int i) {
-                        viewHolder.setDetails(getActivity().getApplicationContext(), models.getTendoisan(), models.getDiachisan(), models.getImagesan(),models.getSodienthoaisan()
-                        ,models.getDoitruongsan(),models.getNgaythanhlapsan());
+                        viewHolder.setDetails(getActivity().getApplicationContext(), models.getTensan(), models.getDiachisan(), models.getImagesan(),models.getSodienthoaisan()
+                        ,models.getChusohuusan(),models.getMotasan());
 
 
                     }
@@ -244,20 +243,20 @@ public class MenuHomeSan extends Fragment {
                         viewHolder.setOnClickListener(new ViewHolderSan.ClickListener() {
                             @Override
                             public void onItemClick(View view, int postion) {
-                                final String sTenDoi = getItem(postion).getTendoisan();
+                                final String sTenSan = getItem(postion).getTensan();
                                 final String sDiaChi = getItem(postion).getDiachisan();
                                 final String sSoDienThoai = getItem(postion).getSodienthoaisan();
                                 final String cImage = getItem(postion).getImagesan();
-                                final String sDoiTruong = getItem(postion).getDoitruongsan();
-                                final String sNgayThanhLap = getItem(postion).getNgaythanhlapsan();
+                                final String sChuSoHuu = getItem(postion).getChusohuusan();
+                                final String sMoTa = getItem(postion).getMotasan();
 
 
                                 Intent intent = new Intent(getActivity(), SanDetailActivity.class);
-                                intent.putExtra("tendoisan",sTenDoi);
+                                intent.putExtra("tensan",sTenSan);
                                 intent.putExtra("diachisan",sDiaChi);
                                 intent.putExtra("sodienthoaisan",sSoDienThoai);
-                                intent.putExtra("doitruongsan",sDoiTruong);
-                                intent.putExtra("ngaythanhlapsan",sNgayThanhLap);
+                                intent.putExtra("chusohuusan",sChuSoHuu);
+                                intent.putExtra("motasan",sMoTa);
                                 intent.putExtra("cImagesan",cImage);
                                 startActivity(intent);
 

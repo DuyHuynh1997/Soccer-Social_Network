@@ -37,12 +37,12 @@ public class ViewHolderSan extends RecyclerView.ViewHolder {
         });
     }
 
-    public void setDetails(Context ctx, String sTenDoi, String sDiaChi, String image,String sSoDienThoai,String sDoiTruong,String sNgayThanhLap){
-        TextView txtTenDoi = mView.findViewById(R.id.txtTitle_mainSancardview);
+    public void setDetails(Context ctx, String sTenSan, String sDiaChi, String image,String sSoDienThoai,String sChuSoHuu,String sMoTaSan){
+        TextView txtTenSan = mView.findViewById(R.id.txtTenSan_mainSancardview);
         TextView txtDiaChi = mView.findViewById(R.id.txtDescription_mainSancardview);
         ImageView mImageIv = mView.findViewById(R.id.ImageView_mainSancardview);
 
-        txtTenDoi.setText(sTenDoi);
+        txtTenSan.setText(sTenSan);
         txtDiaChi.setText(sDiaChi);
         Picasso.get().load(image).into(mImageIv);
     }

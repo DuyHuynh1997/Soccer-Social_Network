@@ -1,16 +1,16 @@
 package tdc.edu.com.example.soccer_social_network.SanBong;
 
 public class ModelsSan {
-    String tendoisan, imagesan, diachisan, sodienthoaisan,doitruongsan,ngaythanhlapsan;
+    String tensan, imagesan, diachisan, sodienthoaisan, chusohuusan, motasan;
     public ModelsSan() {
     }
 
-    public String getTendoisan() {
-        return tendoisan;
+    public String getTensan() {
+        return tensan;
     }
 
-    public void setTendoisan(String tendoisan) {
-        this.tendoisan = tendoisan;
+    public void setTensan(String tensan) {
+        this.tensan = tensan;
     }
 
     public String getImagesan() {
@@ -37,19 +37,19 @@ public class ModelsSan {
         this.sodienthoaisan = sodienthoaisan;
     }
 
-    public String getDoitruongsan() {
-        return doitruongsan;
+    public String getChusohuusan() {
+        return chusohuusan;
     }
 
-    public void setDoitruongsan(String doitruongsan) {
-        this.doitruongsan = doitruongsan;
+    public void setChusohuusan(String chusohuusan) {
+        this.chusohuusan = chusohuusan;
     }
 
-    public String getNgaythanhlapsan() {
-        return ngaythanhlapsan;
+    public String getMotasan() {
+        return motasan;
     }
 
-    public void setNgaythanhlapsan(String ngaythanhlapsan) {
-        this.ngaythanhlapsan = ngaythanhlapsan;
+    public void setMotasan(String motasan) {
+        this.motasan = motasan;
     }
 }

@@ -12,7 +12,7 @@ import com.squareup.picasso.Picasso;
 import tdc.edu.com.example.soccer_social_network.R;
 
 public class SanDetailActivity extends AppCompatActivity {
-    TextView txtTenDoiSan, txtDiaChiSan,txtSoDienThoaiSan,txtDoiTruongSan,txtNgayThanhLapSan;
+    TextView txtTenSan, txtDiaChiSan,txtSoDienThoaiSan, txtChuSoHuuSan, txtMoTaSan;
     ImageView mImageIvSan;
     String tendoiSan,diachiSan,cImageSan,sodienthoaiSan,doitruongSan,ngaythanhlapSan;
 
@@ -27,30 +27,30 @@ public class SanDetailActivity extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setDisplayShowHomeEnabled(true);
 
-        txtTenDoiSan = findViewById(R.id.txtTitle_sanDetail);
+        txtTenSan = findViewById(R.id.txtTenSan_sanDetail);
         txtDiaChiSan = findViewById(R.id.txtDescription_sanDetail);
         mImageIvSan = findViewById(R.id.imageView_sanDetail);
         txtSoDienThoaiSan = findViewById(R.id.txtSoDienThoai_sanDetail);
-        txtDoiTruongSan = findViewById(R.id.txtDoiTruong_sanDetail);
-        txtNgayThanhLapSan = findViewById(R.id.txtNgayThanhLap_sanDetail);
+        txtChuSoHuuSan = findViewById(R.id.txtChuSoHuu_sanDetail);
+        txtMoTaSan = findViewById(R.id.txtMoTa_sanDetail);
 
 
         Bundle intent = getIntent().getExtras();
         if(intent != null){
-            tendoiSan = intent.getString("tendoisan");
+            tendoiSan = intent.getString("tensan");
             diachiSan = intent.getString("diachisan");
             sodienthoaiSan = intent.getString("sodienthoaisan");
-            doitruongSan = intent.getString("doitruongsan");
-            ngaythanhlapSan = intent.getString("ngaythanhlapsan");
+            doitruongSan = intent.getString("chusohuusan");
+            ngaythanhlapSan = intent.getString("motasan");
 
             cImageSan = intent.getString("cImagesan");
 
 
-            txtTenDoiSan.setText(tendoiSan);
+            txtTenSan.setText(tendoiSan);
             txtDiaChiSan.setText(diachiSan);
             txtSoDienThoaiSan.setText(sodienthoaiSan);
-            txtDoiTruongSan.setText(doitruongSan);
-            txtNgayThanhLapSan.setText(ngaythanhlapSan);
+            txtChuSoHuuSan.setText(doitruongSan);
+            txtMoTaSan.setText(ngaythanhlapSan);
             Picasso.get().load(cImageSan).into(mImageIvSan);
         }
 
