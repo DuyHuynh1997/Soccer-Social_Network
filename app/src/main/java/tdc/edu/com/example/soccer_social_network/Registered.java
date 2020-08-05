@@ -3,6 +3,7 @@ package tdc.edu.com.example.soccer_social_network;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -88,6 +89,7 @@ public class Registered extends AppCompatActivity {
                         {
                             Toast.makeText(Registered.this,"User Created.",Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(),MenuAcitvity.class));
+
                         }
                         else {
                             Toast.makeText(Registered.this,"Error !" + task.getException().getMessage(),Toast.LENGTH_SHORT).show();

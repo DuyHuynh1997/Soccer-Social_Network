@@ -1,4 +1,4 @@
-package tdc.edu.com.example.soccer_social_network;
+package tdc.edu.com.example.soccer_social_network.SanBong;
 
 import android.content.Context;
 import android.view.View;
@@ -10,11 +10,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 
+import tdc.edu.com.example.soccer_social_network.R;
 
-public class ViewHolder extends RecyclerView.ViewHolder {
+
+public class ViewHolderSan extends RecyclerView.ViewHolder {
 
     View mView;
-    public ViewHolder(@NonNull View itemView) {
+    public ViewHolderSan(@NonNull View itemView) {
         super(itemView);
         mView = itemView;
 
@@ -36,9 +38,9 @@ public class ViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void setDetails(Context ctx, String sTenDoi, String sDiaChi, String image,String sSoDienThoai,String sDoiTruong,String sNgayThanhLap){
-        TextView txtTenDoi = mView.findViewById(R.id.txtTitle_maincardview);
-        TextView txtDiaChi = mView.findViewById(R.id.txtDescription_maincardview);
-        ImageView mImageIv = mView.findViewById(R.id.ImageView_maincarview);
+        TextView txtTenDoi = mView.findViewById(R.id.txtTitle_mainSancardview);
+        TextView txtDiaChi = mView.findViewById(R.id.txtDescription_mainSancardview);
+        ImageView mImageIv = mView.findViewById(R.id.ImageView_mainSancardview);
 
         txtTenDoi.setText(sTenDoi);
         txtDiaChi.setText(sDiaChi);
@@ -46,7 +48,7 @@ public class ViewHolder extends RecyclerView.ViewHolder {
     }
 
 
-    private ViewHolder.ClickListener mClickListener;
+    private ViewHolderSan.ClickListener mClickListener;
 
     public interface ClickListener{
         void onItemClick(View view, int postion);
@@ -54,7 +56,7 @@ public class ViewHolder extends RecyclerView.ViewHolder {
 
     }
 
-    public void setOnClickListener(ViewHolder.ClickListener clickListener)
+    public void setOnClickListener(ViewHolderSan.ClickListener clickListener)
     {
             mClickListener = clickListener;
     }

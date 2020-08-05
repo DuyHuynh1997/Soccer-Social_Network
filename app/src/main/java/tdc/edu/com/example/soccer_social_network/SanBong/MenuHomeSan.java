@@ -1,13 +1,10 @@
-package tdc.edu.com.example.soccer_social_network;
+package tdc.edu.com.example.soccer_social_network.SanBong;
 
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -15,10 +12,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.SearchView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.view.MenuItemCompat;
@@ -27,21 +21,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
+
+import tdc.edu.com.example.soccer_social_network.R;
+import tdc.edu.com.example.soccer_social_network.ViewHolder;
 
 
-
-public class MenuHome extends Fragment {
+public class MenuHomeSan extends Fragment {
 
     LinearLayoutManager mLayoutManager;
     SharedPreferences mSharedPref;
@@ -73,8 +61,8 @@ public class MenuHome extends Fragment {
 
 
         View flagment = null;
-        flagment = inflater.inflate( R.layout.team_listview_home,container,false);
-        mRecyclerView = flagment.findViewById(R.id.recyclerview_mainlistview);
+        flagment = inflater.inflate( R.layout.san_listview_home,container,false);
+        mRecyclerView = flagment.findViewById(R.id.recyclerview_mainSanlistview);
         mRecyclerView.setHasFixedSize(true);
 
         //set layout as linerLayot
@@ -83,7 +71,7 @@ public class MenuHome extends Fragment {
 
         //send Query to FirebaseDatabase
         mFirebaseDatabase = FirebaseDatabase.getInstance();
-        mRef = mFirebaseDatabase.getReference("Data");
+        mRef = mFirebaseDatabase.getReference("DataSan");
 
 
 
@@ -95,45 +83,45 @@ public class MenuHome extends Fragment {
 
     private void firebaseSeatch(String searchText)
     {
-        Query firebaseSearchQuery = mRef.orderByChild("tendoi").startAt(searchText).endAt(searchText + "\uf8ff");
-        FirebaseRecyclerAdapter<Models, ViewHolder> firebaseRecyclerAdapter =
-                new FirebaseRecyclerAdapter<Models, ViewHolder>(
-                        Models.class,
-                        R.layout.team_list_carview,
-                        ViewHolder.class,
+        Query firebaseSearchQuery = mRef.orderByChild("tendoisan").startAt(searchText).endAt(searchText + "\uf8ff");
+        FirebaseRecyclerAdapter<ModelsSan, ViewHolderSan> firebaseRecyclerAdapter =
+                new FirebaseRecyclerAdapter<ModelsSan, ViewHolderSan>(
+                        ModelsSan.class,
+                        R.layout.san_list_carview,
+                        ViewHolderSan.class,
                         firebaseSearchQuery
                 ) {
                     @Override
-                    protected void populateViewHolder(ViewHolder viewHolder, Models models, int i) {
-                        viewHolder.setDetails(getActivity().getApplicationContext(), models.getTendoi(), models.getDiachi(), models.getImage(),models.getSodienthoai()
-                                ,models.getDoitruong(),models.getNgaythanhlap());
+                    protected void populateViewHolder(ViewHolderSan viewHolder, ModelsSan models, int i) {
+                        viewHolder.setDetails(getActivity().getApplicationContext(), models.getTendoisan(), models.getDiachisan(), models.getImagesan(),models.getSodienthoaisan()
+                                ,models.getDoitruongsan(),models.getNgaythanhlapsan());
 
 
                     }
 
                     @Override
-                    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+                    public ViewHolderSan onCreateViewHolder(ViewGroup parent, int viewType) {
 
-                        ViewHolder viewHolder = super.onCreateViewHolder(parent, viewType);
+                        ViewHolderSan viewHolder = super.onCreateViewHolder(parent, viewType);
 
-                        viewHolder.setOnClickListener(new ViewHolder.ClickListener() {
+                        viewHolder.setOnClickListener(new ViewHolderSan.ClickListener() {
                             @Override
                             public void onItemClick(View view, int postion) {
-                                final String sTenDoi = getItem(postion).getTendoi();
-                                final String sDiaChi = getItem(postion).getDiachi();
-                                final String sSoDienThoai = getItem(postion).getSodienthoai();
-                                final String cImage = getItem(postion).getImage();
-                                final String sDoiTruong = getItem(postion).getDoitruong();
-                                final String sNgayThanhLap = getItem(postion).getNgaythanhlap();
+                                final String sTenDoi = getItem(postion).getTendoisan();
+                                final String sDiaChi = getItem(postion).getDiachisan();
+                                final String sSoDienThoai = getItem(postion).getSodienthoaisan();
+                                final String cImage = getItem(postion).getImagesan();
+                                final String sDoiTruong = getItem(postion).getDoitruongsan();
+                                final String sNgayThanhLap = getItem(postion).getNgaythanhlapsan();
 
 
-                                Intent intent = new Intent(getActivity(),TeamDetailActivity.class);
-                                intent.putExtra("tendoi",sTenDoi);
-                                intent.putExtra("diachi",sDiaChi);
-                                intent.putExtra("sodienthoai",sSoDienThoai);
-                                intent.putExtra("doitruong",sDoiTruong);
-                                intent.putExtra("ngaythanhlap",sNgayThanhLap);
-                                intent.putExtra("cImage",cImage);
+                                Intent intent = new Intent(getActivity(), SanDetailActivity.class);
+                                intent.putExtra("tendoisan",sTenDoi);
+                                intent.putExtra("diachisan",sDiaChi);
+                                intent.putExtra("sodienthoaisan",sSoDienThoai);
+                                intent.putExtra("doitruongsan",sDoiTruong);
+                                intent.putExtra("ngaythanhlapsan",sNgayThanhLap);
+                                intent.putExtra("cImagesan",cImage);
                                 startActivity(intent);
 
                             }
@@ -186,7 +174,7 @@ public class MenuHome extends Fragment {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_add) {
-            startActivity(new Intent(this.getActivity(),AddTeam.class));
+            startActivity(new Intent(this.getActivity(), AddSan.class));
         }
         else if(id == R.id.action_seatch)
         {
@@ -233,44 +221,44 @@ public class MenuHome extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        FirebaseRecyclerAdapter<Models, ViewHolder> firebaseRecyclerAdapter =
-                new FirebaseRecyclerAdapter<Models, ViewHolder>(
-                        Models.class,
-                        R.layout.team_list_carview,
-                        ViewHolder.class,
+        FirebaseRecyclerAdapter<ModelsSan, ViewHolderSan> firebaseRecyclerAdapter =
+                new FirebaseRecyclerAdapter<ModelsSan, ViewHolderSan>(
+                        ModelsSan.class,
+                        R.layout.san_list_carview,
+                        ViewHolderSan.class,
                         mRef
                 ) {
                     @Override
-                    protected void populateViewHolder(ViewHolder viewHolder, Models models, int i) {
-                        viewHolder.setDetails(getActivity().getApplicationContext(), models.getTendoi(), models.getDiachi(), models.getImage(),models.getSodienthoai()
-                        ,models.getDoitruong(),models.getNgaythanhlap());
+                    protected void populateViewHolder(ViewHolderSan viewHolder, ModelsSan models, int i) {
+                        viewHolder.setDetails(getActivity().getApplicationContext(), models.getTendoisan(), models.getDiachisan(), models.getImagesan(),models.getSodienthoaisan()
+                        ,models.getDoitruongsan(),models.getNgaythanhlapsan());
 
 
                     }
 
                     @Override
-                    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+                    public ViewHolderSan onCreateViewHolder(ViewGroup parent, int viewType) {
 
-                        ViewHolder viewHolder = super.onCreateViewHolder(parent, viewType);
+                        ViewHolderSan viewHolder = super.onCreateViewHolder(parent, viewType);
 
-                        viewHolder.setOnClickListener(new ViewHolder.ClickListener() {
+                        viewHolder.setOnClickListener(new ViewHolderSan.ClickListener() {
                             @Override
                             public void onItemClick(View view, int postion) {
-                                final String sTenDoi = getItem(postion).getTendoi();
-                                final String sDiaChi = getItem(postion).getDiachi();
-                                final String sSoDienThoai = getItem(postion).getSodienthoai();
-                                final String cImage = getItem(postion).getImage();
-                                final String sDoiTruong = getItem(postion).getDoitruong();
-                                final String sNgayThanhLap = getItem(postion).getNgaythanhlap();
+                                final String sTenDoi = getItem(postion).getTendoisan();
+                                final String sDiaChi = getItem(postion).getDiachisan();
+                                final String sSoDienThoai = getItem(postion).getSodienthoaisan();
+                                final String cImage = getItem(postion).getImagesan();
+                                final String sDoiTruong = getItem(postion).getDoitruongsan();
+                                final String sNgayThanhLap = getItem(postion).getNgaythanhlapsan();
 
 
-                                Intent intent = new Intent(getActivity(),TeamDetailActivity.class);
-                                intent.putExtra("tendoi",sTenDoi);
-                                intent.putExtra("diachi",sDiaChi);
-                                intent.putExtra("sodienthoai",sSoDienThoai);
-                                intent.putExtra("doitruong",sDoiTruong);
-                                intent.putExtra("ngaythanhlap",sNgayThanhLap);
-                                intent.putExtra("cImage",cImage);
+                                Intent intent = new Intent(getActivity(), SanDetailActivity.class);
+                                intent.putExtra("tendoisan",sTenDoi);
+                                intent.putExtra("diachisan",sDiaChi);
+                                intent.putExtra("sodienthoaisan",sSoDienThoai);
+                                intent.putExtra("doitruongsan",sDoiTruong);
+                                intent.putExtra("ngaythanhlapsan",sNgayThanhLap);
+                                intent.putExtra("cImagesan",cImage);
                                 startActivity(intent);
 
 
