@@ -2,36 +2,76 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/backgroun_tao_doi">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:background="#464646"
+        android:gravity="center"
+        android:text="Tạo đội"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#FFD600"
+        android:textFontWeight="20"
+        android:textSize="30dp">
+
+    </TextView>
 
     <EditText
         android:id="@+id/edtTaoTenDoi"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:hint="Nhap ten doi">
+        android:hint="Nhập tên đội"
+        android:textAllCaps="false"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColorHint="#FFFFFF"
+        android:textFontWeight="20">
 
     </EditText>
+
+    <EditText
+        android:id="@+id/edtSDT"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:hint="Nhập số điện thoai"
+        android:textAllCaps="false"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColorHint="#FFFFFF"></EditText>
+
+    <EditText
+        android:id="@+id/edtThanhVienDoi"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:hint="Nhập thành viên đội"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColorHint="#FFFFFF"></EditText>
 
     <EditText
         android:id="@+id/edtTaoGhiChu"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:hint="Gioi thieu"></EditText>
+        android:hint="Giới thiệu đội"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColorHint="#FFFFFF"></EditText>
 
-    <TextView
-        android:id="@+id/txtTaoTrangThai"
+    <EditText
+        android:id="@+id/edtTaoTrangThai"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:text="0"></TextView>
+        android:layout_weight="0.5"
+        android:text="0"></EditText>
 
     <Button
         android:id="@+id/btnChonAnh"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_weight="0.3"
+        android:layout_weight="0.5"
         android:text="chon anh">
 
     </Button>
@@ -48,8 +88,9 @@
         android:id="@+id/btnTaoDoi"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_weight="0.3"
-        android:text="Tao doi">
+        android:layout_weight="0.5"
+        android:text="Tao doi"
+        android:layout_gravity="center">
 
     </Button>
 

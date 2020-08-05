@@ -14,8 +14,9 @@ import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
-   public class doiAdapter extends RecyclerView.Adapter<doiAdapter.ViewHolder> {
+public class doiAdapter extends RecyclerView.Adapter<doiAdapter.ViewHolder> {
     private ArrayList<Doi> dois;
     private Context mcontext;
 
@@ -56,7 +57,6 @@ import java.util.ArrayList;
             imghinhDoi = (ImageView) (itemView.findViewById(R.id.imghinhDoi));
             txttenDoi = (TextView) (itemView.findViewById(R.id.txttenDOi));
             txtGioithieu = (TextView) (itemView.findViewById(R.id.txtgioiThieu));
-
         }
     }
 }

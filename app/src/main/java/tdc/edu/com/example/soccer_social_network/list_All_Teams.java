@@ -2,9 +2,6 @@ package tdc.edu.com.example.soccer_social_network;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.os.Message;
-import android.util.AttributeSet;
-import android.widget.LinearLayout;
 import android.widget.SearchView;
 import android.widget.Toast;
 
@@ -26,7 +23,7 @@ import java.util.ArrayList;
 public class list_All_Teams extends AppCompatActivity {
     private DatabaseReference mDatabaseReference;
     private RecyclerView recyclerView;
-    private ArrayList<Doi> dois;
+    public ArrayList<Doi> dois;
     private doiAdapter adapter;
     private Context mcontext;
     private SearchView searchView;
@@ -54,7 +51,7 @@ public class list_All_Teams extends AppCompatActivity {
         clearALl();
 
         getDataFromFirebase();
-        if(searchView != null){
+        if (searchView != null) {
             searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
                 @Override
                 public boolean onQueryTextSubmit(String s) {
@@ -68,34 +65,11 @@ public class list_All_Teams extends AppCompatActivity {
                 }
             });
         }
-
-//        mDatabaseReference.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                for(DataSnapshot dataSnapshot: snapshot.getChildren()){
-//                    Doi doi = dataSnapshot.getValue(Doi.class);
-//                    dois.add(doi);
-//                }
-//                adapter = new doiAdapter(list_All_Teams.this , dois);
-//                recyclerView.setAdapter(adapter);
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
-
     }
-//
-//    @Override
-//    protected void onStart() {
-//        super.onStart();
-//
-//}
-//
+
+    // get databse from firebase
     private void getDataFromFirebase() {
-        if (mDatabaseReference !=null){
+        if (mDatabaseReference != null) {
             Query query = mDatabaseReference.child("Doi");
             query.addValueEventListener(new ValueEventListener() {
                 @Override
@@ -120,29 +94,34 @@ public class list_All_Teams extends AppCompatActivity {
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-                    Toast.makeText(list_All_Teams.this,error.getMessage(),Toast.LENGTH_SHORT).show();
+                    Toast.makeText(list_All_Teams.this, error.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
         }
 
     }
 
-    private void search(String s){
-        ArrayList<Doi> ListDois = new ArrayList<>();
-        for(Doi object : ListDois){
-            if (object.getTenDoi().toLowerCase().contains((s.toLowerCase()))){
-                ListDois.add(object);
+        // search teams by name
+    private void search(String s) {
+        if (s != null) {
+            ArrayList<Doi> mylist = new ArrayList<Doi>();
+            for (Doi object : dois) {
+                if (object.getTenDoi().toLowerCase().contains(s.toLowerCase())) {
+                    mylist.add(object);
+                }
             }
+            adapter = new doiAdapter(getApplicationContext(), mylist);
+            recyclerView.setAdapter(adapter);
+        } else {
+            getDataFromFirebase();
         }
-        doiAdapter adapter = new doiAdapter(ListDois);
-        recyclerView.setAdapter(adapter);
     }
 
+    // clear arrryList
     private void clearALl() {
         if (dois != null) {
             dois.clear();
-            if(adapter != null)
-            {
+            if (adapter != null) {
                 adapter.notifyDataSetChanged();
             }
         }

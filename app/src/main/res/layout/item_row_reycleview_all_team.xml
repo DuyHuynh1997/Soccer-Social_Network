@@ -51,14 +51,14 @@
                     android:layout_weight="1"
                     android:orientation="horizontal">
 
-                    <EditText
+                    <TextView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:text="Ten doi : "
                         android:textFontWeight="2">
 
-                    </EditText>
+                    </TextView>
 
                     <TextView
                         android:id="@+id/txttenDOi"
@@ -78,13 +78,13 @@
                     android:layout_weight="1"
                     android:orientation="horizontal">
 
-                    <EditText
+                    <TextView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:text="Gioi thieu">
 
-                    </EditText>
+                    </TextView>
 
                     <TextView
                         android:id="@+id/txtgioiThieu"

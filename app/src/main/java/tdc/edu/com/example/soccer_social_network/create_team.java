@@ -39,8 +39,7 @@ import java.io.IOException;
 import java.util.UUID;
 
 public class create_team extends AppCompatActivity {
-    EditText edtTaoTenDoi, edtTaoGhiChu;
-    TextView txtTrangThai;
+    EditText edtTaoTenDoi, edtTaoGhiChu,edttrangThai,edtSoienThoai, edtThanhVien;
     Button btnChonAnh, btnTaoDoi;
     StorageReference mStorageRef;
     private StorageTask uploadTask;
@@ -59,7 +58,9 @@ public class create_team extends AppCompatActivity {
 
         edtTaoTenDoi = (EditText) (findViewById(R.id.edtTaoTenDoi));
         edtTaoGhiChu = (EditText) (findViewById(R.id.edtTaoGhiChu));
-        txtTrangThai = (TextView) (findViewById(R.id.txtTaoTrangThai));
+        edttrangThai = (EditText) (findViewById(R.id.edtTaoTrangThai));
+        edtSoienThoai = (EditText) (findViewById(R.id.edtSDT));
+        edtThanhVien = (EditText) (findViewById(R.id.edtThanhVien));
         btnChonAnh = (Button) (findViewById(R.id.btnChonAnh));
         btnTaoDoi = (Button) (findViewById(R.id.btnTaoDoi));
         imgAnhDoi = (ImageView) (findViewById(R.id.imgChonAnhDoi));
@@ -109,8 +110,10 @@ public class create_team extends AppCompatActivity {
                             Ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                 @Override
                                 public void onSuccess(Uri uri) {
+
                                     Toast.makeText(create_team.this, "Image uploaded successfully", Toast.LENGTH_LONG).show();
-                                    Doi doi = new Doi(edtTaoTenDoi.getText().toString().trim(), edtTaoGhiChu.getText().toString().trim(), txtTrangThai.getText().toString().trim(), uri.toString());
+
+                                    Doi doi = new Doi(edtTaoTenDoi.getText().toString().trim(),edtSoienThoai.toString().trim(),edtThanhVien.toString().trim(), edtTaoGhiChu.getText().toString().trim(), edttrangThai.getText().toString().trim(), uri.toString().trim(),"1");
                                     String uploadID = mDatabaseRef.push().getKey();
                                     mDatabaseRef.child(uploadID).setValue(doi);
                                 }
