@@ -65,6 +65,7 @@ public class list_All_Teams extends AppCompatActivity {
                 }
             });
         }
+
     }
 
     // get databse from firebase

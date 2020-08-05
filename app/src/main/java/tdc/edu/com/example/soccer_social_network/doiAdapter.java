@@ -1,9 +1,11 @@
 package tdc.edu.com.example.soccer_social_network;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -51,12 +53,14 @@ public class doiAdapter extends RecyclerView.Adapter<doiAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imghinhDoi;
         TextView txttenDoi, txtGioithieu;
+        Button btnXemThongTin;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             imghinhDoi = (ImageView) (itemView.findViewById(R.id.imghinhDoi));
             txttenDoi = (TextView) (itemView.findViewById(R.id.txttenDOi));
             txtGioithieu = (TextView) (itemView.findViewById(R.id.txtgioiThieu));
+            btnXemThongTin = (Button)(itemView.findViewById(R.id.btnXemThongTinDoi));
         }
     }
 }
