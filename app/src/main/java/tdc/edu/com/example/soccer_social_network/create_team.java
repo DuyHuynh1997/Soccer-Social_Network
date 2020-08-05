@@ -60,7 +60,7 @@ public class create_team extends AppCompatActivity {
         edtTaoGhiChu = (EditText) (findViewById(R.id.edtTaoGhiChu));
         edttrangThai = (EditText) (findViewById(R.id.edtTaoTrangThai));
         edtSoienThoai = (EditText) (findViewById(R.id.edtSDT));
-        edtThanhVien = (EditText) (findViewById(R.id.edtThanhVien));
+        edtThanhVien = (EditText) (findViewById(R.id.edtThanhVienDoi));
         btnChonAnh = (Button) (findViewById(R.id.btnChonAnh));
         btnTaoDoi = (Button) (findViewById(R.id.btnTaoDoi));
         imgAnhDoi = (ImageView) (findViewById(R.id.imgChonAnhDoi));
@@ -98,23 +98,14 @@ public class create_team extends AppCompatActivity {
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-//                            Handler handler = new Handler();
-//                            handler.postDelayed(new Runnable() {
-//                                @Override
-//                                public void run() {
-//                                    uploadProgress.setProgress(0);
-//                                }
-//                            }, 500);
-                            // Get a URL to the uploaded content
-                            //Uri downloadUrl = taskSnapshot.getDownloadUrl();
                             Ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                 @Override
                                 public void onSuccess(Uri uri) {
 
                                     Toast.makeText(create_team.this, "Image uploaded successfully", Toast.LENGTH_LONG).show();
-
-                                    Doi doi = new Doi(edtTaoTenDoi.getText().toString().trim(),edtSoienThoai.toString().trim(),edtThanhVien.toString().trim(), edtTaoGhiChu.getText().toString().trim(), edttrangThai.getText().toString().trim(), uri.toString().trim(),"1");
                                     String uploadID = mDatabaseRef.push().getKey();
+                                    Doi doi = new Doi(edtTaoTenDoi.getText().toString().trim(),edtSoienThoai.getText().toString().trim(),edtThanhVien.getText().toString().trim(), edtTaoGhiChu.getText().toString().trim(), edttrangThai.getText().toString().trim(), uri.toString().trim(),uploadID);
+                                    doi.setIdDoi(uploadID);
                                     mDatabaseRef.child(uploadID).setValue(doi);
                                 }
                             });
@@ -127,13 +118,6 @@ public class create_team extends AppCompatActivity {
                             Toast.makeText(create_team.this, exception.getMessage(), Toast.LENGTH_LONG).show();
                         }
                     });
-//                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-//                        @Override
-//                        public void onProgress(@NonNull UploadTask.TaskSnapshot taskSnapshot) {
-//                            double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
-//                            uploadProgress.setProgress((int) progress);
-//                        }
-//                    });
         } else {
             Toast.makeText(create_team.this, "Chua chon anh !", Toast.LENGTH_SHORT).show();
         }

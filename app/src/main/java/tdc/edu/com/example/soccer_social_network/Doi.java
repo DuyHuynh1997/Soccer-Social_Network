@@ -24,6 +24,15 @@ public class Doi {
     protected String soDienThoai;
     protected String thanhVien;
     protected String ulrAnhDoi;
+
+    public String getIdDoi() {
+        return idDoi;
+    }
+
+    public void setIdDoi(String idDoi) {
+        this.idDoi = idDoi;
+    }
+
     protected String idDoi;
 
     public Doi(){
