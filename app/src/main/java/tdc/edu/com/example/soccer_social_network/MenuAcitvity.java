@@ -123,7 +123,7 @@ public class MenuAcitvity extends AppCompatActivity
         } else if (id == R.id.nav_addTeam) {
             startActivity(new Intent(MenuAcitvity.this,AddTeam.class));
         } else if (id == R.id.nav_addSan) {
-            startActivity(new Intent(MenuAcitvity.this, AddSan.class));
+            startActivity(new Intent(MenuAcitvity.this,AddSan.class));
 
 
         } else if (id == R.id.nav_tools) {

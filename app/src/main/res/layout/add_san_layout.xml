@@ -217,10 +217,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <Button
-                android:id="@+id/btnTeamList_addSan"
+                android:id="@+id/btnSanList_addSan"
                 android:textAllCaps="false"
                 android:textColor="#FAA8076E"
-                android:text="TeamList"
+                android:text="SanList"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <Button

@@ -98,7 +98,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/my_radiuskhungvuong"
-                    android:drawableLeft="@drawable/ic_baseline_email_24"
+                    android:drawableLeft="@drawable/ic_email"
                     android:gravity="center"
                     android:hint="@string/txtEmail"
                     android:paddingLeft="20dp"
@@ -176,7 +176,6 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center">
@@ -201,8 +200,8 @@
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

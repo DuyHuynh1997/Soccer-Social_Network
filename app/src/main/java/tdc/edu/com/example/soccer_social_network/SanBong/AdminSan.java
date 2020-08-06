@@ -194,7 +194,7 @@ public class AdminSan extends Fragment {
                         for(DataSnapshot ds: dataSnapshot.getChildren()){
                             ds.getRef().removeValue();
                         }
-                        Toast.makeText(getActivity(),"This Team delete successfuly..",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(),"This San delete successfuly..",Toast.LENGTH_SHORT).show();
                     }
 
                     @Override

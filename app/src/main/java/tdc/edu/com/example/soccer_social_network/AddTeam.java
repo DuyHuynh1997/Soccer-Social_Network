@@ -41,10 +41,12 @@ import com.squareup.picasso.Picasso;
 import java.io.ByteArrayOutputStream;
 import java.util.Calendar;
 
+import tdc.edu.com.example.soccer_social_network.SanBong.AddSan;
+
 
 public class AddTeam extends AppCompatActivity{
     EditText edtTenDoi,edtDoiTruong,edtDiaChi,edtSoDienThoai,edtNgayThanhLap;
-    Button btnAddTeam;
+    Button btnAddTeam,btnTeamList;
     ImageView imageView;
    DatePickerDialog.OnDateSetListener setListener;
 
@@ -79,6 +81,7 @@ public class AddTeam extends AppCompatActivity{
         btnAddTeam = findViewById(R.id.btnAddTeam_addTeam);
         imageView = findViewById(R.id.imageView_addTeam);
         edtNgayThanhLap = findViewById(R.id.edtNgayThanhLap_addTeam);
+        btnTeamList = findViewById(R.id.btnTeamList_addTeam);
 
         Bundle intent = getIntent().getExtras();
         if(intent != null){
@@ -101,7 +104,12 @@ public class AddTeam extends AppCompatActivity{
 
         }
 
-
+        btnTeamList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(AddTeam.this,MenuAcitvity.class));
+            }
+        });
 
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override

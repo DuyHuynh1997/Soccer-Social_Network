@@ -3,6 +3,7 @@ package tdc.edu.com.example.soccer_social_network.Login;
 import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -20,11 +21,13 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -50,7 +53,7 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText userEmail,userPassword,userName;
     private ProgressBar loadingProgress;
     private Button regBtn;
-    private TextView txtLogin;
+    private TextView txtLogin,txtFogotPassword;
 
     private FirebaseAuth mAuth;
 
@@ -68,7 +71,7 @@ public class RegisterActivity extends AppCompatActivity {
         regBtn = findViewById(R.id.btnRegister_registered_layout);
         loadingProgress.setVisibility(View.INVISIBLE);
         txtLogin = findViewById(R.id.txtLoginNow_registered_layout);
-
+        txtFogotPassword = findViewById(R.id.txtForgotPassword_registered_layout);
         mAuth = FirebaseAuth.getInstance();
 
         txtLogin.setOnClickListener(new View.OnClickListener() {
@@ -78,6 +81,43 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
+        txtFogotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final EditText resetmail = new EditText(view.getContext());
+                AlertDialog.Builder passwordResetDialog = new AlertDialog.Builder(view.getContext());
+                passwordResetDialog.setTitle("Reset password ?");
+                passwordResetDialog.setMessage("Enter Your Email to Recived Reset Link.");
+                passwordResetDialog.setView(resetmail);
+
+                passwordResetDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                        String mail = resetmail.getText().toString();
+                        mAuth.sendPasswordResetEmail(mail).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Toast.makeText(RegisterActivity.this,"Reset Link Sent To Your Email",Toast.LENGTH_SHORT).show();
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(RegisterActivity.this,"Error! Reset Link is Not Sent" + e.getMessage(),Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+                });
+
+                passwordResetDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
+                passwordResetDialog.create().show();
+            }
+        });
 
         regBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -170,7 +210,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void updateUI() {
-        Intent homeActivity = new Intent(RegisterActivity.this, MenuAcitvity.class);
+        Intent homeActivity = new Intent(RegisterActivity.this, LoginActivity.class);
         startActivity(homeActivity);
         finish();
     }

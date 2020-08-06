@@ -10,7 +10,9 @@ import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -47,7 +49,7 @@ import tdc.edu.com.example.soccer_social_network.R;
 
 public class AddSan extends AppCompatActivity{
     EditText edtTenSan, edtChuSoHuu,edtDiaChiSan,edtSoDienThoaiSan, edtMoTaSan;
-    Button btnAddTeamSan;
+    Button btnAddTeamSan,btnSanList;
     ImageView imageViewSan;
    DatePickerDialog.OnDateSetListener setListener;
 
@@ -82,6 +84,7 @@ public class AddSan extends AppCompatActivity{
         btnAddTeamSan = findViewById(R.id.btnAddTeam_addSan);
         imageViewSan = findViewById(R.id.imageView_addSan);
         edtMoTaSan = findViewById(R.id.edtMoTa_addSan);
+        btnSanList = findViewById(R.id.btnSanList_addSan);
 
         Bundle intent = getIntent().getExtras();
         if(intent != null){
@@ -105,6 +108,12 @@ public class AddSan extends AppCompatActivity{
         }
 
 
+        btnSanList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(AddSan.this,MenuAcitvity.class));
+            }
+        });
 
         imageViewSan.setOnClickListener(new View.OnClickListener() {
             @Override
