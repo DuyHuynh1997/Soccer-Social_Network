@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,6 +19,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -32,6 +34,8 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import tdc.edu.com.example.soccer_social_network.Login.LoginActivity;
+import tdc.edu.com.example.soccer_social_network.Login.RegisterActivity;
 import tdc.edu.com.example.soccer_social_network.SanBong.AddSan;
 import tdc.edu.com.example.soccer_social_network.SanBong.AdminSan;
 import tdc.edu.com.example.soccer_social_network.SanBong.MenuHomeSan;
@@ -41,7 +45,7 @@ public class MenuAcitvity extends AppCompatActivity
 
     FirebaseAuth mAuth;
     FirebaseUser currentUser;
-    TextView navUserMail;
+    TextView navUserMail,navUserName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +74,8 @@ public class MenuAcitvity extends AppCompatActivity
         drawer.addDrawerListener( toggle );
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener( this );
+
+
 
         //updateNavHeader();
 
@@ -136,11 +142,7 @@ public class MenuAcitvity extends AppCompatActivity
 
         } else if (id == R.id.nav_login) {
 
-            setTitle("Login");
-            FragmentLogin fragment = new FragmentLogin();
-            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.frame_layout, fragment, "Home");
-            fragmentTransaction.commit();
+            startActivity(new Intent(MenuAcitvity.this, LoginActivity.class));
 
         } else if (id == R.id.nav_logout) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -175,8 +177,26 @@ public class MenuAcitvity extends AppCompatActivity
         NavigationView navigationView = findViewById( R.id.nav_view );
         View headerView = navigationView.getHeaderView(0);
         navUserMail = headerView.findViewById(R.id.nav_user_email);
+        navUserName = headerView.findViewById(R.id.nav_username);
+        ImageView navUserPhoto = headerView.findViewById(R.id.nav_user_photo);
 
         navUserMail.setText(currentUser.getEmail());
+        navUserName.setText(currentUser.getDisplayName());
+
+        Glide.with(this).load(currentUser.getPhotoUrl()).into(navUserPhoto);
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        FirebaseUser user = mAuth.getCurrentUser();
+
+        if(user != null) {
+            //user is already connected  so we need to redirect him to home page
+            updateNavHeader();
+
+        }
+
+    }
 }

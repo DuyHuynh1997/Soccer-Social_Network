@@ -10,7 +10,7 @@
         app:showAsAction="always"
         app:actionViewClass="android.widget.SearchView" />
     <item
-
+        android:visible="true"
         android:icon="@drawable/ic_add"
         android:title="Add"
         android:id="@+id/action_add"
